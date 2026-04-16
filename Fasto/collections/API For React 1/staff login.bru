@@ -1,0 +1,68 @@
+meta {
+  name: staff login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/api/staff/login/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "username":"binay_staff",
+      "password":"@Hunter123"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/api/staff/login/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "username":"binay",
+          "password":"@Hunter123"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 528
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Login successful.",
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczODkxNjMxMiwiaWF0IjoxNzI1OTU2MzEyLCJqdGkiOiJiYTE4ODFhYjNhMDI0ZGE3OTQxNGJiYTM3MGNjNzdkMCIsInVzZXJfaWQiOjJ9.pML_ftyDSzwg-jZ3-cLfk9CXPLF-VuXIBCinqg_aVa8",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2MTI5MTEyLCJpYXQiOjE3MjU5NTYzMTIsImp0aSI6IjAzNTM4MjNiMGUzYzRiYjg4YmRmMzgzYjljZWYxZDUxIiwidXNlcl9pZCI6Mn0.H8hYWM0LH-CgSXnz9tfUTO6m67kx_JdIP7sZ00lcQ8E"
+        }
+      '''
+    }
+  }
+}

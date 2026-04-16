@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Wishlist 1",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

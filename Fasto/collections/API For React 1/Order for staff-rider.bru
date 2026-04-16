@@ -1,0 +1,23 @@
+meta {
+  name: Order for staff/rider
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/api/orders/create-complete/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "cart_id":55,
+      "rider_id":4
+      
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "QR Login 1",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

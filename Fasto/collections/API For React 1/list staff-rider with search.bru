@@ -1,0 +1,86 @@
+meta {
+  name: list staff/rider with search
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/api/users/staff-riders/
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/api/users/staff-riders/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 529
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 10,
+                "username": "rider2",
+                "role": "rider",
+                "name": "",
+                "date_joined": "2024-08-05T11:59:51.251607+05:45"
+            },
+            {
+                "id": 6,
+                "username": "rider1",
+                "role": "rider",
+                "name": "",
+                "date_joined": "2024-07-23T13:44:52.121963+05:45"
+            },
+            {
+                "id": 4,
+                "username": "narayan gopal",
+                "role": "rider",
+                "name": "",
+                "date_joined": "2024-07-18T16:06:05.780833+05:45"
+            },
+            {
+                "id": 5,
+                "username": "Ganesh Bahadur",
+                "role": "rider",
+                "name": "",
+                "date_joined": "2024-07-18T16:11:52.306020+05:45"
+            },
+            {
+                "id": 2,
+                "username": "binay",
+                "role": "staff",
+                "name": "binay",
+                "date_joined": "2024-07-15T16:02:30+05:45"
+            }
+        ]
+      '''
+    }
+  }
+}

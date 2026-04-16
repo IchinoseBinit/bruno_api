@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Galli Maps Test 1",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,16 @@
+name: Staging Server
+variables:
+  - name: gateway
+    value: http://103.187.8.105:8000
+  - name: wsg
+    value: ws://103.187.8.105:8000
+  - name: accessToken
+    value: ""
+  - name: refreshToken
+    value: ""
+  - name: packerAccessToken
+    value: ""
+  - name: riderAccessToken
+    value: ""
+  - name: managerToken
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MzYxNzQwLCJpYXQiOjE3NDQxODg5NDAsImp0aSI6IjFjMmJkMmIxZWU4YzQ5ZWFhYWE0YjZmZTU4YTA2NjhhIiwidXNlcl9pZCI6MjIyMywibmFtZSI6ImJpbml0X21hbmFnZXIiLCJ1c2VybmFtZSI6ImJpbml0X21hbmFnZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJtYW5hZ2VyIn0.MldlXTCFLeLhCPWQVukKCztUNCU_RCUpqYHB94NuQrM

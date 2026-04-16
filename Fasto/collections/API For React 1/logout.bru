@@ -1,0 +1,66 @@
+meta {
+  name: logout
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/api/staff/logout/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczODkxNjMxMiwiaWF0IjoxNzI1OTU2MzEyLCJqdGkiOiJiYTE4ODFhYjNhMDI0ZGE3OTQxNGJiYTM3MGNjNzdkMCIsInVzZXJfaWQiOjJ9.pML_ftyDSzwg-jZ3-cLfk9CXPLF-VuXIBCinqg_aVa8"
+  }
+     
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/api/staff/logout/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczODkxNjMxMiwiaWF0IjoxNzI1OTU2MzEyLCJqdGkiOiJiYTE4ODFhYjNhMDI0ZGE3OTQxNGJiYTM3MGNjNzdkMCIsInVzZXJfaWQiOjJ9.pML_ftyDSzwg-jZ3-cLfk9CXPLF-VuXIBCinqg_aVa8"
+      }
+         
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 50
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "message": "Token is blacklisted"
+        }
+      '''
+    }
+  }
+}
