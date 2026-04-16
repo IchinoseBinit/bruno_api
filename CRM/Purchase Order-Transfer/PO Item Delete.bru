@@ -1,0 +1,19 @@
+meta {
+  name: PO Item Delete
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{gateway}}/api/po/item/update/5864/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

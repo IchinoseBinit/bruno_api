@@ -1,0 +1,30 @@
+meta {
+  name: Request Payment
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{gateway}}/payment/nchl/request-payment/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "id": 4
+      // "otp": .... // only if secondary authorization is true
+  }
+}
+
+settings {
+  encodeUrl: true
+}

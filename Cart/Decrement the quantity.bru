@@ -1,0 +1,99 @@
+meta {
+  name: Decrement the quantity
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{gateway}}/cart-items/2023/increment-decrement
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/cart-items/14/increment-decrement
+    method: DELETE
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 10:09:15 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, DELETE, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 44
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status": "Quantity updated"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: If Quantity is 1
+  
+  request: {
+    url: {{gateway}}/cart-items/14/increment-decrement
+    method: DELETE
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 10:12:18 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, DELETE, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 50
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status": "Item removed from cart"
+        }
+      '''
+    }
+  }
+}

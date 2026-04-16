@@ -1,0 +1,27 @@
+meta {
+  name: Category API
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/api/categories/?search=meat
+  body: none
+  auth: bearer
+}
+
+params:query {
+  search: meat
+  ~from: 2025-08-15
+  ~to: 2025-10-31
+  ~sort_by: amount
+  ~sort_order: desc
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

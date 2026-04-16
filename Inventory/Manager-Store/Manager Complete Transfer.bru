@@ -1,0 +1,26 @@
+meta {
+  name: Manager Complete Transfer
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/store/transfers/1/accept/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "product_id": 58,
+      "unit_tags": ["58-20250330174004-4283c9", "58-20250330174004-4229a1"]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

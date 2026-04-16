@@ -1,0 +1,19 @@
+meta {
+  name: List orders
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{gateway}}/orders/get-order
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{access_token}}
+}
+
+settings {
+  encodeUrl: true
+}

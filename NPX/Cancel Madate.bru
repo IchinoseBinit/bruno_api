@@ -1,0 +1,29 @@
+meta {
+  name: Cancel Madate
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/payment/nchl/mandate-cancel/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "mandate_id": 4
+  }
+}
+
+settings {
+  encodeUrl: true
+}

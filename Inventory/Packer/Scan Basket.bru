@@ -1,0 +1,25 @@
+meta {
+  name: Scan Basket
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/staff/scan-basket/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "basket_identifier": "basket-Baneshwor branch-021f6f"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

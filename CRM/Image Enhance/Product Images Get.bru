@@ -1,0 +1,68 @@
+meta {
+  name: Product Images Get
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/api/product/images/1820/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Product Images Result
+  
+  request: {
+    url: {{gateway}}/api/product/images/1820/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Server: nginx/1.18.0 (Ubuntu)
+      Date: Mon, 06 Apr 2026 09:26:35 GMT
+      Content-Type: application/json
+      Content-Length: 136
+      Connection: keep-alive
+      vary: Accept, Cookie, origin
+      allow: GET, HEAD, OPTIONS
+      x-frame-options: DENY
+      x-content-type-options: nosniff
+      referrer-policy: same-origin
+      cross-origin-opener-policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": null,
+            "previous": null,
+            "has_next_page": false,
+            "page": 1,
+            "results": [
+                {
+                    "id": 1403,
+                    "image": "/media/src/images/product_images/1820.png"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

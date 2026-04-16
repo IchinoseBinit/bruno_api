@@ -1,0 +1,34 @@
+meta {
+  name: Grant Filter by Role
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{gateway}}/feature/api/admin/feature-filters/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "feature": 1,
+      "field": "id",
+      "show": true,
+      "order": 0,
+      "role": "packer"
+    }
+}
+
+settings {
+  encodeUrl: true
+}

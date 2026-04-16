@@ -1,0 +1,33 @@
+meta {
+  name: Order Return Request Post
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/staff/clear-cancelled-basket/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "basket_id": "basket-Balkumari DS-5b4c26",
+      "scanned_tags": [
+          "1820-286-5379-60-12",
+          "5568-268-5135-20-7",
+          "5568-268-5135-20-9",
+          "5179-304-5540-12-11",
+          "5237-256-4987-24-17",
+          "4418-289-5452-15-2"
+      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,205 @@
+meta {
+  name: Update Name
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/auth/update-name
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "name": "Binit"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Login Success without name
+  
+  request: {
+    url: {{gateway}}/auth/login
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818201234
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 09:07:00 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 35
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent successfully"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Login Success with any  user name
+  
+  request: {
+    url: {{gateway}}/auth/login
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818201234,
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 09:04:29 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 35
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent successfully"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Login When User is not registered
+  
+  request: {
+    url: {{gateway}}/a
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9876541032
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 09:10:08 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 64
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "phone_number": [
+                "User with this phone number does not exist."
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Login success
+  
+  request: {
+    url: {{gateway}}/auth/login
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818201234,
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 09:03:18 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 35
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent successfully"
+        }
+      '''
+    }
+  }
+}

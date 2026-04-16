@@ -1,0 +1,208 @@
+meta {
+  name: Refresh Token
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{gateway}}/auth/verify-otp/refresh
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyMzYzNjA4MCwiaWF0IjoxNzIyNzcyMDgwLCJqdGkiOiI0MjhjNzgyYmRkNGY0MzQ0YTQ5MTVhMzIwNWQ1NzRhZiIsInVzZXJfaWQiOjMsIm5hbWUiOiJCaW5pdCIsInVzZXJuYW1lIjpudWxsLCJwaG9uZV9udW1iZXIiOiI5ODA0MzUwOTk3Iiwicm9sZSI6ImN1c3RvbWVyIn0.KTSYXWmMmdq_-8mrKUrTTdgd3wPi7G8a-ALEy5SjIz4"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Token for registration
+  
+  request: {
+    url: {{gateway}}/auth/register/token/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number": "9768400312"
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 17 Apr 2024 10:16:17 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 486
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDIxMjk3NywiaWF0IjoxNzEzMzQ4OTc3LCJqdGkiOiJiYjE5OGRjZjMzM2U0NWE5YWJkNWNhNGM0MWVlM2NlZCIsInVzZXJfaWQiOjM3fQ.FXRO0a3DZkrUu8DY3ZbVCtnhiTgvZ_pV4EC0RsQMdk8",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMzQ5Mjc3LCJpYXQiOjE3MTMzNDg5NzcsImp0aSI6ImVhZDE5YWM0OTE2NzQxN2JiODg1ZjgxMzUyYzI4OGU4IiwidXNlcl9pZCI6Mzd9.bSR-V8cib0ONRQB_0AQFZSXarP24FRvV9mrdvkVd_os"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Token After Login
+  
+  request: {
+    url: {{gateway}}/auth/register/token/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number": "9768400312"
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 17 Apr 2024 10:16:17 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 486
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDIxMjk3NywiaWF0IjoxNzEzMzQ4OTc3LCJqdGkiOiJiYjE5OGRjZjMzM2U0NWE5YWJkNWNhNGM0MWVlM2NlZCIsInVzZXJfaWQiOjM3fQ.FXRO0a3DZkrUu8DY3ZbVCtnhiTgvZ_pV4EC0RsQMdk8",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMzQ5Mjc3LCJpYXQiOjE3MTMzNDg5NzcsImp0aSI6ImVhZDE5YWM0OTE2NzQxN2JiODg1ZjgxMzUyYzI4OGU4IiwidXNlcl9pZCI6Mzd9.bSR-V8cib0ONRQB_0AQFZSXarP24FRvV9mrdvkVd_os"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed - For Unregistered User
+  
+  request: {
+    url: {{gateway}}/auth/login/token/
+    method: POST
+    mode: json
+    headers: {
+      Content-Type: application/json
+    }
+  
+    body:json: {
+      {
+          "phone_number": "0000000000"
+      
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 17 Apr 2024 10:21:51 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 59
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "error": "User with provided phone number does not exist."
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Refresh Token
+  
+  request: {
+    url: {{gateway}}/auth/register/token/refresh/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDIxMjk3NywiaWF0IjoxNzEzMzQ4OTc3LCJqdGkiOiJiYjE5OGRjZjMzM2U0NWE5YWJkNWNhNGM0MWVlM2NlZCIsInVzZXJfaWQiOjM3fQ.FXRO0a3DZkrUu8DY3ZbVCtnhiTgvZ_pV4EC0RsQMdk8"
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 17 Apr 2024 10:25:23 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 486
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMzQ5ODIzLCJpYXQiOjE3MTMzNDg5NzcsImp0aSI6IjYxMjU1ZThlMTViYjQ3MmQ5NTQ5Yjk0YTRjMjMxNGQ2IiwidXNlcl9pZCI6Mzd9.h5EtKAEtzZndZR4XDTbGpCILctEn6gBjx62Yv1PsXzI",
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDIxMzUyMywiaWF0IjoxNzEzMzQ5NTIzLCJqdGkiOiI5YjRjYzExODczN2Y0NmU5OTVjNzAwOGRiNzIzZDNmZiIsInVzZXJfaWQiOjM3fQ.nCveN3wRefghGV87yOBXs_0PqdCXDrUn6i_V3W4n3Vg"
+        }
+      '''
+    }
+  }
+}

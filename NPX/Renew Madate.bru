@@ -1,0 +1,29 @@
+meta {
+  name: Renew Madate
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{gateway}}/payment/nchl/mandate-renew/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "mandate_id": 4
+  }
+}
+
+settings {
+  encodeUrl: true
+}

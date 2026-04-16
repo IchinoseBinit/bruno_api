@@ -1,0 +1,362 @@
+meta {
+  name: Received Basket list
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{gateway}}/manager/transfers/in-transit/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MDM2OTQyLCJpYXQiOjE3NTM4NjQxNDIsImp0aSI6IjBiMTVlZWVmZWY5ZjQ3YjhhMjdlZGQ5ZWVjNjlmYWFhIiwidXNlcl9pZCI6MjkyMSwibmFtZSI6Im5heWFfbWFuYWdlcjAxIiwidXNlcm5hbWUiOiJuYXlhX21hbmFnZXIwMSIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6Im1hbmFnZXIifQ.KWdmDtW_jUlfnooiLtq2UDYWQ4hZ3Qm3fVZ0c2C_THI
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/manager/transfers/in-transit/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 269
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "source_store": "Mother Warehouse",
+                    "vehicle_plate": "BA-12-PA-3456",
+                    "driver_name": "Heavy Driver",
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ],
+                    "total_baskets": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

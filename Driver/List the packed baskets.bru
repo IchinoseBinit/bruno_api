@@ -1,0 +1,68 @@
+meta {
+  name: List the packed baskets
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{gateway}}/driver/scan-baskets/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MDMwNDE1LCJpYXQiOjE3NTM4NTc2MTUsImp0aSI6IjBjZDAzMjFmZmVjZjRlNzVhODUzNTZhY2FjY2QwODQ2IiwidXNlcl9pZCI6MjkxNiwibmFtZSI6IkhlYXZ5IERyaXZlciIsInVzZXJuYW1lIjoiaGVhdnlfZHJpdmVyIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoiZHJpdmVyIn0.GlV7IesbIuQTaLf1voUy4FxE_EV6A7huCmdlUQQS_OM
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success 2
+  
+  request: {
+    url: {{gateway}}/driver/scan-baskets/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 310
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "inventory_transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "destination_store_id": 7,
+                    "destination_store_name": "Nayabazar DS",
+                    "destination_store_latitude": 27.728817,
+                    "destination_store_longitude": 85.309325,
+                    "basket_identifiers": [
+                        "basket-Nayabazar DS-328c62"
+                    ]
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

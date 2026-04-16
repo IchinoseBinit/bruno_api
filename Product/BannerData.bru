@@ -1,0 +1,19 @@
+meta {
+  name: BannerData
+  type: http
+  seq: 29
+}
+
+get {
+  url: {{gateway}}/products/subcategory/242?store_id=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  store_id: 1
+}
+
+settings {
+  encodeUrl: true
+}

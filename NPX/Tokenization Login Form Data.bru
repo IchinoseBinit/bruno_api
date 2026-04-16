@@ -1,0 +1,26 @@
+meta {
+  name: Tokenization Login Form Data
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/payment/tokenization/login/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "phone": "9804350997",
+      "email": "binitkoirala17@gmail.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

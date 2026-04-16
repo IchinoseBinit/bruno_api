@@ -1,0 +1,30 @@
+meta {
+  name: Inventory Analysis
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/staff/api/inventory/availability?page_size=25
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page_size: 25
+  ~from: 2025-08-15
+  ~to: 2025-10-31
+  ~sort_by: amount
+  ~sort_order: desc
+  ~vendor_id: 28
+  ~subcategory_id: 444
+  ~search: uncle
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

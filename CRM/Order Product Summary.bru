@@ -1,0 +1,27 @@
+meta {
+  name: Order Product Summary
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{gateway}}/staff/api/sales/products/?from=2025-08-15&to=2025-10-31&page_size=50&sort_by=amount&sort_order=desc
+  body: none
+  auth: bearer
+}
+
+params:query {
+  from: 2025-08-15
+  to: 2025-10-31
+  page_size: 50
+  sort_by: amount
+  sort_order: desc
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

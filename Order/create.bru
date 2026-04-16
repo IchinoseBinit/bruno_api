@@ -1,0 +1,418 @@
+meta {
+  name: create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/orders/create
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer  {accessToken}}
+  Content-Type: application/json
+  X-Device-Info: { "device_type":"android","device_name":"Samsung Galaxy S23","brand":"Samsung","model":"SM-S911B","os_version":"13","app_version":"1.0.0","build_number":"45","device_id":"abcd1234efgh5678" }
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      // "cart_id": 9112,
+      "carts": [
+      // {"cart_id": 22576, "store_role": "primary"},
+      {"cart_id": 22579, "store_role": "secondary"}
+    ],
+      "user_info_id": 157967
+      // "is_ordering_for_someone":true,
+      // "recipient_name":"Ram",
+      // "recipient_phone":"9800000000"
+      // "payment_log_id": 1, // log from initiate
+      // "transaction_code": "code" // success code
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "cart_id":5
+        
+      
+      
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 22 May 2024 06:51:29 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 131
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 5,
+            "created_at": "2024-05-22T06:51:29.200724Z",
+            "updated_at": "2024-05-22T06:51:29.201590Z",
+            "status": "created",
+            "total": "1558.00"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new
+  
+  request: {
+    url: {{gateway}}/orders/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "cart_id": 2884,
+          "user_info_id": 1207,//user chosen address' adressId
+          "is_ordering_for_someone": true,
+          "recipient_name": "someone",
+          "recipient_phone": "9851056051"
+          // "coupon_code": "Onepiece"
+      
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 383
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 2713,
+            "status": "created",
+            "count": 1,
+            "small_cart_fee": "30.00",
+            "total": "130.00",
+            "final_total": "0.00",
+            "user_info": {
+                "name": "someone",
+                "address_name": "Current Address",
+                "phone": "9851056051",
+                "address": "Milijuli Tol, जन मार्ग, Kathmandu-4"
+            },
+            "customer_info": {
+                "name": "someone",
+                "phone_number": "9851056051"
+            },
+            "additional_info": null,
+            "distance": null,
+            "is_ordering_for_someone": true
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: success payment log
+  
+  request: {
+    url: {{gateway}}/orders/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "cart_id": 2935,
+          "user_info_id": 2312,
+          // "is_ordering_for_someone": true,
+          // "recipient_name": "someone",
+          // "recipient_phone": "9851056051"
+          // "coupon_code": "Onepiece"
+          "payment_log_id":1,
+          "transaction_code": "code"
+      
+      
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 416
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 2766,
+            "status": "created",
+            "count": 1,
+            "small_cart_fee": "0.00",
+            "delivery_fee": "0.00",
+            "total": "299.99",
+            "final_total": "299.99",
+            "user_info": {
+                "name": "binay rai",
+                "address_name": "Current Address",
+                "phone": "9768400312",
+                "address": "Naya Baneshwar, Suryabikram Gyawali Marg, Kathmandu-31"
+            },
+            "customer_info": {
+                "name": "binay rai",
+                "phone_number": "9768400312"
+            },
+            "additional_info": null,
+            "distance": null,
+            "is_ordering_for_someone": false
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new 123
+  
+  request: {
+    url: {{gateway}}/orders/create
+    method: POST
+    mode: json
+    headers: {
+      device_type:  andriod
+      device_name:  Samsung Galaxy S23
+      brand:  Samsung
+      model:  SM-S911B
+      os_version:  13
+      app_version:  1.0.0
+      build_number:  45
+      device_id:  abcd1234efgh5678
+      Authorization:  Bearer <user_token_here>
+      Content-Type:  application/json
+    }
+  
+    body:json: {
+      {
+          // "cart_id": 9112,
+          "carts": [
+          {"cart_id": 22575, "store_role": "primary"},
+          {"cart_id": 22574, "store_role": "secondary"}
+        ],
+          "user_info_id": 157967
+          // "is_ordering_for_someone":true,
+          // "recipient_name":"Ram",
+          // "recipient_phone":"9800000000"
+          // "payment_log_id": 1, // log from initiate
+          // "transaction_code": "code" // success code
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 850
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 13629,
+                "status": "created",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "0.00",
+                "total": "375.00",
+                "final_total": "375.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "near dhum",
+                    "phone": "9768400312",
+                    "address": "Chappal Karkhana, Kathmandu-4, Kathmandu"
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": null,
+                "distance": 2.68737,
+                "is_ordering_for_someone": false,
+                "store_role": "primary"
+            },
+            {
+                "id": 13630,
+                "status": "created",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "0.00",
+                "total": "320.00",
+                "final_total": "320.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "near dhum",
+                    "phone": "9768400312",
+                    "address": "Chappal Karkhana, Kathmandu-4, Kathmandu"
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": null,
+                "distance": 11.71177,
+                "is_ordering_for_someone": false,
+                "store_role": "primary"
+            }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: new updated success
+  
+  request: {
+    url: {{gateway}}/orders/create
+    method: POST
+    mode: json
+    headers: {
+      Authorization: Bearer  {accessToken}}
+      Content-Type: application/json
+      X-Device-Info: { "device_type":"android","device_name":"Samsung Galaxy S23","brand":"Samsung","model":"SM-S911B","os_version":"13","app_version":"1.0.0","build_number":"45","device_id":"abcd1234efgh5678" }
+    }
+  
+    body:json: {
+      {
+          // "cart_id": 9112,
+          "carts": [
+          // {"cart_id": 22576, "store_role": "primary"},
+          {"cart_id": 22579, "store_role": "secondary"}
+        ],
+          "user_info_id": 157967
+          // "is_ordering_for_someone":true,
+          // "recipient_name":"Ram",
+          // "recipient_phone":"9800000000"
+          // "payment_log_id": 1, // log from initiate
+          // "transaction_code": "code" // success code
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 429
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 13634,
+                "status": "created",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "100.00",
+                "total": "50.00",
+                "final_total": "150.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "near dhum",
+                    "phone": "9768400312",
+                    "address": "Chappal Karkhana, Kathmandu-4, Kathmandu"
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": null,
+                "distance": 11.71177,
+                "is_ordering_for_someone": false,
+                "store_role": "secondary"
+            }
+        ]
+      '''
+    }
+  }
+}

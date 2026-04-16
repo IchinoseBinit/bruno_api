@@ -1,0 +1,71 @@
+meta {
+  name: Check Coupon
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/coupon/check
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "coupon_code": "Test100",
+    "cart_ids": [450]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/coupon/check
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "coupon_code": "Onepiece",
+        "cart_item_ids":[10163,10164,10168]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      X-Frame-Options: DENY
+      Content-Length: 57
+      Vary: origin, Cookie
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "error": "name 'user' is not defined"
+        }
+      '''
+    }
+  }
+}

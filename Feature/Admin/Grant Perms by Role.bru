@@ -1,0 +1,35 @@
+meta {
+  name: Grant Perms by Role
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{gateway}}/feature/api/admin/feature-role-grants/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "feature": 5,
+      "role": "support",
+      "can_view": true,
+      "can_add": true,
+      "can_edit": true,
+      "can_delete": false
+    }
+}
+
+settings {
+  encodeUrl: true
+}

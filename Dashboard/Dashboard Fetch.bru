@@ -1,0 +1,112 @@
+meta {
+  name: Dashboard Fetch
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/dashboard/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      // "latitude": 27.70477593329391,
+      // "longitude": 85.34253861062679
+      // "latitude": 27.68472126045145,
+      // "longitude": 85.34549551739333,
+      // "address": "Sinamangal, Ktm",
+      "address_id": 8487
+      
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/dashboard/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          // "latitude": 27.70477593329391,
+          // "longitude": 85.34253861062679
+          // "latitude": 27.68472126045145,
+          // "longitude": 85.34549551739333,
+          // "address": "Sinamangal, Ktm",
+          "address_id": 9617
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 669
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "distance_duration": {
+                "distance": 2803.66,
+                "duration_minutes": 10
+            },
+            "incomplete_orders": [],
+            "opening_time": "00:00",
+            "closing_time": "23:59",
+            "min_order_value": "300.00",
+            "delivery_accepted": true,
+            "address_id": 9617,
+            "latitude": 27.7373097,
+            "longitude": 85.3431956,
+            "nearest_store": {
+                "id": 3,
+                "name": "Dhumbarahi DS",
+                "latitude": 27.7237701,
+                "longitude": 85.3391385
+            },
+            "secondary_store": {
+                "id": 4,
+                "name": "Sanepa DS",
+                "latitude": 27.6875994,
+                "longitude": 85.3063057,
+                "distance": 11904.66,
+                "duration_minutes": 35.71
+            },
+            "tertiary_store": {
+                "id": 2,
+                "name": "Baneshwor DS",
+                "latitude": 27.6969051,
+                "longitude": 85.3375557,
+                "distance": 8148.52,
+                "duration_minutes": 24.45
+            }
+        }
+      '''
+    }
+  }
+}

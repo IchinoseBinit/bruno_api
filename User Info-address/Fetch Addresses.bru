@@ -1,0 +1,72 @@
+meta {
+  name: Fetch Addresses
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/user-info
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/user-info
+    method: GET
+    mode: json
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 195
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": [
+                {
+                    "id": 13,
+                    "name": "Home",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                },
+                {
+                    "id": 14,
+                    "name": "Home",
+                    "address": "Basundhara",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,77 @@
+meta {
+  name: Payment Initiate
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/payment/initiate/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "amount": 600,
+      "payment_mode": "khalti",
+      "cart_id": 2938
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Khalti
+  
+  request: {
+    url: {{gateway}}/payment/initiate/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "amount": 30,
+          "payment_mode": "khalti",
+          "cart_id": 201
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 104
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status_code": 200,
+            "data": {
+                "id": 6,
+                "ref_id": "UF2iMwmiraSUZKBXfRruFk",
+                "redirect_url": null
+            }
+        }
+      '''
+    }
+  }
+}

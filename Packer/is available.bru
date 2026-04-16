@@ -1,0 +1,25 @@
+meta {
+  name: is available
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{gateway}}/staff/packer/availability/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxOTM4NTYzLCJpYXQiOjE3NDE3NjU3NjMsImp0aSI6IjljZTdlYTM2MGM5MjRhYWVhMDI1YTNkMDQ4YjRmYmQ2IiwidXNlcl9pZCI6MTU1NywibmFtZSI6InBhY2tlcjMiLCJ1c2VybmFtZSI6InBhY2tlcjMiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.eSJZrsxHZjC6NedEX_Z0YtRdsVxLcg5nPDz-qiWSsM0
+}
+
+body:json {
+  {
+      "is_available": true
+  }
+}
+
+settings {
+  encodeUrl: true
+}

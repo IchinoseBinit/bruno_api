@@ -1,0 +1,34 @@
+meta {
+  name: Tokenization Login Page
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://uat.connectips.com/tokenization-gw/loginpage
+  body: formUrlEncoded
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:form-urlencoded {
+  participantId: FASTONEPAL
+  identifier: 310-1764852401-7758f5bf
+  userIdentifier: 9804350997_3
+  mobileNo: 9804350997
+  email: binitkoirala17@gmail.com
+  amount: 50000.00
+  debitType: V
+  frequency: 7
+  mandateStartDate: 2025-12-04
+  mandateExpiryDate: 2026-06-02
+  autoRenewal: false
+  token: NsLgQV52BFIEZnkIix78vFwc2dcA9ldJy07B9v6hltAud4dkkl/gVWtUYgGI5GPpHOzQ4MMgHbID5JnmVkiAQtjKuHjaaz dJcM7nhkVwUBM3o2iBAyuRBBRh co4E9F
+}
+
+settings {
+  encodeUrl: true
+}

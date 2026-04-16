@@ -1,0 +1,176 @@
+meta {
+  name: Verify OTP
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/auth/verify-otp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "otp_code": "123456",
+      "phone_number": "9801201234"
+  }
+}
+
+script:post-response {
+  // Parse the JSON response body
+  let resp = res.getBody();
+  
+  // Check if the response body contains the access and refresh tokens
+  if (resp.access && resp.refresh) {
+      // Set the access token in the environment variables
+      bru.setEnvVar("accessToken", resp.access);
+      // Set the refresh token in the environment variables
+      bru.setEnvVar("refreshToken", resp.refresh);
+  } else {
+      console.log("Tokens not found in the response");
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818201234,
+          "otp_code":123456
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 16 Apr 2024 07:33:47 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 41
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP is not valid or expired"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp
+    method: POST
+    mode: json
+    headers: {
+      Content-Type: application/json
+    }
+  
+    body:json: {
+      {
+          "phone_number":9818207179,
+          "otp_code":374403
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 16 Apr 2024 09:09:18 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 25
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP Matched"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818207179,
+          "otp_code":"073141"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 41
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP is not valid or expired"
+        }
+      '''
+    }
+  }
+}

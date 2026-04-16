@@ -1,0 +1,117 @@
+meta {
+  name: Update Cart Items
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{gateway}}/cart-items
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0NjYyODUxLCJpYXQiOjE3MTQ2NDQ4NTEsImp0aSI6IjE3ZTlhMmRlYWYyYjRmNWM5MjdlN2NhMjUzNzM5NGZjIiwidXNlcl9pZCI6MzJ9.hj7oNgzn6AWxT51D0Nu8uhpEr5c07PzznNX0tkoT-Os
+}
+
+body:json {
+  {
+      "product":1100,
+      "quantity":20
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: PUT
+    mode: json
+    body:json: {
+      {
+          "product":1,
+          "quantity":20
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:11:20 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 60
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status": "Product quantity updated in cart"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: PUT
+    mode: json
+    body:json: {
+      {
+          "product":1100,
+          "quantity":20
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:12:36 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 21
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            "Product not found"
+        ]
+      '''
+    }
+  }
+}

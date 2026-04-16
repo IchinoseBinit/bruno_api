@@ -1,0 +1,21 @@
+meta {
+  name: QR-Exchange
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/qr/exchange/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "request_id": "2b829181-9f04-46da-b3a6-6d1757b8adc0"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

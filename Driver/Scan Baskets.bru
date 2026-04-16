@@ -1,0 +1,69 @@
+meta {
+  name: Scan Baskets
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/driver/scan-baskets/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MDMwNDE1LCJpYXQiOjE3NTM4NTc2MTUsImp0aSI6IjBjZDAzMjFmZmVjZjRlNzVhODUzNTZhY2FjY2QwODQ2IiwidXNlcl9pZCI6MjkxNiwibmFtZSI6IkhlYXZ5IERyaXZlciIsInVzZXJuYW1lIjoiaGVhdnlfZHJpdmVyIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoiZHJpdmVyIn0.GlV7IesbIuQTaLf1voUy4FxE_EV6A7huCmdlUQQS_OM
+}
+
+body:json {
+  {
+    "basket_identifiers": ["basket-Nayabazar DS-328c62"]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/driver/scan-baskets/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "basket_identifiers": ["basket-Nayabazar DS-328c62"]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 43
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "detail": "Transfer marked as in transit."
+        }
+      '''
+    }
+  }
+}

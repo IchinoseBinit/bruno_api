@@ -1,0 +1,24 @@
+meta {
+  name: Feature Map Admin
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/feature/api/admin/feature-map/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,37 @@
+meta {
+  name: login ( same as packer)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/auth/api/token/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "username": "BN_driver",
+      "password": "BN_driver"
+  }
+}
+
+script:post-response {
+  // Parse the JSON response body
+  let resp = res.getBody();
+  
+  // Check if the response body contains the access and refresh tokens
+  if (resp.access && resp.refresh) {
+      // Set the access token in the environment variables
+      bru.setEnvVar("driverAccessToken", resp.access);
+      // Set the refresh token in the environment variables
+  } else {
+      console.log("Tokens not found in the response");
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

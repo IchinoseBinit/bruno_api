@@ -1,0 +1,75 @@
+meta {
+  name: racks product
+  type: http
+  seq: 21
+}
+
+post {
+  url: {{gateway}}/rack/products/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "unique_identifier": "fasto_rack_WAR-S-D-2-R_2894"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/rack/products/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "unique_identifier": "fasto_rack_WAR-S-D-2-R_2894"
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 70
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "products": [
+                {
+                    "id": 3595,
+                    "name": "Gorkha Beer Can 500mL",
+                    "quantity": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

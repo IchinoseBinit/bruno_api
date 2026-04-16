@@ -1,0 +1,29 @@
+meta {
+  name: Filters By Feature ID
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{gateway}}/feature/api/admin/feature-filters/?feature=1&role=manager
+  body: json
+  auth: bearer
+}
+
+params:query {
+  feature: 1
+  role: manager
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

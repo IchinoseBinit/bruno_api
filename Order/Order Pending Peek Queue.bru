@@ -1,0 +1,87 @@
+meta {
+  name: Order Pending Peek Queue
+  type: http
+  seq: 21
+}
+
+get {
+  url: {{gateway}}/orders/queue?store_id=3
+  body: text
+  auth: bearer
+}
+
+params:query {
+  store_id: 3
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:text {
+  {
+      "cart_id": 3832,
+      "user_info_id": 46
+      // "payment_log_id": 1, // log from initiate
+      // "transaction_code": "code" // success code
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/pending-order?store_id=6
+    method: GET
+    mode: text
+    params:query: {
+      store_id: 6
+    }
+  
+    body:text: {
+      {
+          "cart_id": 3832,
+          "user_info_id": 46
+          // "payment_log_id": 1, // log from initiate
+          // "transaction_code": "code" // success code
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 138
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "store_id": 6,
+            "packer_pending_orders": [],
+            "rider_pending_orders": [],
+            "active_packers": [],
+            "active_riders": [],
+            "orders_info": []
+        }
+      '''
+    }
+  }
+}

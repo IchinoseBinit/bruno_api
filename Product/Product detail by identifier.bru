@@ -1,0 +1,56 @@
+meta {
+  name: Product detail by identifier
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{gateway}}/products/category/10
+  body: none
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/products/category/10
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 220
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 10,
+            "name": "Personal Care",
+            "image": "/media/src/images/category_images/WhatsApp_Image_2024-12-08_at_11.42.21-removebg-preview_SEUnr7b.png",
+            "description": "This is a category for hygiene and wellness",
+            "display_size": 1
+        }
+      '''
+    }
+  }
+}

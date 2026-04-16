@@ -1,0 +1,19 @@
+meta {
+  name: Get Route Data
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseURL}}/orders/2/route
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

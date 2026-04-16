@@ -1,0 +1,19 @@
+meta {
+  name: Get Order Detail
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{baseURL}}/orders/110/rider-detail
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTY2Mjc4LCJpYXQiOjE3MTg3OTM0NzgsImp0aSI6ImUyNmYxNDBiODZiMTQyNTViYjIyNTY4MDA5YzVlNmE5IiwidXNlcl9pZCI6MiwibmFtZSI6IlJpZGVyIE9uZSIsInVzZXJuYW1lIjoicmlkZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJyaWRlciJ9.lh4CkuB4wtSGdC-dvNFVJD121BuZ5iujy6yGP9bCyZos
+}
+
+settings {
+  encodeUrl: true
+}

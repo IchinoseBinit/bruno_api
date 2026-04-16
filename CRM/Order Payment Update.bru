@@ -1,0 +1,26 @@
+meta {
+  name: Order Payment Update
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{gateway}}/api/orders/6521/update-payment/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "payment_type": "cod", //cod
+      "is_payment_done": false
+  }
+}
+
+settings {
+  encodeUrl: true
+}

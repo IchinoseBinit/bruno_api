@@ -1,0 +1,15 @@
+meta {
+  name: getBannerImg
+  type: http
+  seq: 30
+}
+
+get {
+  url: {{gateway}}/banners/177
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Admin Create Feature
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/feature/api/admin/features/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "name":"Customers","slug":"customers","api_path":"/staff/api/customers/", "order": 0, "display_type":"table",
+      "base_permissions":{"can_view":true,"can_add":false,"can_edit":false,"can_delete":false},
+      "feature_group": 4,
+      "fields":[{"name":"id","label":"ID","type":"integer","read_only":true,"order":0}]
+    }
+}
+
+settings {
+  encodeUrl: true
+}

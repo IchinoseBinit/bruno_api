@@ -1,0 +1,80 @@
+meta {
+  name: Good return post
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{gateway}}/orders/3517/return/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "units": [
+      {"tag": "1900-1-37-50-2", "reason": "Expired"},
+      {"tag": "842-3-268-30-1", "reason": "Expired"}
+    
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/3521/return/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "units": [
+          {"tag": "1917-1-25-48-8", "reason": "Expired"}
+        
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 87
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "results": [
+                {
+                    "tag": "1917-1-25-48-8",
+                    "status": "success",
+                    "message": "Return initiated."
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

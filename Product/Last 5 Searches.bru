@@ -1,0 +1,89 @@
+meta {
+  name: Last 5 Searches
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{gateway}}/last-search/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/similar-products/?tag=breakfast&store_id=1
+    method: GET
+    mode: none
+    params:query: {
+      tag: breakfast
+      store_id: 1
+    }
+  
+    headers: {
+      tags: breakfast
+      store_id: 1
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 344
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": [
+                {
+                    "id": 2,
+                    "product_name": "Apple",
+                    "stock_quantity": 100,
+                    "price": 194,
+                    "discount_percent": 3,
+                    "marked_price": 200,
+                    "size": "100.00",
+                    "measurement": "kg",
+                    "images": []
+                },
+                {
+                    "id": 3,
+                    "product_name": "Chicken Eggs",
+                    "stock_quantity": 30,
+                    "price": 29.4,
+                    "discount_percent": 2,
+                    "marked_price": 30,
+                    "size": "20.00",
+                    "measurement": "kg",
+                    "images": []
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

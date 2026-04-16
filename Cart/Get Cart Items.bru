@@ -1,0 +1,567 @@
+meta {
+  name: Get Cart Items
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/cart-items/?store_id=3
+  body: json
+  auth: bearer
+}
+
+params:query {
+  store_id: 3
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 10:22:06 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 147
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 12,
+                "cart": 12,
+                "product_name": "Almond Milk",
+                "quantity": 1,
+                "added_at": "2024-05-02T10:16:50.260770Z",
+                "updated_at": "2024-05-02T10:16:50.260860Z"
+            }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:17:23 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      WWW-Authenticate: Bearer realm="api"
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 183
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "detail": "Given token not valid for any token type",
+            "code": "token_not_valid",
+            "messages": [
+                {
+                    "token_class": "AccessToken",
+                    "token_type": "access",
+                    "message": "Token is invalid or expired"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/cart-items/?primary_store_id=3
+    method: GET
+    mode: json
+    params:query: {
+      primary_store_id: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 2688
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "cart": [
+                {
+                    "id": 22573,
+                    "store": {
+                        "id": 4,
+                        "name": "Sanepa DS"
+                    },
+                    "store_type": "secondary",
+                    "items": [
+                        {
+                            "id": 87625,
+                            "product_id": "10225",
+                            "base_product_id": "5170",
+                            "product_name": "Pepsi Cold Drinks 2.25 L MRP270",
+                            "product_image": "/media/src/images/product_images/Pepsi_2.25_1.png",
+                            "measurement": "L",
+                            "marked_price": 270,
+                            "discount_percent": 0,
+                            "price": 270,
+                            "size": 2.25,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:05:36.017002+05:45",
+                            "updated_at": "2026-01-05T13:05:36.021577+05:45"
+                        }
+                    ],
+                    "total": 270,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 370,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22572,
+                    "store": {
+                        "id": 2,
+                        "name": "Baneshwor DS"
+                    },
+                    "store_type": "tertiary",
+                    "items": [
+                        {
+                            "id": 87624,
+                            "product_id": "1743",
+                            "base_product_id": "1899",
+                            "product_name": "Better Cashew Nuts 400g MRP 1250",
+                            "product_image": "/media/src/images/product_images/Cashew.png",
+                            "measurement": "g",
+                            "marked_price": 1250,
+                            "discount_percent": 0,
+                            "price": 1250,
+                            "size": 400,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:02:42.681339+05:45",
+                            "updated_at": "2026-01-05T13:02:42.691946+05:45"
+                        }
+                    ],
+                    "total": 1250,
+                    "delivery_fees": {
+                        "base_delivery_fee": 0,
+                        "actual_delivery_fee": 0
+                    },
+                    "total_price": 1250,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22571,
+                    "store": {
+                        "id": 3,
+                        "name": "Dhumbarahi DS"
+                    },
+                    "store_type": "primary",
+                    "items": [
+                        {
+                            "id": 87623,
+                            "product_id": "7502",
+                            "base_product_id": "4438",
+                            "product_name": "Pepsi Cold Drinks 2.25L MRP 270",
+                            "product_image": "/media/src/images/product_images/Pepsi_2_VfHragB.25_1.png",
+                            "measurement": "L",
+                            "marked_price": 270,
+                            "discount_percent": 0,
+                            "price": 270,
+                            "size": 2.25,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:01:32.508914+05:45",
+                            "updated_at": "2026-01-05T13:01:32.514326+05:45"
+                        }
+                    ],
+                    "total": 270,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 370,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22570,
+                    "store": {
+                        "id": 7,
+                        "name": "Nayabazar DS"
+                    },
+                    "store_type": "primary",
+                    "items": [
+                        {
+                            "id": 87622,
+                            "product_id": "3630",
+                            "base_product_id": "1899",
+                            "product_name": "Better Cashew Nuts 400g MRP 1250",
+                            "product_image": "/media/src/images/product_images/Cashew.png",
+                            "measurement": "g",
+                            "marked_price": 1250,
+                            "discount_percent": 0,
+                            "price": 1250,
+                            "size": 400,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:01:27.200777+05:45",
+                            "updated_at": "2026-01-05T13:01:27.206048+05:45"
+                        }
+                    ],
+                    "total": 1250,
+                    "delivery_fees": {
+                        "base_delivery_fee": 0,
+                        "actual_delivery_fee": 0
+                    },
+                    "total_price": 1250,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22562,
+                    "store": null,
+                    "store_type": "primary",
+                    "items": [],
+                    "total": 0,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 100,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                }
+            ],
+            "has_online_payment": false,
+            "max_cash_order_value": null
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new
+  
+  request: {
+    url: {{gateway}}/cart-items/?store_id=3
+    method: GET
+    mode: json
+    params:query: {
+      store_id: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 2304
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "cart": [
+                {
+                    "id": 22571,
+                    "store": {
+                        "id": 3,
+                        "name": "Dhumbarahi DS",
+                        "store_type": "primary"
+                    },
+                    "items": [
+                        {
+                            "id": 87627,
+                            "product_id": "7502",
+                            "base_product_id": "4438",
+                            "product_name": "Pepsi Cold Drinks 2.25L MRP 270",
+                            "product_image": "/media/src/images/product_images/Pepsi_2_VfHragB.25_1.png",
+                            "measurement": "L",
+                            "marked_price": 270,
+                            "discount_percent": 0,
+                            "price": 270,
+                            "size": 2.25,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:26:49.964370+05:45",
+                            "updated_at": "2026-01-05T13:26:49.971428+05:45"
+                        }
+                    ],
+                    "total": 270,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 370,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22570,
+                    "store": {
+                        "id": 7,
+                        "name": "Nayabazar DS",
+                        "store_type": "primary"
+                    },
+                    "items": [],
+                    "total": 0,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 100,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22562,
+                    "store": null,
+                    "items": [],
+                    "total": 0,
+                    "delivery_fees": {
+                        "base_delivery_fee": 100,
+                        "actual_delivery_fee": 100
+                    },
+                    "total_price": 100,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22573,
+                    "store": {
+                        "id": 4,
+                        "name": "Sanepa DS",
+                        "store_type": "secondary"
+                    },
+                    "items": [
+                        {
+                            "id": 87626,
+                            "product_id": "2688",
+                            "base_product_id": "1898",
+                            "product_name": "Better Cashew Nuts 100g MRP 320",
+                            "product_image": "/media/src/images/product_images/Cashew_r1QxnPZ.png",
+                            "measurement": "g",
+                            "marked_price": 320,
+                            "discount_percent": 0,
+                            "price": 320,
+                            "size": 100,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:26:48.464371+05:45",
+                            "updated_at": "2026-01-05T13:26:48.474006+05:45"
+                        }
+                    ],
+                    "total": 320,
+                    "delivery_fees": {
+                        "base_delivery_fee": 0,
+                        "actual_delivery_fee": 0
+                    },
+                    "total_price": 320,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                },
+                {
+                    "id": 22572,
+                    "store": {
+                        "id": 2,
+                        "name": "Baneshwor DS",
+                        "store_type": "tertiary"
+                    },
+                    "items": [
+                        {
+                            "id": 87628,
+                            "product_id": "1747",
+                            "base_product_id": "1903",
+                            "product_name": "Better Raisins Dry Fruits 400g MRP 360",
+                            "product_image": "/media/src/images/product_images/Raisin_7OSVGwM.png",
+                            "measurement": "g",
+                            "marked_price": 360,
+                            "discount_percent": 0,
+                            "price": 360,
+                            "size": 400,
+                            "quantity": 1,
+                            "added_at": "2026-01-05T13:26:57.976289+05:45",
+                            "updated_at": "2026-01-05T13:26:57.983064+05:45"
+                        }
+                    ],
+                    "total": 360,
+                    "delivery_fees": {
+                        "base_delivery_fee": 0,
+                        "actual_delivery_fee": 0
+                    },
+                    "total_price": 360,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                }
+            ],
+            "has_online_payment": false,
+            "max_cash_order_value": null
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new promo cart
+  
+  request: {
+    url: {{gateway}}/cart-items/?store_id=3
+    method: GET
+    mode: json
+    params:query: {
+      store_id: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 988
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "cart": [
+                {
+                    "id": 9831,
+                    "store": {
+                        "id": 3,
+                        "name": "Dhumbarahi DS",
+                        "store_type": "primary"
+                    },
+                    "items": [
+                        {
+                            "id": 36587,
+                            "product_id": "1462",
+                            "base_product_id": "872",
+                            "product_name": "Clinic Plus  Shampoo 625mL MRP 515",
+                            "product_image": "/media/src/images/product_images/4bcf861b-b8b3-4d36-aecf-4e759827f67b.jpg",
+                            "measurement": "mL",
+                            "marked_price": 515,
+                            "discount_percent": 0,
+                            "price": 515,
+                            "size": 625,
+                            "quantity": 1,
+                            "added_at": "2026-02-02T16:14:44.314007+05:45",
+                            "updated_at": "2026-02-02T16:14:44.319384+05:45",
+                            "free_items": [
+                                {
+                                    "id": 5,
+                                    "product_id": 1460,
+                                    "base_product_id": 892,
+                                    "product_name": "Dove White Bathing Soaps 100g MRP 125",
+                                    "quantity": 1,
+                                    "product_image": "/media/src/images/product_images/2d72ef6d-615a-4b30-98fa-99383a9b2724.jpg",
+                                    "promo_name": "Test PROMO"
+                                }
+                            ]
+                        }
+                    ],
+                    "total": 515,
+                    "delivery_fees": {
+                        "base_delivery_fee": 0,
+                        "actual_delivery_fee": 0
+                    },
+                    "total_price": 515,
+                    "delivery_minutes": null,
+                    "small_cart_fee": 0
+                }
+            ],
+            "has_online_payment": false,
+            "max_cash_order_value": null,
+            "delivery_fee": 100,
+            "min_order_value": 300
+        }
+      '''
+    }
+  }
+}

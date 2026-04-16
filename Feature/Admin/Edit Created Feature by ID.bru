@@ -1,0 +1,35 @@
+meta {
+  name: Edit Created Feature by ID
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{gateway}}/feature/api/admin/features/4/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+     "fields":[
+          {"name":"search_term","label":"Term","type":"string","read_only":true,"order":0},
+          {"name":"search_count","label":"Count","type":"integer","read_only":true,"order":1},
+          {"name":"is_found","label":"Status","type":"boolean","read_only":true,"order":2}
+         
+      ]
+    }
+}
+
+settings {
+  encodeUrl: true
+}

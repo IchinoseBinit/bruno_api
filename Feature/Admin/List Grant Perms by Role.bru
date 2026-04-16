@@ -1,0 +1,24 @@
+meta {
+  name: List Grant Perms by Role
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{gateway}}/feature/api/admin/feature-role-grants/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: list
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{gateway}}/staff/store-packers/1
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MTA5NzQ5LCJpYXQiOjE3NDM5MzY5NDksImp0aSI6IjM0NGFmOTI0MjE2MjRkYWRiNmQ0N2Y0Njc1NWM4MDM1IiwidXNlcl9pZCI6MjIyNywibmFtZSI6InN1amVldF9wYWNrZXIiLCJ1c2VybmFtZSI6InN1amVldF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.WZFMtzqjWm2oMcI3jueKxRMU5oFc7MyA3tCQ9Y_YDY4
+}
+
+settings {
+  encodeUrl: true
+}

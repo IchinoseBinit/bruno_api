@@ -1,0 +1,19 @@
+meta {
+  name: Payment QR
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseURL}}/orders/view-qr
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

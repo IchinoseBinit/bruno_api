@@ -1,0 +1,19 @@
+meta {
+  name: Packer Complete Transfer
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{gateway}}/packer/transfers/3/complete/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

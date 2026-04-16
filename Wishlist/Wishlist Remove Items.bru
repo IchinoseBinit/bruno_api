@@ -1,0 +1,19 @@
+meta {
+  name: Wishlist Remove Items
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{gateway}}/wishlist/items/3849/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

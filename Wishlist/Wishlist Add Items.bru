@@ -1,0 +1,25 @@
+meta {
+  name: Wishlist Add Items
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/wishlist/add/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "product_id":3849
+  }
+}
+
+settings {
+  encodeUrl: true
+}

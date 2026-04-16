@@ -1,0 +1,63 @@
+meta {
+  name: upload home image
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/user-info/12/home-image
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzNTM1MTM2LCJpYXQiOjE3MjMzNjIzMzYsImp0aSI6ImIxNjAzNDQ0NTYwMzQ2ODdiNDg2MTViYmM5OTEzODEwIiwidXNlcl9pZCI6NiwibmFtZSI6IiIsInVzZXJuYW1lIjoicmlkZXIxIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoicmlkZXIifQ.TYKfkjGptG3_CGagxnJi9GYbXE9IXViIT0CuUMT5TiA
+}
+
+body:multipart-form {
+  home_image: @file(/C:/project/room_finder/media/room_images/brewed_coffee.jfif)
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/user-info/12/home-image
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      home_image: @file(/C:/project/room_finder/media/room_images/brewed_coffee.jfif)
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 65
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "home_image": "/media/src/images/home_images/brewed_coffee.jfif"
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,38 @@
+meta {
+  name: Product Stock (Date Range)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/api/product-stock/multiplier/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer <TOKEN>
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "stores": [1,2,3],
+      "subcategory_id": 491,
+      "rule_type": "DATE_RANGE",
+      "start_date": "2026-02-10",
+      "end_date": "2026-02-20",
+      "max_multiplier": "2.00",
+      "replenishment_multiplier": "2.00",
+      "priority": 10,
+      "is_active": true
+    }
+}
+
+settings {
+  encodeUrl: true
+}

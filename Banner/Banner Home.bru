@@ -1,0 +1,73 @@
+meta {
+  name: Banner Home
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/banners/?type=home
+  body: none
+  auth: inherit
+}
+
+params:query {
+  type: home
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/banners/?type=home
+    method: GET
+    mode: none
+    params:query: {
+      type: home
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 153
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 1,
+                "title": "Home",
+                "banner_type": "home",
+                "images": [
+                    {
+                        "id": 1,
+                        "image": "/media/src/banners/home.jpg"
+                    },
+                    {
+                        "id": 2,
+                        "image": "/media/src/banners/home_2.jpg"
+                    }
+                ]
+            }
+        ]
+      '''
+    }
+  }
+}

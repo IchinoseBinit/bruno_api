@@ -1,0 +1,30 @@
+meta {
+  name: Batch Inventory Analysis
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/staff/api/batch/inventory/availability?sort_order=desc&sort_by=sold&page_size=100
+  body: none
+  auth: bearer
+}
+
+params:query {
+  sort_order: desc
+  sort_by: sold
+  page_size: 100
+  ~from: 2025-08-15
+  ~to: 2025-10-31
+  ~vendor_id: 28
+  ~subcategory_id: 444
+  ~search: uncle
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

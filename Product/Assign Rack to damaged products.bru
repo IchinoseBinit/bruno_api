@@ -1,0 +1,74 @@
+meta {
+  name: Assign Rack to damaged products
+  type: http
+  seq: 26
+}
+
+post {
+  url: {{gateway}}/transfers/12/receive-damaged-units/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NTg0NjI4LCJpYXQiOjE3NTU0MTE4MjgsImp0aSI6IjM0OWEyMWEwNDA1MzRlOThiYzI5ZmY4YjhkMzVmYzQyIiwidXNlcl9pZCI6MjkyNSwibmFtZSI6ImJhbF9wYWNrZXIiLCJ1c2VybmFtZSI6ImJhbF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.wsKsrSMOaRbMYmp_63fvH7bKiPa8PF1OncbLBWYNjq4
+}
+
+body:json {
+  {
+    "basket_identifier": "basket-abc123",
+    "product_id": 15,
+    "unit_tags": ["15-xyz1", "15-xyz2"],
+    "rack_identifier": "rack-A12"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/damaged-units/assign/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "rack_identifier": "fasto_rack_test123_4009",
+        "product_unit_tags": ["3593-22-756-12-3"]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 93
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Damaged products are received in warehouse and assigned to rack."
+        }
+      '''
+    }
+  }
+}

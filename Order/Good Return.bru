@@ -1,0 +1,73 @@
+meta {
+  name: Good Return
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{gateway}}/orders/3521/return/
+  body: text
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:text {
+  {
+      "is_available": true
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/3521/return/
+    method: GET
+    mode: text
+    body:text: {
+      {
+          "is_available": true
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 69
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "order_item_id": 8395,
+                "product_id": 1759,
+                "units": [
+                    "1917-1-25-48-8"
+                ]
+            }
+        ]
+      '''
+    }
+  }
+}

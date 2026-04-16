@@ -1,0 +1,63 @@
+meta {
+  name: upload QR
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{gateway}}/orders/10/upload-qr-receipt
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjgyNDQ1LCJpYXQiOjE3MjMxMDk2NDUsImp0aSI6IjY3NjdjNTY0YWYyNjQ0ODhhNjI1MjQzMGZhMWM1YWYzIiwidXNlcl9pZCI6NywibmFtZSI6ImJpbmF5IiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MTgyMDcxNzkiLCJyb2xlIjoiY3VzdG9tZXIifQ.hpPnJJQs9M5nu7LxrJLxwJFzboOaz1my_5tM-qnCh0s
+}
+
+body:multipart-form {
+  qr_receipt: @file(/C:/project/room_finder/media/room_images/1_room__living_qqcISq3.jpg)
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/10/upload-qr-receipt
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      qr_receipt: @file(/C:/project/room_finder/media/room_images/1_room__living_qqcISq3.jpg)
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 73
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "qr_receipt": "/media/src/images/qr_receipts/1_room__living_qqcISq3.jpg"
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,63 @@
+meta {
+  name: Change Phone number
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{gateway}}/auth/change-phone-number/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "new_phone_number":9768400312
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/auth/change-phone-number/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "new_phone_number":9768400312
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 47
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent to the new phone number."
+        }
+      '''
+    }
+  }
+}

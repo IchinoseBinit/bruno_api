@@ -1,0 +1,65 @@
+meta {
+  name: Resent OTP
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/auth/generate-otp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "phone_number":9818207179
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/auth/generate-otp
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":9818207179
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 76
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "otp_code": "942896",
+            "message": "OTP generated successfully."
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,67 @@
+meta {
+  name: update payment type
+  type: http
+  seq: 13
+}
+
+patch {
+  url: {{gateway}}/orders/10/update-payment-type
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjgyNDQ1LCJpYXQiOjE3MjMxMDk2NDUsImp0aSI6IjY3NjdjNTY0YWYyNjQ0ODhhNjI1MjQzMGZhMWM1YWYzIiwidXNlcl9pZCI6NywibmFtZSI6ImJpbmF5IiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MTgyMDcxNzkiLCJyb2xlIjoiY3VzdG9tZXIifQ.hpPnJJQs9M5nu7LxrJLxwJFzboOaz1my_5tM-qnCh0s
+}
+
+body:json {
+  {
+      "payment_type":"online"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/10/update-payment-type
+    method: PATCH
+    mode: json
+    body:json: {
+      {
+          "payment_type":"online"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: PATCH, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 44
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "detail": "Payment type updated to online."
+        }
+      '''
+    }
+  }
+}

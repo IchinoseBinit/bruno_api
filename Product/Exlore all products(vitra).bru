@@ -1,0 +1,19 @@
+meta {
+  name: Exlore all products(vitra)
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{gateway}}/all-dashboard-products?store_id=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  store_id: 1
+}
+
+settings {
+  encodeUrl: true
+}

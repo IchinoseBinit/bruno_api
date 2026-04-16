@@ -1,0 +1,32 @@
+meta {
+  name: Feature Map By Role
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{gateway}}/feature/staff/api/features/manager
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  ~Authorization: Bearer <admin_token>
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "name":"Orders","slug":"orders","api_path":"/staff/api/orders/","display_type":"table",
+      "base_permissions":{"can_view":true,"can_add":false,"can_edit":false,"can_delete":false},
+      "fields":[{"name":"id","label":"ID","type":"integer","read_only":true,"order":0}]
+    }
+}
+
+settings {
+  encodeUrl: true
+}

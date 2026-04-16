@@ -1,0 +1,19 @@
+meta {
+  name: Delete
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{gateway}}/auth/delete
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

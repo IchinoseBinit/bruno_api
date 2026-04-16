@@ -1,0 +1,27 @@
+meta {
+  name: Product Availability Rack (Create)
+  type: http
+  seq: 30
+}
+
+post {
+  url: {{gateway}}/update-product-availabilty-rack/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "product_id": 5297,
+      "carton_identifier": "carton-c2076d",
+      "rack_identifier": "fasto_rack_Stand-Fridge-4-L_4589" 
+  }
+}
+
+settings {
+  encodeUrl: true
+}

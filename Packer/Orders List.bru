@@ -1,0 +1,15 @@
+meta {
+  name: Orders List
+  type: http
+  seq: 31
+}
+
+get {
+  url: {{gateway}}/orders/get-order
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

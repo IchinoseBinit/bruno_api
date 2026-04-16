@@ -1,0 +1,29 @@
+meta {
+  name: Add Products in Basket
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/staff/add-products/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MDUwNzU0LCJpYXQiOjE3NTM4Nzc5NTQsImp0aSI6IjVhZjVkMDNlOTY1ZTRmN2I5MjFlN2QwN2NlMDEwOTUxIiwidXNlcl9pZCI6Mjk3MiwibmFtZSI6ImRodW0gcGFja2VyIiwidXNlcm5hbWUiOiJkaHVtX3BhY2tlciIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6InBhY2tlciJ9.qc0MAOzhRtiCRY-hBVCvTnwfkKIzvFHMiclCdMuOxrs
+}
+
+body:json {
+  {
+      "store_id": 3,
+      "product_units": ["2526-7-96-12-1"],
+      "basket_identifier":"basket-Dhumbarahi DS-ae9d0a"
+  
+      
+  }
+}
+
+settings {
+  encodeUrl: true
+}

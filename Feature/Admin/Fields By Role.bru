@@ -1,0 +1,34 @@
+meta {
+  name: Fields By Role
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{gateway}}/feature/api/admin/features/1/role-fields/?role=staff
+  body: json
+  auth: bearer
+}
+
+params:query {
+  role: staff
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "role": "staff"
+    }
+}
+
+settings {
+  encodeUrl: true
+}

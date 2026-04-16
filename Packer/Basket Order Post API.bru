@@ -1,0 +1,105 @@
+meta {
+  name: Basket Order Post API
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{gateway}}/orders/basket-order/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MjIxMzc3LCJpYXQiOjE3NTQwNDg1NzcsImp0aSI6ImVmMTU1Zjk0OTdkODQwMTRhN2Q5OTYxNjE5MzlmZmZkIiwidXNlcl9pZCI6MjkyNSwibmFtZSI6ImJhbF9wYWNrZXIiLCJ1c2VybmFtZSI6ImJhbF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.PeEXq_3SmVRWoM7CLbHvV_fEWD2rm9m9FP1PBqP8-9Q
+}
+
+body:json {
+  {
+      "order_id": 3537,
+      "basket_data": [
+          {
+              "identifier": "basket-Balkumari DS-e4f3c6",
+              "product_unit_tags": ["1934-1-43-100-34","1934-1-43-100-54"]
+          }
+          // {
+          //      "identifier": "basket-Baneshowr DS-9ba9a1",
+          //      "product_unit_tags": ["873-3-574-144-51"]
+          //  }
+      ]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/orders/basket-order/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "order_id": 2749,
+          "basket_data": [
+              {
+                  "identifier": "basket-Baneshwor branch-8706f2",
+                  "product_unit_tags": ["846-20250428074726-5af78e", "846-20250428074726-17bda7"]
+              },
+              {
+                  "identifier": "basket-Baneshwor branch-d49fba",
+                  "product_unit_tags": ["846-20250428074726-bd09cc"]
+              }
+          ]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 305
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Baskets and products assigned successfully.",
+            "data": [
+                {
+                    "identifier": "basket-Baneshwor branch-8706f2",
+                    "product_unit_tags": [
+                        "846-20250428074726-5af78e",
+                        "846-20250428074726-17bda7"
+                    ]
+                },
+                {
+                    "identifier": "basket-Baneshwor branch-d49fba",
+                    "product_unit_tags": [
+                        "846-20250428074726-bd09cc"
+                    ]
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

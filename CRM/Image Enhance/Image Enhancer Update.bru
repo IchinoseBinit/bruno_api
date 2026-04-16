@@ -1,0 +1,63 @@
+meta {
+  name: Image Enhancer Update
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{gateway}}/api/product-image/4548/
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:multipart-form {
+  image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Image Enhancer Update
+  
+  request: {
+    url: {{gateway}}/api/product-image/4548/
+    method: PATCH
+    mode: multipartForm
+    body:multipart-form: {
+      image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: PATCH
+      X-Frame-Options: DENY
+      Content-Length: 118
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "image": "http://localhost:8000/media/src/images/product_images/1820_2024_acer_oled_option_01_3840x2400_8c5c4dbd.jpg"
+        }
+      '''
+    }
+  }
+}

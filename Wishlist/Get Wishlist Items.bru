@@ -1,0 +1,19 @@
+meta {
+  name: Get Wishlist Items
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/wishlist/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

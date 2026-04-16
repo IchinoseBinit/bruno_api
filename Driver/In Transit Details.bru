@@ -1,0 +1,62 @@
+meta {
+  name: In Transit Details
+  type: http
+  seq: 4
+}
+
+get {
+  url: 
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/driver/in-transit-transfers/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 282
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "transfers": [
+                {
+                    "inventory_transfer_id": 15,
+                    "transfer_identifier": "transfer-Mother Warehouse-Nayabazar DS-566642",
+                    "destination_store_id": 7,
+                    "destination_store_name": "Nayabazar DS",
+                    "destination_store_latitude": 27.728817,
+                    "destination_store_longitude": 85.309325,
+                    "basket_identifiers": []
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

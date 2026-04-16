@@ -1,0 +1,74 @@
+meta {
+  name: Payment Mode
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/payment/modes/
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "phone_number": "9804350997"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/payment/modes/
+    method: GET
+    mode: text
+    body:text: {
+      {
+          "phone_number": "9804350997"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 186
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status_code": 200,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Khalti",
+                    "type": "khalti",
+                    "logo": "/media/payment_modes_logos/Khalti.png",
+                    "description": "This is Khalti",
+                    "offer_message": "Goji"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

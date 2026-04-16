@@ -1,0 +1,167 @@
+meta {
+  name: Order Summary
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{gateway}}/staff/api/summary/?time_start=10:00:00&time_end=04:00:00&from=2025-08-18&to=2025-08-19
+  body: none
+  auth: bearer
+}
+
+params:query {
+  time_start: 10:00:00
+  time_end: 04:00:00
+  from: 2025-08-18
+  to: 2025-08-19
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Order Summary
+  
+  request: {
+    url: http://
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1810
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "filters": {
+                "from": "2025-08-10",
+                "to": "2025-08-31",
+                "store_id": null
+            },
+            "range": {
+                "start_iso": "2025-08-10T06:00:00+05:45",
+                "end_iso": "2025-09-01T06:00:00+05:45"
+            },
+            "totals": {
+                "orders": 1408,
+                "gross_final_total": 1143480.5,
+                "completed_revenue": 362471,
+                "delivery_fee_total": 51279,
+                "small_cart_fee_total": 250,
+                "total_profit": 60902.71288626,
+                "profit_margin_percentage": 16.8,
+                "avg_order_value": 789.6971677559912,
+                "avg_completion_time_minutes": 20.78
+            },
+            "status_counts": {
+                "created": 0,
+                "packer_assigned": 0,
+                "packed": 0,
+                "billing": 0,
+                "picked": 0,
+                "completed": 459,
+                "cancelled": 949
+            },
+            "payment_mix": {
+                "cod": 107,
+                "online": 352
+            },
+            "timeline": {
+                "first_order_ts": "2025-08-10T01:05:01.577817Z",
+                "last_order_ts": "2025-08-31T14:47:19.999962Z"
+            },
+            "store_breakdown": [
+                {
+                    "store_id": 3,
+                    "store_name": "Dhumbarahi DS",
+                    "orders": 379,
+                    "completed_revenue": 144919,
+                    "total_profit": 23209.55329349,
+                    "profit_margin_percentage": 16.02
+                },
+                {
+                    "store_id": 4,
+                    "store_name": "Sanepa DS",
+                    "orders": 221,
+                    "completed_revenue": 78276,
+                    "total_profit": 11940.52728943,
+                    "profit_margin_percentage": 15.25
+                },
+                {
+                    "store_id": 5,
+                    "store_name": "Tahachal DS",
+                    "orders": 89,
+                    "completed_revenue": 39609,
+                    "total_profit": 7125.72448125,
+                    "profit_margin_percentage": 17.99
+                },
+                {
+                    "store_id": 2,
+                    "store_name": "Baneshwor DS",
+                    "orders": 116,
+                    "completed_revenue": 37085,
+                    "total_profit": 7088.96586949,
+                    "profit_margin_percentage": 19.12
+                },
+                {
+                    "store_id": 6,
+                    "store_name": "Balkumari DS",
+                    "orders": 249,
+                    "completed_revenue": 34011,
+                    "total_profit": 6614.63598252,
+                    "profit_margin_percentage": 19.45
+                },
+                {
+                    "store_id": 7,
+                    "store_name": "Nayabazar DS",
+                    "orders": 352,
+                    "completed_revenue": 28571,
+                    "total_profit": 4923.30597008,
+                    "profit_margin_percentage": 17.23
+                },
+                {
+                    "store_id": 1,
+                    "store_name": "Mother Warehouse",
+                    "orders": 2,
+                    "completed_revenue": 0,
+                    "total_profit": 0,
+                    "profit_margin_percentage": 0
+                }
+            ],
+            "status_histogram": [
+                {
+                    "status": "completed",
+                    "count": 459
+                },
+                {
+                    "status": "cancelled",
+                    "count": 949
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: QR Login Token
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/qr/token/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "request_id": "f76e839c-c081-4d3f-a5af-36c851c2ebfb",
+      "exchange_code": "hUOoRwl8fpJHiANVME0Y1xWeTgVa960z" //retrieved via socket
+  }
+}
+
+settings {
+  encodeUrl: true
+}

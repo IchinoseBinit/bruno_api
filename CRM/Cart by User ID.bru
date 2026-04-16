@@ -1,0 +1,19 @@
+meta {
+  name: Cart by User ID
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{gateway}}/api/users/3/cart/items/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Get Homepage
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{gateway}}/orders/12/home-image
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzNzk5ODY2LCJpYXQiOjE3MjM2MjcwNjYsImp0aSI6ImMyNDA0NDRiNjI2ZTQwYzQ5NzQzMTgzN2I5MGUyZWUyIiwidXNlcl9pZCI6NiwibmFtZSI6IiIsInVzZXJuYW1lIjoicmlkZXIxIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoicmlkZXIifQ.PkEePbHGFvNfuaqF7cXeYWqoWuZWGdaW11K9F-Pec3g
+}
+
+settings {
+  encodeUrl: true
+}

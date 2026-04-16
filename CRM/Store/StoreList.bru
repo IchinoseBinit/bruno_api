@@ -1,0 +1,24 @@
+meta {
+  name: StoreList
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/api/stores/online/
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~search: 9804350997
+  ~type: date_joined
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

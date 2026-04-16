@@ -1,0 +1,40 @@
+meta {
+  name: Order Remarks Post
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/api/orders/file-remarks/
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~customer_id: 3
+  ~sort_by: total
+  ~sort_order: desc
+}
+
+headers {
+  X-SECRET-KEY: qpwnnFcdZI1063TACLALoPbK5kg/aXYqcfUjosLpFEE=
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "order": 15208,
+      "role": "customer",
+      "name": "Binit",
+      "phone": "9804350997",
+      "user": 3,
+      "is_outgoing": true
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,38 @@
+meta {
+  name: Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/auth/api/token/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "username": "SN_rider2",
+      "password": "SN_rider2"
+  }
+}
+
+script:post-response {
+  // Parse the JSON response body
+  let resp = res.getBody();
+  
+  // Check if the response body contains the access and refresh tokens
+  if (resp.access && resp.refresh) {
+      // Set the access token in the environment variables
+      bru.setEnvVar("accessToken", resp.access);
+      // Set the refresh token in the environment variables
+      bru.setEnvVar("refreshToken", resp.refresh);
+  } else {
+      console.log("Tokens not found in the response");
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

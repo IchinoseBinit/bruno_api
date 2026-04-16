@@ -1,0 +1,25 @@
+meta {
+  name: PO Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{gateway}}/api/po/details/267/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "status": "in_progress" //in_progress / pending / approved
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Patch Granted Perms by Role
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{gateway}}/feature/api/admin/feature-role-grants/3
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "can_view": true,
+      "can_add": false,
+      "can_edit": false,
+      "can_delete": false
+    }
+}
+
+settings {
+  encodeUrl: true
+}

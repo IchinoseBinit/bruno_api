@@ -1,0 +1,23 @@
+meta {
+  name: Mandate Callback
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{gateway}}/payment/api/nchl/emandate/callback
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {"identifier":"3-1766062357-9b4df9f7","amount":"10.00","txnCount":"100000","debitType":"V","bankName":"Sanima Bank Ltd.","mobileNo":"9709167007","mandateStartDate":"2025-12-18","mandateExpiryDate":"2026-06-16","mandateTokenNickName":"*********722","mandateTokenType":"F","frequency":"7","entryId":"2116","token":"Zvs5PpLrqTjYQE2+bIT4tAj9DnZ7xTJMY7j8aYoLcFU07E1dxwxCJ86QK3NMq7BxZE+Jtad0Ob2mppqJu8+fwouP3GIAncwG+7PU9bdI83+UabtbeN9RMz38dsgZ8lPkdK8fjz8hT+KnXuYD+8FRSTQNE7LOiERxFPK0eMHk4u0=","participantId":"FASTONEPAL","bankId":"4501","userIdentifier":"9709167007_3","mandateToken":"+4MaOQzjSkwqCIAATL1XVqUvaQfRNFoSVwxEwlPYuyqmn8r4U6J3dgJqpG3yV0qh+bvdJJ6J9abGq/ysb0dtzCxkCrdV1zXkgkKWxfaMPQLfaJHvcTfSrpfDVU2tThBhCBWxMUzOMF7kvEc2OaXIVw==","email":"binit@fasto.com.np"}
+}
+
+settings {
+  encodeUrl: true
+}

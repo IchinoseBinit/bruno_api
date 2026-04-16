@@ -1,0 +1,19 @@
+meta {
+  name: Rider Two Days Log
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{baseURL}}/rider/log/last-two-days/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MjIyMTM2LCJpYXQiOjE3NTg3OTAxMzYsImp0aSI6IjBiYzQ3NDgyZWVkYzQzOTY5MmRiMWZkZWZkMjgxZGYyIiwidXNlcl9pZCI6MTIxNTgsImlkIjoxMjE1OCwibmFtZSI6ImRodW1fcmlkZXIiLCJ1c2VybmFtZSI6ImRodW1fcmlkZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJyaWRlciJ9.69SC2E0TDci9OxiUCAqonRq6e34Sl0u9olkf6wcE4dk
+}
+
+settings {
+  encodeUrl: true
+}

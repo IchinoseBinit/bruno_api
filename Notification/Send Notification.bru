@@ -1,0 +1,30 @@
+meta {
+  name: Send Notification
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/notification/send
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "user_id": 3,
+      "title": "New Notification",
+      "message": "A New notification just for you",
+      "data": {
+          "order_id": 2
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

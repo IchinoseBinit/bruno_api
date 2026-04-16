@@ -1,0 +1,25 @@
+meta {
+  name: Register Device FCM
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/notification/register-device
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "fcm_token": "fnPEpAl1Qz-KpmpakVlvvy:APA91bGTog-B4tl1Ud8LxNIy_4_u6WPBhDOIdwHr-vAw9f9iMOSq3SwwFVGyO5VJU7JuCAM__veHIKHDNSp1Un84GnmErKJVTgBUp4J3f24V0CmfHU0zBjsiC-6E2_0-Z_w33jTU8jRc"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Inventory Transfer Item
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{gateway}}/api/transfer/create/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "product_id": 1932,
+      "quantity": 3,
+      "source_store_id": 3,
+      "destination_store_id": 2
+  }
+}
+
+settings {
+  encodeUrl: true
+}

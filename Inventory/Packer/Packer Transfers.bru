@@ -1,0 +1,19 @@
+meta {
+  name: Packer Transfers
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/packer/transfers/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

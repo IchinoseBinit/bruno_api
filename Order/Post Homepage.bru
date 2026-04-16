@@ -1,0 +1,63 @@
+meta {
+  name: Post Homepage
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{gateway}}/orders/12/home-image
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzNzk5ODY2LCJpYXQiOjE3MjM2MjcwNjYsImp0aSI6ImMyNDA0NDRiNjI2ZTQwYzQ5NzQzMTgzN2I5MGUyZWUyIiwidXNlcl9pZCI6NiwibmFtZSI6IiIsInVzZXJuYW1lIjoicmlkZXIxIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoicmlkZXIifQ.PkEePbHGFvNfuaqF7cXeYWqoWuZWGdaW11K9F-Pec3g
+}
+
+body:multipart-form {
+  home_image: @file(/C:/project/room_finder/media/room_images/Screenshot_2024-07-18_203925.jpg)
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/12/home-image
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      home_image: @file(/C:/project/room_finder/media/room_images/Screenshot_2024-07-18_203925.jpg)
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 79
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "home_image": "/media/src/images/home_images/Screenshot_2024-07-18_203925.jpg"
+        }
+      '''
+    }
+  }
+}

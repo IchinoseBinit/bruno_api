@@ -1,0 +1,36 @@
+meta {
+  name: Product Stock (Weekday)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/api/product-stock/multiplier/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer <TOKEN>
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "stores": [3, 6],
+      "subcategory_ids": [428],
+      "rule_type": "WEEKDAY",
+      "weekday": 3, // Monday -0, Tuesday -1, Wednesday - 2, Thursday - 3, Friday - 4, Saturday - 5, Sunday - 6
+      "max_multiplier": 2,
+      "priority": 50,
+      "is_active": true
+    }
+}
+
+settings {
+  encodeUrl: true
+}

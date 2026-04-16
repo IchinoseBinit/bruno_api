@@ -1,0 +1,56 @@
+meta {
+  name: Show rider online time
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseURL}}/rider/riderinfo/3/online_time/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODk0NDI4LCJpYXQiOjE3MjE3MjE2MjgsImp0aSI6IjlkOWM0YWJmODdmMjQzZmY5ODBmMzk4Y2VlZTk4ZWU5IiwidXNlcl9pZCI6NiwibmFtZSI6IiIsInVzZXJuYW1lIjoicmlkZXIxIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoicmlkZXIifQ.cC36LmSlNoRSxuWE99Px-qiiQQr8cT2s0NGYhVq1pKg
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/rider/riderinfo/3/online_time/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 40
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "total_online_time": "0 hrs 17 minutes"
+        }
+      '''
+    }
+  }
+}

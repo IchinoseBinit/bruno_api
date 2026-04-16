@@ -1,0 +1,68 @@
+meta {
+  name: is_online
+  type: http
+  seq: 11
+}
+
+patch {
+  url: {{gateway}}/staff/packer/online-status/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMjc4NzU5LCJpYXQiOjE3NDIxMDU5NTksImp0aSI6ImE4YjQwMjYzNGQ1MDRlNGE4NmY0MGJmYmQ3ZmJmMzhjIiwidXNlcl9pZCI6MTU1OCwibmFtZSI6InBhY2tlcjQiLCJ1c2VybmFtZSI6InBhY2tlcjQiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.NXDw0fa2MzGTHVTIINi6V7dWG_f6ugSSsKyUGASWICY
+}
+
+body:json {
+  {
+      "is_online":true
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/staff/packer/online-status/
+    method: PATCH
+    mode: json
+    body:json: {
+      {
+          "is_online":true
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: PATCH, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 32
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "sucess": true,
+            "is_online": true
+        }
+      '''
+    }
+  }
+}

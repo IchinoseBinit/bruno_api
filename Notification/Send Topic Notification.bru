@@ -1,0 +1,25 @@
+meta {
+  name: Send Topic Notification
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/notification/send-topic
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "topic": "fasto-test",
+      "secret_key": "FASTO#Supabase@000123",
+      "title": "What's up !",
+      "message": "this is test",
+      "image_url": "https://cdn.pixabay.com/photo/2018/01/21/01/46/architecture-3095716_960_720.jpg"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Stores
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{gateway}}/stores
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

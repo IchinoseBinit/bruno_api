@@ -1,0 +1,161 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/auth/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "phone_number": "9804350997",
+      "name": "Binit Koirala"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Register Success
+  
+  request: {
+    url: {{gateway}}/auth/register
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number": "0987654321",
+          "name": "test2",
+          "email":"test2@gmail.com"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 07:22:44 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 35
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent successfully"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Register When Duplicate Phone
+  
+  request: {
+    url: {{gateway}}/auth/register
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number": "9812367482",
+          "name": "Sanjiv"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 07:24:54 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 64
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "phone_number": [
+                "User with this phone number already exists."
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Register Success with email
+  
+  request: {
+    url: {{gateway}}/auth/register
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number": "0987654321",
+          "name": "test2",
+          "email":"test2@gmail.com"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 15 Apr 2024 09:02:10 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 35
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP sent successfully"
+        }
+      '''
+    }
+  }
+}

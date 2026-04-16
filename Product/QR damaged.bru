@@ -1,0 +1,71 @@
+meta {
+  name: QR damaged
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{gateway}}/qr-damaged/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODAxNjc0LCJpYXQiOjE3NTE2Mjg4NzQsImp0aSI6ImM5OTgzNmU0ZDE4OTRjNmRhOTJhZTFlZGM1ODc3YzJmIiwidXNlcl9pZCI6Mjg5OCwibmFtZSI6ImRodW0xIiwidXNlcm5hbWUiOiJkaHVtMSIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6InBhY2tlciJ9.2_nsoVT6Z9G36bewMgol8GYn5FudgE4K4qvferrFIGY
+}
+
+body:json {
+  {
+      "tags": ["1923-1-65-25-3","1923-1-65-25-4"]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/qr-damaged/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "tags": ["1923-1-65-25-3","1923-1-65-25-4"]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 89
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "2 damaged QR(s) recorded.",
+            "damaged_qrs": [
+                "1923-1-65-25-3",
+                "1923-1-65-25-4"
+            ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,120 @@
+meta {
+  name: rider get order
+  type: http
+  seq: 21
+}
+
+get {
+  url: {{gateway}}/orders/get-order?status=completed&from_date=2026-02-04&to_date=2026-02-05
+  body: none
+  auth: bearer
+}
+
+params:query {
+  status: completed
+  from_date: 2026-02-04
+  to_date: 2026-02-05
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: bonus and distance with date filter
+  
+  request: {
+    url: {{gateway}}/orders/get-order?status=completed&from_date=2026-02-04&to_date=2026-02-05
+    method: GET
+    mode: none
+    params:query: {
+      status: completed
+      from_date: 2026-02-04
+      to_date: 2026-02-05
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1060
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 6915,
+                "status": "completed",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "100.00",
+                "total": "280.00",
+                "final_total": "380.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "Current Address",
+                    "phone": "9768400312",
+                    "address": "Milijuli Tol, जन मार्ग, Kathmandu-4",
+                    "latitude": 27.7372662,
+                    "longitude": 85.3431572
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": "",
+                "distance": 2.17273,
+                "is_ordering_for_someone": false,
+                "store_role": "primary",
+                "rider_bonus": -50,
+                "rider_distance": "0.00 km"
+            },
+            {
+                "id": 6914,
+                "status": "completed",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "100.00",
+                "total": "280.00",
+                "final_total": "380.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "Current Address",
+                    "phone": "9768400312",
+                    "address": "Milijuli Tol, जन मार्ग, Kathmandu-4",
+                    "latitude": 27.7372662,
+                    "longitude": 85.3431572
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": "",
+                "distance": 2.17273,
+                "is_ordering_for_someone": false,
+                "store_role": "primary",
+                "rider_bonus": 50,
+                "rider_distance": "0.54 km"
+            }
+        ]
+      '''
+    }
+  }
+}

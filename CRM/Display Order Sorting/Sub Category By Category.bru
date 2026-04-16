@@ -1,0 +1,76 @@
+meta {
+  name: Sub Category By Category
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/subcategories?category_id=122
+  body: none
+  auth: bearer
+}
+
+params:query {
+  category_id: 122
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/subcategories?category_id=2
+    method: GET
+    mode: none
+    params:query: {
+      category_id: 2
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 25 Apr 2024 06:49:54 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 234
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 3,
+                "name": "Fruits",
+                "image": "/images/subcategory_images/fruits.webp",
+                "description": "this is fruit sub category"
+            },
+            {
+                "id": 4,
+                "name": "Vegetables",
+                "image": "/images/subcategory_images/vegetabels.jpg",
+                "description": "this is vegetables"
+            }
+        ]
+      '''
+    }
+  }
+}

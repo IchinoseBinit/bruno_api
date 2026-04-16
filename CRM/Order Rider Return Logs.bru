@@ -1,0 +1,19 @@
+meta {
+  name: Order Rider Return Logs
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{gateway}}/staff/api/rider-return-logs/3129/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

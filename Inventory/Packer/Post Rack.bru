@@ -1,0 +1,25 @@
+meta {
+  name: Post Rack
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/update-product-availabilty-rack/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "rack_identifier": "basket-Baneshwor branch-021f6f"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

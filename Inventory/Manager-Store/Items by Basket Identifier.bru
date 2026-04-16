@@ -1,0 +1,19 @@
+meta {
+  name: Items by Basket Identifier
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{gateway}}/basket/basket-Baneshwor branch-ea14dc/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{managerToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Order Details
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{gateway}}/staff/api/orders/15206
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

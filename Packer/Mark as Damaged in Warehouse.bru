@@ -1,0 +1,75 @@
+meta {
+  name: Mark as Damaged in Warehouse
+  type: http
+  seq: 29
+}
+
+post {
+  url: {{gateway}}/mark-damaged-units-to-rack/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "tags": ["1928-1-64-25-19", "1928-1-64-25-20"],
+    "rack_identifier": "fasto_rack_mh_4598"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/mark-damaged-units-to-rack/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "tags": ["1928-1-64-25-19", "1928-1-64-25-20"],
+        "rack_identifier": "fasto_rack_mh_4598"
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 163
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "2 units marked as damaged and moved to rack mh",
+            "rack": "fasto_rack_mh_4598",
+            "updated_availability": [
+                {
+                    "product_id": 1928,
+                    "store_id": 1,
+                    "decreased_by": 2
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

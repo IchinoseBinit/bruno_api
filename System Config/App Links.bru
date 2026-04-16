@@ -1,0 +1,26 @@
+meta {
+  name: App Links
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/system/app-links
+  body: text
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:text {
+  {
+      "username": "admin",
+      "password": "Fasto@67007"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

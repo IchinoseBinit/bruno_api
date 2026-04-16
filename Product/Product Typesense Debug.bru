@@ -1,0 +1,79 @@
+meta {
+  name: Product Typesense Debug
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{gateway}}/typesense-debug-search/?q=modern&store_id=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  q: modern
+  store_id: 1
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/product-suggestions/?suggest=be
+    method: GET
+    mode: none
+    params:query: {
+      suggest: be
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 472
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "suggestions": [
+                "Godrej Air Pocket Berry Rush",
+                "Dove Soap Beauty Cream Regular",
+                "Well Bell Corn Flakes",
+                "Tuborg Beer",
+                "Strike Strawberry Cream Filling",
+                "Johnnie Walker Black Label",
+                "Berlino Sewai",
+                "Kellogs Corn Flakes Strawberry",
+                "Knorr Chicken Stock Cubes",
+                "Sujal Chocofun Rolls Strawberry",
+                "Gorkha Strong Beer",
+                "Nataraj Besan",
+                "Gorkha Strong Can Beer",
+                "Berlino Roasted Sewai",
+                "Well Bell Oats Jar",
+                "Durex Condom Extra Ribbed (3 unit)",
+                "Fortune Soyabeans",
+                "Vim Maha Tub"
+            ]
+        }
+      '''
+    }
+  }
+}

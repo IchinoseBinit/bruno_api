@@ -1,0 +1,26 @@
+meta {
+  name: Packer Scan Units
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/packer/transfers/3/scan-units/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "product_id": 4,
+      "unit_tags": ["4-20250331085553-d93f26", "4-20250331085553-c867b7"]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

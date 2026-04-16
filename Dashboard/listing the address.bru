@@ -1,0 +1,19 @@
+meta {
+  name: listing the address
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{gateway}}/dashboard/address
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Mzg0NzgyLCJpYXQiOjE3MTkyMTE5ODIsImp0aSI6Ijg5MTZiOTBjNTQ5YjQxMjFhNTRkMzZlZWRkMWFiY2JmIiwidXNlcl9pZCI6MywibmFtZSI6ImJpbmF5MSIsInVzZXJuYW1lIjpudWxsLCJwaG9uZV9udW1iZXIiOiI5NzY4NDAwMzEyIiwicm9sZSI6ImN1c3RvbWVyIn0.1e4OpHYCAKe3IvioYXUU4deczdIncB8aPuit4hRK_jk
+}
+
+settings {
+  encodeUrl: true
+}

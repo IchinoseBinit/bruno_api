@@ -1,0 +1,35 @@
+meta {
+  name: Override Feature Field
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{gateway}}/feature/api/admin/features/1/role-fields/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "role": "manager",
+      "visible": [2,7],
+      "read_only": [4],
+      "order": {"2": 0, "3": 1, "4": 2, "5": 3},
+      "label": {"3": "Order Status"},
+      "prune": true
+    }
+}
+
+settings {
+  encodeUrl: true
+}

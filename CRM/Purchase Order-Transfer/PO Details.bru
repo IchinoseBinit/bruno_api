@@ -1,0 +1,26 @@
+meta {
+  name: PO Details
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{gateway}}/api/po/details/267/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "product_id": 1863,
+      "quantity": 5
+  }
+}
+
+settings {
+  encodeUrl: true
+}

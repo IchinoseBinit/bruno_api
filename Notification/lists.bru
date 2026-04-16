@@ -1,0 +1,144 @@
+meta {
+  name: lists
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/notification/list
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/notification/list?page=1
+    method: GET
+    mode: none
+    params:query: {
+      page: 1
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1833
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": "http://localhost:8000/notification/list?page=2",
+            "previous": null,
+            "has_next_page": true,
+            "page": 1,
+            "results": [
+                {
+                    "id": 6019,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from the rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2025-01-01T09:35:28.159421+05:45"
+                },
+                {
+                    "id": 6018,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from the rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2025-01-01T09:27:59.566367+05:45"
+                },
+                {
+                    "id": 5819,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2024-12-30T21:43:35.318168+05:45"
+                },
+                {
+                    "id": 5818,
+                    "device": 903,
+                    "title": "Order Picked",
+                    "message": "Your order is on the way.",
+                    "image_url": null,
+                    "timestamp": "2024-12-30T21:43:33.223818+05:45"
+                },
+                {
+                    "id": 4503,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2024-12-16T19:58:09.383501+05:45"
+                },
+                {
+                    "id": 4502,
+                    "device": 903,
+                    "title": "Order Picked",
+                    "message": "Your order is on the way.",
+                    "image_url": null,
+                    "timestamp": "2024-12-16T19:58:07.443523+05:45"
+                },
+                {
+                    "id": 4097,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2024-12-12T19:42:53.226448+05:45"
+                },
+                {
+                    "id": 4096,
+                    "device": 903,
+                    "title": "Order Picked",
+                    "message": "Your order is on the way.",
+                    "image_url": null,
+                    "timestamp": "2024-12-12T19:42:50.076754+05:45"
+                },
+                {
+                    "id": 4031,
+                    "device": 903,
+                    "title": "Order at your address",
+                    "message": "Please collect your order from rider. Dropit again!",
+                    "image_url": null,
+                    "timestamp": "2024-12-11T22:20:05.682897+05:45"
+                },
+                {
+                    "id": 4030,
+                    "device": 903,
+                    "title": "Order Picked",
+                    "message": "Your order is on the way.",
+                    "image_url": null,
+                    "timestamp": "2024-12-11T22:20:03.887605+05:45"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

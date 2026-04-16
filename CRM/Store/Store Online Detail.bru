@@ -1,0 +1,24 @@
+meta {
+  name: Store Online Detail
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/api/stores/online/3/
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~search: 9804350997
+  ~type: date_joined
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: PO List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/api/po/list/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

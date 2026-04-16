@@ -1,0 +1,24 @@
+meta {
+  name: Delete Granted Perms by Role Copy
+  type: http
+  seq: 14
+}
+
+delete {
+  url: {{gateway}}/feature/api/admin/feature-role-grants/1/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

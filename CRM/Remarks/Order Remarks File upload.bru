@@ -1,0 +1,34 @@
+meta {
+  name: Order Remarks File upload
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{gateway}}/api/orders/file-remarks/6/
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~customer_id: 3
+  ~sort_by: total
+  ~sort_order: desc
+}
+
+headers {
+  X-SECRET-KEY: qpwnnFcdZI1063TACLALoPbK5kg/aXYqcfUjosLpFEE=
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:multipart-form {
+  file: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+  name: Sumit
+}
+
+settings {
+  encodeUrl: true
+}

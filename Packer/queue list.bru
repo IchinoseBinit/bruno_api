@@ -1,0 +1,29 @@
+meta {
+  name: queue list
+  type: http
+  seq: 28
+}
+
+get {
+  url: {{gateway}}/staff/packer-queue/?store_id=4
+  body: text
+  auth: bearer
+}
+
+params:query {
+  store_id: 4
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyOTQ0NTE0LCJpYXQiOjE3NjI1MTI1MTQsImp0aSI6ImY4Njg3OGUzNTc3MzRiZmFiMjQ3YzM1OTY1M2U2ZmY1IiwidXNlcl9pZCI6MTIxNDYsImlkIjoxMjE0NiwibmFtZSI6IiIsInVzZXJuYW1lIjoiYWRtaW4xMCIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbH0.gLaqK_QsyWHtiVmQpavJG8mR7wLWOvQcKsI13447K8U
+}
+
+body:text {
+  {
+      "tag" : "1923-1-65-25-1"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

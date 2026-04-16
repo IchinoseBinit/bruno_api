@@ -1,0 +1,66 @@
+meta {
+  name: Online Status_1
+  type: http
+  seq: 9
+}
+
+patch {
+  url: {{baseURL}}/rider/online-status
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/rider/online-status
+    method: PATCH
+    mode: json
+    body:json: {
+      {
+          "is_online": true
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 28 May 2024 11:21:59 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: PATCH, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 42
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "is_online": true
+            }
+        }
+      '''
+    }
+  }
+}

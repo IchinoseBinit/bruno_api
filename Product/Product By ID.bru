@@ -1,0 +1,84 @@
+meta {
+  name: Product By ID
+  type: http
+  seq: 13
+}
+
+get {
+  url: http://
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/dashboard-products
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 474
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 3,
+                "product_name": "Chicken Eggs",
+                "stock_quantity": 30,
+                "price": 29.4,
+                "discount_percent": 2,
+                "marked_price": 30,
+                "size": "20.00",
+                "measurement": "kg",
+                "images": []
+            },
+            {
+                "id": 6,
+                "product_name": "Cabbage",
+                "stock_quantity": 50,
+                "price": 115.2,
+                "discount_percent": 4,
+                "marked_price": 120,
+                "size": "20.00",
+                "measurement": "kg",
+                "images": []
+            },
+            {
+                "id": 8,
+                "product_name": "Onion",
+                "stock_quantity": 40,
+                "price": 47.5,
+                "discount_percent": 5,
+                "marked_price": 50,
+                "size": "10.00",
+                "measurement": "kg",
+                "images": []
+            }
+        ]
+      '''
+    }
+  }
+}

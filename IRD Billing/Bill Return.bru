@@ -1,0 +1,47 @@
+meta {
+  name: Bill Return
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://cbapi.ird.gov.np/api/billreturn
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+            "username": "Test_CBMS",
+            "password": "test@321",
+            "seller_pan": "999999999",
+            "buyer_pan": "123456789",
+            "buyer_name": "",
+            "fiscal_year": "2083.074",
+            "ref_invoice_number": "102",
+            "credit_note_date": "2074.07.06",
+            "credit_note_number": "1",
+            "reason_for_return": "defect in piece",
+            "total_sales": 1130,
+            "taxable_sales_vat": 1000,
+            "vat": 130,
+            "excisable_amount": 0,
+            "excise": 0,
+            "taxable_sales_hst": 0,
+            "hst": 0,
+            "amount_for_esf": 0,
+            "esf": 0,
+            "export_sales": 0,
+            "tax_exempted_sales": 0,
+            "isrealtime": true,
+            "datetimeclient": "2025-03-07T10:30:00"
+          }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,152 @@
+meta {
+  name: Carton by Product
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{gateway}}/cartons/882
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+    "product": 3417,
+    "product_units": [
+              "3417-20-693-24-10",
+              "3417-20-693-24-21",
+              "3417-20-693-24-19",
+              "3417-20-693-24-11",
+              "3417-20-693-24-17"],
+    "planned_quantity": 5,
+    "store_id": 4
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Stock Verification Call Response
+  
+  request: {
+    url: {{gateway}}/stores/products/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      date: Fri, 06 Jun 2025 12:45:03 GMT
+      server: uvicorn
+      content-type: application/json
+      vary: Accept, origin, Cookie
+      allow: GET, HEAD, OPTIONS
+      x-frame-options: DENY
+      content-length: 1613
+      x-content-type-options: nosniff
+      referrer-policy: same-origin
+      cross-origin-opener-policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "product_name": "Dove Shampoo Nourishing Oil Care",
+                "size": "325.00",
+                "measurement": "mL",
+                "stock_quantity": 4,
+                "rack_name": null,
+                "image": "/media/src/images/product_images/dove_nourishing.jpg",
+                "product_units": []
+            },
+            {
+                "product_name": "Nebico Cashew Cookies",
+                "size": "120.00",
+                "measurement": "g",
+                "stock_quantity": 25,
+                "rack_name": null,
+                "image": "/media/src/images/product_images/cashew-removebg-preview.png",
+                "product_units": []
+            },
+            {
+                "product_name": "Dole Choco Gold",
+                "size": "900.00",
+                "measurement": "g",
+                "stock_quantity": 8,
+                "rack_name": null,
+                "image": "/media/src/images/product_images/dole-choco_gold-removebg-preview.png",
+                "product_units": []
+            },
+            {
+                "product_name": "Pahadi Hot and Spicy Khursani Achar",
+                "size": "300.00",
+                "measurement": "g",
+                "stock_quantity": 0,
+                "rack_name": null,
+                "image": "/media/src/images/product_images/Womens_Horlicks_Plus_Caramel_Jar_400gm.jpg",
+                "product_units": []
+            },
+            {
+                "product_name": "Pahadi Hot and Spicy Khursani Achar",
+                "size": "300.00",
+                "measurement": "g",
+                "stock_quantity": 1,
+                "rack_name": null,
+                "image": null,
+                "product_units": []
+            },
+            {
+                "product_name": "Pahadi Amilooo Achar",
+                "size": "300.00",
+                "measurement": "g",
+                "stock_quantity": 1,
+                "rack_name": null,
+                "image": null,
+                "product_units": []
+            },
+            {
+                "product_name": "Pringles Original 42 gm x 2",
+                "size": "84.00",
+                "measurement": "g",
+                "stock_quantity": null,
+                "rack_name": "mar-1-b",
+                "image": null,
+                "product_units": []
+            },
+            {
+                "product_name": "Pringles Sour Cream & Onion 42 gm x 2",
+                "size": "84.00",
+                "measurement": "g",
+                "stock_quantity": null,
+                "rack_name": "mar-2-b",
+                "image": null,
+                "product_units": []
+            },
+            {
+                "product_name": "Gillette Mach3 Razor",
+                "size": "3.00",
+                "measurement": "pcs",
+                "stock_quantity": null,
+                "rack_name": "mar-3-c",
+                "image": null,
+                "product_units": []
+            }
+        ]
+      '''
+    }
+  }
+}

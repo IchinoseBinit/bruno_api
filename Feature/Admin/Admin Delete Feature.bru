@@ -1,0 +1,24 @@
+meta {
+  name: Admin Delete Feature
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{gateway}}/feature/api/admin/features/2/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

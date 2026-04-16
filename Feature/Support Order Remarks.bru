@@ -1,0 +1,31 @@
+meta {
+  name: Support Order Remarks
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/orders/6400/remarks/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "packer_remarks": "On the basket",
+      "biller_remarks": "On the rack",
+      "rider_remarks": "On the way"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,349 @@
+meta {
+  name: Order by Status
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{gateway}}/orders/get-order?status=picked
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: picked
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Order by Status
+  
+  request: {
+    url: {{gateway}}/orders/get-order?status=created
+    method: GET
+    mode: none
+    params:query: {
+      status: created
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 3593
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 34,
+                "created_at": "2024-06-09T10:17:10.161191Z",
+                "updated_at": "2024-06-09T10:17:10.161204Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 35,
+                "created_at": "2024-06-11T13:19:57.341303Z",
+                "updated_at": "2024-06-11T13:19:57.341339Z",
+                "status": "created",
+                "total": "237.50",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 68,
+                "created_at": "2024-06-11T13:25:33.396344Z",
+                "updated_at": "2024-06-11T13:25:33.396358Z",
+                "status": "created",
+                "total": "237.50",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 69,
+                "created_at": "2024-06-11T13:32:24.195198Z",
+                "updated_at": "2024-06-11T13:32:24.195224Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 70,
+                "created_at": "2024-06-11T13:45:15.868824Z",
+                "updated_at": "2024-06-11T13:45:15.868847Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 71,
+                "created_at": "2024-06-11T13:45:41.209269Z",
+                "updated_at": "2024-06-11T13:45:41.209292Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 72,
+                "created_at": "2024-06-11T13:50:57.744581Z",
+                "updated_at": "2024-06-11T13:50:57.744599Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 73,
+                "created_at": "2024-06-11T13:59:17.802242Z",
+                "updated_at": "2024-06-11T13:59:17.802282Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 106,
+                "created_at": "2024-06-11T14:00:15.588480Z",
+                "updated_at": "2024-06-11T14:00:15.588503Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 139,
+                "created_at": "2024-06-11T14:00:52.495229Z",
+                "updated_at": "2024-06-11T14:00:52.495251Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 205,
+                "created_at": "2024-06-11T14:05:38.153814Z",
+                "updated_at": "2024-06-11T14:05:38.153834Z",
+                "status": "created",
+                "total": "380.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 206,
+                "created_at": "2024-06-11T14:07:56.481257Z",
+                "updated_at": "2024-06-11T14:07:56.481295Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 207,
+                "created_at": "2024-06-11T14:08:33.313836Z",
+                "updated_at": "2024-06-11T14:08:33.313850Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 238,
+                "created_at": "2024-06-11T14:09:10.968813Z",
+                "updated_at": "2024-06-11T14:09:10.968840Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 239,
+                "created_at": "2024-06-11T14:11:11.712610Z",
+                "updated_at": "2024-06-11T14:11:11.712637Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 240,
+                "created_at": "2024-06-11T14:13:05.053960Z",
+                "updated_at": "2024-06-11T14:13:05.053989Z",
+                "status": "created",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: Status: Acknowledged
+  
+  request: {
+    url: {{gateway}}/orders/get-order?status=acknowledged
+    method: GET
+    mode: none
+    params:query: {
+      status: acknowledged
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 461
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 242,
+                "created_at": "2024-06-11T14:30:37.613033Z",
+                "updated_at": "2024-06-11T14:30:43.778527Z",
+                "status": "acknowledged",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            },
+            {
+                "id": 241,
+                "created_at": "2024-06-11T14:16:09.460838Z",
+                "updated_at": "2024-06-12T11:06:36.748993Z",
+                "status": "acknowledged",
+                "total": "190.00",
+                "user_info": {
+                    "id": 35,
+                    "name": "",
+                    "address": "New Road",
+                    "latitude": 87.2562,
+                    "longitude": 23.5873
+                }
+            }
+        ]
+      '''
+    }
+  }
+}

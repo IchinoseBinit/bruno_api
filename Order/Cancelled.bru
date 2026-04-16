@@ -1,0 +1,65 @@
+meta {
+  name: Cancelled
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{gateway}}/orders/6253/cancel
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "reason": "Found the product cheaper somewhere else"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Failed when already completed
+  
+  request: {
+    url: {{gateway}}/orders/4/cancel
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 11:31:16 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 68
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "error": "Order cannot be cancelled at this stage."
+        }
+      '''
+    }
+  }
+}

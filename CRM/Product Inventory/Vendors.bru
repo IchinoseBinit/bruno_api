@@ -1,0 +1,26 @@
+meta {
+  name: Vendors
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{gateway}}/api/vendors/
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~from: 2025-08-15
+  ~to: 2025-10-31
+  ~sort_by: amount
+  ~sort_order: desc
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

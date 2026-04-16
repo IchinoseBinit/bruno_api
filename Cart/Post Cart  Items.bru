@@ -1,0 +1,164 @@
+meta {
+  name: Post Cart  Items
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/cart-items/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "product":3573,
+      "quantity":1
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Post request for already added item
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "product":1,
+          "quantity":4
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:05:02 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 60
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status": "Product quantity updated in cart"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: New cart items
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "product":3,
+          "quantity":4
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:07:38 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 49
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "status": "Product added to cart"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/cart-items
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "product":3000,
+          "quantity":4
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 02 May 2024 11:16:23 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, PUT, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 45
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "error": "Product not found"
+        }
+      '''
+    }
+  }
+}

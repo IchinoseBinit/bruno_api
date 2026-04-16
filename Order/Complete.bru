@@ -1,0 +1,379 @@
+meta {
+  name: Complete
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{gateway}}/orders/2766/complete
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2OTQ3MjMzLCJpYXQiOjE3NDY3NzQ0MzMsImp0aSI6IjllNjFlMGJkMGNmNTQxNGJhNzEyYThkMzIwMGE2YjUxIiwidXNlcl9pZCI6MTU3OCwibmFtZSI6InRlc3RfcmlkZXIwMDEiLCJ1c2VybmFtZSI6InRlc3RfcmlkZXIwMDEiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJyaWRlciJ9.TeiLwzl-4jRQnBhRdrwU8-cBiRnbp-sjA_Ow7SYi6Sk
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/4/complete
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 11:25:39 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 158
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 4,
+                "created_at": "2024-05-21T10:55:11.927266Z",
+                "updated_at": "2024-05-21T11:25:39.621319Z",
+                "status": "completed",
+                "total": "10324.50"
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new
+  
+  request: {
+    url: {{gateway}}/orders/complete
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "order_ids":[613,614]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 543
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "completed_orders": [
+                {
+                    "id": 614,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "225.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                },
+                {
+                    "id": 613,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "450.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                }
+            ],
+            "grand_total": 675
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/orders/complete
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "order_ids":[613,612,614]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 786
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "completed_orders": [
+                {
+                    "id": 614,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "225.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                },
+                {
+                    "id": 613,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "450.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                },
+                {
+                    "id": 612,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "175.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                }
+            ],
+            "grand_total": 850
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: latest success
+  
+  request: {
+    url: {{gateway}}/orders/complete
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "order_ids":[613,614]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 543
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "completed_orders": [
+                {
+                    "id": 614,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "225.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                },
+                {
+                    "id": 613,
+                    "status": "completed",
+                    "count": 1,
+                    "total": "450.00",
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara"
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "additional_info": null
+                }
+            ],
+            "grand_total": 675
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: prepaid order
+  
+  request: {
+    url: {{gateway}}/orders/2766/complete
+    method: POST
+    mode: json
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 482
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Payment is done already.",
+            "data": {
+                "id": 2766,
+                "status": "completed",
+                "count": 1,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "0.00",
+                "total": "299.99",
+                "final_total": "299.99",
+                "user_info": {
+                    "name": "binay rai",
+                    "address_name": "Current Address",
+                    "phone": "9768400312",
+                    "address": "Naya Baneshwar, Suryabikram Gyawali Marg, Kathmandu-31"
+                },
+                "customer_info": {
+                    "name": "binay rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": null,
+                "distance": 1.87605,
+                "is_ordering_for_someone": false
+            }
+        }
+      '''
+    }
+  }
+}

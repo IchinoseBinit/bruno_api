@@ -1,0 +1,36 @@
+meta {
+  name: Order Remarks List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/api/orders/file-remarks/list/
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~customer_id: 3
+  ~sort_by: total
+  ~sort_order: desc
+}
+
+headers {
+  X-SECRET-KEY: qpwnnFcdZI1063TACLALoPbK5kg/aXYqcfUjosLpFEE=
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "order": 15208,
+      "role": "packer"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

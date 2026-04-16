@@ -1,0 +1,65 @@
+meta {
+  name: Acknowledge
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/orders/2767/acknowledge
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2OTU1OTE3LCJpYXQiOjE3NDY3ODMxMTcsImp0aSI6IjY0Y2JjNWQwZDIzODRkNDE4ZWRmYzg0NTU4ZTc2NjQ3IiwidXNlcl9pZCI6MTU3OCwibmFtZSI6InRlc3RfcmlkZXIwMDEiLCJ1c2VybmFtZSI6InRlc3RfcmlkZXIwMDEiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJyaWRlciJ9.hoWnnXdnCr2gux9q1wR8Pw4G8ct7qFyjH_BzSD3oIts
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/4/acknowledge
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 11:07:55 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 161
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 4,
+                "created_at": "2024-05-21T10:55:11.927266Z",
+                "updated_at": "2024-05-21T11:07:55.728769Z",
+                "status": "acknowledged",
+                "total": "10324.50"
+            }
+        }
+      '''
+    }
+  }
+}

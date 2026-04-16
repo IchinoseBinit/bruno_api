@@ -1,0 +1,19 @@
+meta {
+  name: User Details/Summary
+  type: http
+  seq: 27
+}
+
+get {
+  url: {{gateway}}/staff/api/user/3095/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

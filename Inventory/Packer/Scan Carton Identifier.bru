@@ -1,0 +1,25 @@
+meta {
+  name: Scan Carton Identifier
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{gateway}}/carton_info/carton-7344f1/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "basket_identifier": "basket-Baneshwor branch-021f6f"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

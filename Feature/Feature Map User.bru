@@ -1,0 +1,32 @@
+meta {
+  name: Feature Map User
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/feature/staff/api/features/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{support}}
+}
+
+body:json {
+  {
+      "name":"Orders","slug":"orders","api_path":"/staff/api/orders/","display_type":"table",
+      "base_permissions":{"can_view":true,"can_add":false,"can_edit":false,"can_delete":false},
+      "fields":[{"name":"id","label":"ID","type":"integer","read_only":true,"order":0}]
+    }
+}
+
+settings {
+  encodeUrl: true
+}

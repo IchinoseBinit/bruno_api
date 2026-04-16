@@ -1,0 +1,26 @@
+meta {
+  name: PO Print
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{gateway}}/api/po/print/444/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "product_id": 1863,
+      "quantity": 5
+  }
+}
+
+settings {
+  encodeUrl: true
+}

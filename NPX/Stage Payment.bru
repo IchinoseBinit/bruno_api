@@ -1,0 +1,30 @@
+meta {
+  name: Stage Payment
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/payment/nchl/stage-payment/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+      "mandate_identifier": "3-1766063117-2d1e95c1",
+      "cart_id": 9295 //9312 
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Routing
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://route-init.gallimap.com/api/v1/routing?mode=cycling&srcLat=27.700594&srcLng=85.343664&dstLat=27.70180855911255&dstLng=85.3453618953434&accessToken=349ebf7c-9980-483d-8b16-6b193617ed52&=
+  body: json
+  auth: inherit
+}
+
+params:query {
+  mode: cycling
+  srcLat: 27.700594
+  srcLng: 85.343664
+  dstLat: 27.70180855911255
+  dstLng: 85.3453618953434
+  accessToken: 349ebf7c-9980-483d-8b16-6b193617ed52
+  : 
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,86 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{gateway}}/api/rider/119/update/
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzA2OTg5LCJpYXQiOjE3NjAyNzQ5ODksImp0aSI6IjI3ZWIyMDA4MjU3OTQwMjU4NzJlOTQxNDRlNDRkYTMyIiwidXNlcl9pZCI6MTIxNjIsImlkIjoxMjE2MiwibmFtZSI6ImRodW0gbWFuYWdlciIsInVzZXJuYW1lIjoiZGh1bV9tYW5hZ2VyIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoibWFuYWdlciJ9.X_dQqBtkgiJVc2FPyTLC7X8PBYodWJ8TNZ54t2B8eP4
+}
+
+body:multipart-form {
+  store: 3
+  document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+  document_type: passport
+  phone_number: 8989898981
+  name: rider kto
+  password: admin123
+  username: og rider12
+  emergency_contact_number: 8758584741
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: update
+  
+  request: {
+    url: {{gateway}}/api/rider/119/update/
+    method: PATCH
+    mode: multipartForm
+    body:multipart-form: {
+      store: 2
+      document_image: @file(postman-cloud:///1efa7200-db2d-42f0-9ecb-7ab0fd88f342)
+      document_type: passport
+      phone_number: 898989898111
+      name: rider kto 123
+      password: admin123
+      username: new_og rider1233
+      emergency_contact_number: 875858474111
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: PATCH, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 218
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 119,
+                "document_type": "passport",
+                "store": 2,
+                "document_image": "/media/src/documents/school-logo.png",
+                "emergency_contact_number": "875858474111",
+                "phone_number": "898989898111",
+                "created_by": 12162
+            }
+        }
+      '''
+    }
+  }
+}

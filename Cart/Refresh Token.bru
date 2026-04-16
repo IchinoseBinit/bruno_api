@@ -1,0 +1,211 @@
+meta {
+  name: Refresh Token
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/auth/register/token/refresh/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDIxMjk3NywiaWF0IjoxNzEzMzQ4OTc3LCJqdGkiOiJiYjE5OGRjZjMzM2U0NWE5YWJkNWNhNGM0MWVlM2NlZCIsInVzZXJfaWQiOjM3fQ.FXRO0a3DZkrUu8DY3ZbVCtnhiTgvZ_pV4EC0RsQMdk8"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":"9818207179",
+          "otp_code":"848542"
+         
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 18 Apr 2024 10:09:07 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 486
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDI5ODk0NywiaWF0IjoxNzEzNDM0OTQ3LCJqdGkiOiJkNjhiYzk1MDMzODE0NmIxYjIwOWU5ZmMwOTU1OThiNCIsInVzZXJfaWQiOjMyfQ.X-GtJ3okWvrN8SXaeKVW36et0x0sK1gTmKDT6LtbF0E",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDM1MjQ3LCJpYXQiOjE3MTM0MzQ5NDcsImp0aSI6IjdiYzQ4MjViNTJmZTQ2NDQ4YzJkYzM1OWFlMDA1MjgwIiwidXNlcl9pZCI6MzJ9.NImDgUCB2deSqo0G9OppeD3ZMbGzclqcgSUeOUN1Znk"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "phone_number":"9818207179",
+          "otp_code":"123123"
+         
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 18 Apr 2024 10:14:04 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 41
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "OTP is not valid or expired"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Refresh Token -Success
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp/refresh/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDI5ODk0NywiaWF0IjoxNzEzNDM0OTQ3LCJqdGkiOiJkNjhiYzk1MDMzODE0NmIxYjIwOWU5ZmMwOTU1OThiNCIsInVzZXJfaWQiOjMyfQ.X-GtJ3okWvrN8SXaeKVW36et0x0sK1gTmKDT6LtbF0E"
+         
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 18 Apr 2024 10:30:15 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 486
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDM2NTE1LCJpYXQiOjE3MTM0MzQ5NDcsImp0aSI6ImZjNTU4ZjEzYTE1ODRhYmVhMDQ5MmMyOWNmYTE1NmE4IiwidXNlcl9pZCI6MzJ9.6yYzStYxDaLUNo_3odPJeXHzZk4_BFYtOXNRJOLXpd0",
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDMwMDIxNSwiaWF0IjoxNzEzNDM2MjE1LCJqdGkiOiI2YjEzODRhOWJiMzU0OWRkOWMxZWVkZGVmYWExYTA2NCIsInVzZXJfaWQiOjMyfQ.ilFA1yKJxf07cRhXWvDkwUlFm_6SwY3pdwr-83CSYUs"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Invalid Refresh Token
+  
+  request: {
+    url: {{gateway}}/auth/verify-otp/refresh/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "refresh": "a.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDI5ODk0NywiaWF0IjoxNzEzNDM0OTQ3LCJqdGkiOiJkNjhiYzk1MDMzODE0NmIxYjIwOWU5ZmMwOTU1OThiNCIsInVzZXJfaWQiOjMyfQ.X-GtJ3okWvrN8SXaeKVW36et0x0sK1gTmKDT6LtbF0E"
+         
+          
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 18 Apr 2024 10:31:12 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      WWW-Authenticate: Bearer realm="api"
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 65
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "detail": "Token is invalid or expired",
+            "code": "token_not_valid"
+        }
+      '''
+    }
+  }
+}

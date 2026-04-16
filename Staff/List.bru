@@ -1,0 +1,326 @@
+meta {
+  name: List
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/api/staff/list/?page=1&search=binit&store_id=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  search: binit
+  store_id: 1
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/api/staff/list/?page=10
+    method: GET
+    mode: none
+    params:query: {
+      page: 10
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1234
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": null,
+            "previous": "http://localhost:8000/api/staff/list/?page=9",
+            "has_next_page": false,
+            "page": 10,
+            "results": [
+                {
+                    "id": 100,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "00909090",
+                    "user": 12151,
+                    "store": null,
+                    "related_stores": [
+                        3
+                    ]
+                },
+                {
+                    "id": 101,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9820802080",
+                    "user": 12152,
+                    "store": null,
+                    "related_stores": []
+                },
+                {
+                    "id": 102,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9851056050",
+                    "user": 12155,
+                    "store": 3,
+                    "related_stores": []
+                },
+                {
+                    "id": 103,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "009090901",
+                    "user": 12156,
+                    "store": 3,
+                    "related_stores": []
+                },
+                {
+                    "id": 104,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9851056123",
+                    "user": 12157,
+                    "store": 3,
+                    "related_stores": []
+                },
+                {
+                    "id": 105,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9820802080",
+                    "user": 12159,
+                    "store": 1,
+                    "related_stores": [
+                        4,
+                        3
+                    ]
+                },
+                {
+                    "id": 106,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9820802080",
+                    "user": 12161,
+                    "store": 1,
+                    "related_stores": []
+                },
+                {
+                    "id": 107,
+                    "document_type": "citizenship_card",
+                    "document_image": null,
+                    "phone_number": "9820802080",
+                    "user": 12162,
+                    "store": 3,
+                    "related_stores": []
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/api/staff/list/?page=10
+    method: GET
+    mode: none
+    params:query: {
+      page: 10
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 2531
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": null,
+            "previous": "http://localhost:8000/api/staff/list/?page=9",
+            "has_next_page": false,
+            "page": 10,
+            "results": [
+                {
+                    "id": 100,
+                    "document_type": "citizenship_card",
+                    "related_stores": [
+                        3
+                    ],
+                    "store": null,
+                    "user_role": "support",
+                    "username": "support2",
+                    "related_store_names": [
+                        "Dhumbarahi DS"
+                    ],
+                    "document_image": null,
+                    "phone_number": "00909090"
+                },
+                {
+                    "id": 101,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": null,
+                    "user_role": "account",
+                    "username": "account2",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "9820802080"
+                },
+                {
+                    "id": 102,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": 3,
+                    "user_role": "packer",
+                    "username": "dhum_packer",
+                    "store_name": "Dhumbarahi DS",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "9851056050"
+                },
+                {
+                    "id": 103,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": 3,
+                    "user_role": "driver",
+                    "username": "driver1",
+                    "store_name": "Dhumbarahi DS",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "009090901"
+                },
+                {
+                    "id": 104,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": 3,
+                    "user_role": "packer",
+                    "username": "dhum_packer1",
+                    "store_name": "Dhumbarahi DS",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "9851056123"
+                },
+                {
+                    "id": 105,
+                    "document_type": "citizenship_card",
+                    "related_stores": [
+                        4,
+                        3
+                    ],
+                    "store": 1,
+                    "user_role": "packer",
+                    "username": "w_packer1",
+                    "store_name": "Mother Warehouse",
+                    "related_store_names": [
+                        "Sanepa DS",
+                        "Dhumbarahi DS"
+                    ],
+                    "document_image": null,
+                    "phone_number": "9820802080"
+                },
+                {
+                    "id": 106,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": 1,
+                    "user_role": "driver",
+                    "username": "driver2",
+                    "store_name": "Mother Warehouse",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "9820802080"
+                },
+                {
+                    "id": 107,
+                    "document_type": "citizenship_card",
+                    "related_stores": [],
+                    "store": 3,
+                    "user_role": "manager",
+                    "username": "dhum_manager",
+                    "store_name": "Dhumbarahi DS",
+                    "related_store_names": [],
+                    "document_image": null,
+                    "phone_number": "9820802080"
+                },
+                {
+                    "id": 108,
+                    "document_type": "passport",
+                    "related_stores": [],
+                    "store": 3,
+                    "user_role": "manager",
+                    "username": "new_api001",
+                    "store_name": "Dhumbarahi DS",
+                    "related_store_names": [],
+                    "document_image": "/media/src/images/staff_documents/2024_Acer_OLED_option_01_3840x2400_D0pHoh0.jpg",
+                    "phone_number": "716248129"
+                },
+                {
+                    "id": 109,
+                    "document_type": "passport",
+                    "related_stores": [
+                        4,
+                        3
+                    ],
+                    "store": 1,
+                    "user_role": "packer",
+                    "username": "final_api",
+                    "store_name": "Mother Warehouse",
+                    "related_store_names": [
+                        "Sanepa DS",
+                        "Dhumbarahi DS"
+                    ],
+                    "document_image": "/media/src/images/staff_documents/2024_Acer_OLED_option_01_3840x2400_h6PBe3s.jpg",
+                    "phone_number": "9768400421"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

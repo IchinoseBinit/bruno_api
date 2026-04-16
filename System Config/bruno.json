@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "System Config",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

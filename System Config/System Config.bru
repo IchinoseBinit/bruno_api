@@ -1,0 +1,26 @@
+meta {
+  name: System Config
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/system/support
+  body: text
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:text {
+  {
+      "username": "admin",
+      "password": "Fasto@67007"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,26 @@
+info:
+  name: Order for staff/rider
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{gateway}}/api/orders/create-complete/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"cart_id\":55,\r
+
+      \    \"rider_id\":4\r
+
+      \    \r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,83 @@
+meta {
+  name: Save Address
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/user-info
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMzYyNzEyLCJpYXQiOjE3MjMxODk5MTIsImp0aSI6IjY2NWMwYzhjNmU4ZjQ1N2U5N2Y1MzA0NDY0YWFjN2JiIiwidXNlcl9pZCI6NywibmFtZSI6ImJpbmF5IiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MTgyMDcxNzkiLCJyb2xlIjoiY3VzdG9tZXIifQ.be4ayn4e3c6aspkPSS1v0Yql7Hq-dkwgRwgv6bKvQZU
+}
+
+body:json {
+  {
+      "name": "College",
+      "address": "Bhanimandal",
+      "latitude": 27.66666670,
+      "longitude": 85.31666670,
+      "created_by_user": true
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/user-info
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "address":"Basundhara",
+          "name": "Home",
+          "latitude": 87.2562,
+          "longitude": 23.5873
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 154
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "UserInfo created successfully",
+            "details": {
+                "id": 14,
+                "name": "Home",
+                "address": "Basundhara",
+                "latitude": 87.2562,
+                "longitude": 23.5873
+            }
+        }
+      '''
+    }
+  }
+}

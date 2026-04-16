@@ -1,0 +1,78 @@
+meta {
+  name: transfer damaged products
+  type: http
+  seq: 23
+}
+
+post {
+  url: {{gateway}}/transfer-damaged-products/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MzQxMjQ1LCJpYXQiOjE3NTUxNjg0NDUsImp0aSI6IjAyNzNkZDM4NTNiYzQ5YmQ4YjkwMDQ5MDZmZDZiODk1IiwidXNlcl9pZCI6MjkyNSwibmFtZSI6ImJhbF9wYWNrZXIiLCJ1c2VybmFtZSI6ImJhbF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.mxo8O1qUXKERahxUz-nIxpEiz6eBee8rjJEfJD4Un3Y
+}
+
+body:json {
+  {
+      "identifier": "basket-Dhumbarahi DS-4346e4",
+      "product_tags": [
+          "3222-14-502-30-24"
+        
+      ]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/transfer-damaged-products/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "identifier": "basket-Balkumari DS-5ccc7a",
+          "product_tags": [
+              "3593-22-756-12-3"
+            
+          ]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 117
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "message": "Inventory transfer requested successfully",
+            "transfer_id": "transfer-Balkumari DS-Mother Warehouse-214e3e"
+        }
+      '''
+    }
+  }
+}

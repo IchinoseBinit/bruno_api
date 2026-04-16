@@ -1,0 +1,23 @@
+meta {
+  name: Mandate Linked Account List
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{gateway}}/payment/nchl/linked-accounts/list/
+  body: formUrlEncoded
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,126 @@
+meta {
+  name: Inventory Transfer Request
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{gateway}}/inventory-transfer-requests/8
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success for transfer request list
+  
+  request: {
+    url: {{gateway}}/inventory-transfer-requests/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 490
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": [
+                {
+                    "id": 3,
+                    "source_store": "Nayabazar DS",
+                    "destination_store": "Mother Warehouse",
+                    "status": "pending",
+                    "created_by": "admin10",
+                    "created_at": "2025-09-14 11:49:37"
+                },
+                {
+                    "id": 2,
+                    "source_store": "Nayabazar DS",
+                    "destination_store": "Mother Warehouse",
+                    "status": "pending",
+                    "created_by": "admin10",
+                    "created_at": "2025-09-14 11:48:15"
+                },
+                {
+                    "id": 1,
+                    "source_store": "Nayabazar DS",
+                    "destination_store": "Mother Warehouse",
+                    "status": "pending",
+                    "created_by": "admin10",
+                    "created_at": "2025-09-14 11:46:48"
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: success for transfer request item
+  
+  request: {
+    url: {{gateway}}/inventory-transfer-requests/2
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 122
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "items": [
+                {
+                    "rack_name": "Stand-Fridge-2-R",
+                    "product_name": "Gorkha Strong Beer 500mL MRP 265",
+                    "quantity": 1
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

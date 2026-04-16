@@ -1,0 +1,23 @@
+meta {
+  name: Delete Saved Address
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{gateway}}/user-info/?id=607
+  body: none
+  auth: bearer
+}
+
+params:query {
+  id: 607
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

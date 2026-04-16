@@ -1,0 +1,101 @@
+meta {
+  name: GetSubCategories
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/subcategories?category_id=82
+  body: none
+  auth: bearer
+}
+
+params:query {
+  category_id: 82
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/categories
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Thu, 25 Apr 2024 06:25:09 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 730
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 1,
+                "name": "Dairy & Eggs",
+                "image": "/images/category_images/Dairy_and_Eggs.jpg",
+                "description": "This is Category sections for Dairy and eggs.",
+                "subcategories": [
+                    {
+                        "id": 1,
+                        "name": "Eggs",
+                        "image": "/images/subcategory_images/eggs.webp",
+                        "description": "Eggs"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Milk",
+                        "image": "/images/subcategory_images/milk.webp",
+                        "description": "Milk"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Fresh Produce",
+                "image": "/images/category_images/Fresh_Produce.jpg",
+                "description": "This is Fresh Produce Category.",
+                "subcategories": [
+                    {
+                        "id": 3,
+                        "name": "Fruits",
+                        "image": "/images/subcategory_images/fruits.webp",
+                        "description": "this is fruit sub category"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Vegetables",
+                        "image": "/images/subcategory_images/vegetabels.jpg",
+                        "description": "this is vegetables"
+                    }
+                ]
+            }
+        ]
+      '''
+    }
+  }
+}

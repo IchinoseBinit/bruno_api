@@ -1,0 +1,64 @@
+meta {
+  name: List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/coupon/list
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/coupon/list
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 123
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "coupons": [
+                {
+                    "coupon_code": "Onepiece",
+                    "discount_percent": 10,
+                    "expiry_date": "2025-02-28",
+                    "is_global": true
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

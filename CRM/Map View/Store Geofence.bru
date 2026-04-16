@@ -1,0 +1,25 @@
+meta {
+  name: Store Geofence
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/api/store/geofence/
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~customer_id: 3
+  ~time_start: 22:00
+  ~time_end: 06:00
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

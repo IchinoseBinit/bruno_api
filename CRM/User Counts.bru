@@ -1,0 +1,42 @@
+meta {
+  name: User Counts
+  type: http
+  seq: 31
+}
+
+get {
+  url: {{gateway}}/api/users/counts?last_active_start=2025-08-01T00:00:00Z&last_active_end=2025-09-01T00:00:00Z&date_joined_start=2025-01-01T00:00:00Z&date_joined_end=2025-06-30T23:59:59Z&ordered=true&has_cart_products=false
+  body: formUrlEncoded
+  auth: bearer
+}
+
+params:query {
+  last_active_start: 2025-08-01T00:00:00Z
+  last_active_end: 2025-09-01T00:00:00Z
+  date_joined_start: 2025-01-01T00:00:00Z
+  date_joined_end: 2025-06-30T23:59:59Z
+  ordered: true
+  has_cart_products: false
+}
+
+headers {
+  Accept: application/json
+  ~Authorization: Bearer <YOUR_TOKEN>
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:form-urlencoded {
+  last_active_start: 2025-08-01T00:00:00Z
+  last_active_end: 2025-09-01T00:00:00Z
+  date_joined_start: 2025-01-01T00:00:00Z
+  date_joined_end: 2025-06-30T23:59:59Z
+  ordered: true
+  has_cart_products: false
+}
+
+settings {
+  encodeUrl: true
+}

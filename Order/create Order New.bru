@@ -1,0 +1,35 @@
+meta {
+  name: create Order New
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{gateway}}/orders/create
+  body: json
+  auth: bearer
+}
+
+headers {
+  X-Device-Info: {"device_id":"abcd1234efgh5678","device_type":"android","device_name":"Samsung Galaxy S23","brand":"Samsung","model":"SM-S911B","os_version":"13","app_version":"1.0.0","build_number":"45"}
+  Authorization: Bearer <TOKEN>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "carts": [
+      {"cart_id": 24628, "store_role": "primary"},
+      {"cart_id": 24627, "store_role": "secondary"}
+    ],
+    "user_info_id": 6254
+  }
+}
+
+settings {
+  encodeUrl: true
+}

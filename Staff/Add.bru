@@ -1,0 +1,150 @@
+meta {
+  name: Add
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{gateway}}/api/staff/add/
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  username: API TEST Packer
+  password: rider123
+  name: final_api
+  store: 1
+  related_stores: 4
+  document_type: passport
+  document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+  phone_number: 9744739234
+  role: packer
+  related_stores: 3
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Add success
+  
+  request: {
+    url: {{gateway}}/api/staff/add/
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      username: new_api0012
+      password: admin123
+      name: new APi 0013
+      store: 1
+      related_stores: 2
+      document_type: passport
+      document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+      phone_number: 7162481294
+      role: packer
+      related_stores: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 198
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 109,
+            "document_type": "passport",
+            "related_stores": [
+                3,
+                2
+            ],
+            "store": 1,
+            "document_image": "/media/src/images/staff_documents/2024_Acer_OLED_option_01_3840x2400_XzAtb7C.jpg",
+            "phone_number": "7162481294"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/api/staff/add/
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      username: final_test431
+      password: admin123
+      name: final_api
+      store: 1
+      related_stores: 4
+      document_type: passport
+      document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+      phone_number: 9768401231
+      role: packer
+      related_stores: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 359
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 110,
+            "document_type": "passport",
+            "related_stores": [
+                4,
+                3
+            ],
+            "store": 1,
+            "user_role": "packer",
+            "user_username": "final_test431",
+            "full_name": "final_api",
+            "store_name": "Mother Warehouse",
+            "related_store_names": [
+                "Sanepa DS",
+                "Dhumbarahi DS"
+            ],
+            "document_image": "/media/src/images/staff_documents/2024_Acer_OLED_option_01_3840x2400_vtSTdiN.jpg",
+            "phone_number": "9768401231"
+        }
+      '''
+    }
+  }
+}

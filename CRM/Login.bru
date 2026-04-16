@@ -1,0 +1,81 @@
+meta {
+  name: Login
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{gateway}}/auth/api/token/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "username": "admin",
+      "password": "Fasto@67007"
+  }
+}
+
+script:post-response {
+  // Parse the JSON response body
+  let resp = res.getBody();
+  
+  // Check if the response body contains the access and refresh tokens
+  if (resp.access && resp.refresh) {
+      // Set the access token in the environment variables
+      bru.setEnvVar("packerAccessToken", resp.access);
+      // Set the refresh token in the environment variables
+  } else {
+      console.log("Tokens not found in the response");
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/auth/api/token/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "username": "packer1",
+          "password": "@Hunter123"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 686
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDY0NzkwNiwiaWF0IjoxNzQxNjg3OTA2LCJqdGkiOiI4ZmU0YzlkN2Y1N2Y0YjYxYTdlOTg0Y2M2ZmYwOWI5ZiIsInVzZXJfaWQiOjE1NTUsIm5hbWUiOiJwYWNrZXIxIiwidXNlcm5hbWUiOiJwYWNrZXIxIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjoic3RhZmYifQ.x_hEly3K8yYJRmC_gWAQflZrVrAREJHWDPwhZ62X0NM",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxODYwNzA2LCJpYXQiOjE3NDE2ODc5MDYsImp0aSI6ImJkNGFjZTQyMGYwMDRhNTViNzNkMmNlYjVkMWJkMWUxIiwidXNlcl9pZCI6MTU1NSwibmFtZSI6InBhY2tlcjEiLCJ1c2VybmFtZSI6InBhY2tlcjEiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJzdGFmZiJ9._Mh3Ox-E3Tf8jFI9Yx9YEwQNrdMhgZIZERlV0nt8sG4"
+        }
+      '''
+    }
+  }
+}

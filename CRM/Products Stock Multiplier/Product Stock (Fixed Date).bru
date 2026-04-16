@@ -1,0 +1,36 @@
+meta {
+  name: Product Stock (Fixed Date)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/api/product-stock/multiplier/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer <TOKEN>
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "stores": [1,2,3],
+      "subcategory_id": 491,
+      "rule_type": "FIXED_DATE",
+      "date": "2026-02-14",
+      "max_multiplier": "3.00",
+      "priority": 1,
+      "is_active": true
+    }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,26 @@
+meta {
+  name: PO Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/api/po/create/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "product_id": 1863,
+      "quantity": 5
+  }
+}
+
+settings {
+  encodeUrl: true
+}

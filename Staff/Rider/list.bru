@@ -1,0 +1,189 @@
+meta {
+  name: list
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/api/rider/list/?page=1&search=binit&store_id=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  search: binit
+  store_id: 1
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/api/rider/list/
+    method: GET
+    mode: multipartForm
+    body:multipart-form: {
+      username: new_api
+      password: admin123
+      name: new APi
+      store: 3
+      ~related_stores: 
+      document_type: passport
+      document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+      phone_number: 716248129
+      role: manager
+      ~related_stores: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 2443
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": "http://localhost:8000/api/rider/list/?page=2",
+            "previous": null,
+            "has_next_page": true,
+            "page": 1,
+            "results": [
+                {
+                    "id": 1,
+                    "document_type": "citizenship_card",
+                    "store": 3,
+                    "document_image": "/media/src/documents/WhatsApp_Image_2024-08-08_at_1.56.15PM.jpeg",
+                    "emergency_contact_number": "9804350997",
+                    "latitude": 27.6987315,
+                    "longitude": 85.3348857,
+                    "phone_number": "9804350997",
+                    "created_by": null
+                },
+                {
+                    "id": 2,
+                    "document_type": "",
+                    "store": null,
+                    "document_image": null,
+                    "emergency_contact_number": "",
+                    "latitude": 27.7004497,
+                    "longitude": 85.3436681,
+                    "phone_number": null,
+                    "created_by": null
+                },
+                {
+                    "id": 3,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/WhatsApp_Image_2024-08-08_at_1.50.16PM.jpeg",
+                    "emergency_contact_number": "9861446369",
+                    "latitude": 27.6976026,
+                    "longitude": 85.3499052,
+                    "phone_number": "9861446369",
+                    "created_by": null
+                },
+                {
+                    "id": 5,
+                    "document_type": "",
+                    "store": null,
+                    "document_image": null,
+                    "emergency_contact_number": "",
+                    "latitude": 27.6981254,
+                    "longitude": 85.3697935,
+                    "phone_number": null,
+                    "created_by": null
+                },
+                {
+                    "id": 6,
+                    "document_type": "",
+                    "store": null,
+                    "document_image": null,
+                    "emergency_contact_number": "",
+                    "latitude": 27.7644829,
+                    "longitude": 85.3173295,
+                    "phone_number": null,
+                    "created_by": null
+                },
+                {
+                    "id": 7,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/Nepals_First_Quick_Commerce_6.png",
+                    "emergency_contact_number": "9804350997",
+                    "latitude": 27.7007177,
+                    "longitude": 85.3436699,
+                    "phone_number": "9840348937",
+                    "created_by": null
+                },
+                {
+                    "id": 8,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/citi-front.jpeg",
+                    "emergency_contact_number": "9806847667",
+                    "latitude": 27.7016802,
+                    "longitude": 85.3439851,
+                    "phone_number": "9821268610",
+                    "created_by": null
+                },
+                {
+                    "id": 9,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/WhatsApp_Image_2025-01-10_at_5.17.35PM.jpeg",
+                    "emergency_contact_number": "9803780697",
+                    "latitude": null,
+                    "longitude": null,
+                    "phone_number": "9701535369",
+                    "created_by": null
+                },
+                {
+                    "id": 10,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/citi_front.jpg",
+                    "emergency_contact_number": "9806847667",
+                    "latitude": null,
+                    "longitude": null,
+                    "phone_number": "9805200380",
+                    "created_by": null
+                },
+                {
+                    "id": 11,
+                    "document_type": "citizenship_card",
+                    "store": null,
+                    "document_image": "/media/src/documents/WhatsApp_Image_2025-01-17_at_8.09.32PM_1.jpeg",
+                    "emergency_contact_number": "9808110577",
+                    "latitude": null,
+                    "longitude": null,
+                    "phone_number": "9741836603",
+                    "created_by": null
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

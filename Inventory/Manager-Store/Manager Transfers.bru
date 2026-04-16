@@ -1,0 +1,19 @@
+meta {
+  name: Manager Transfers
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/store/transfers/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

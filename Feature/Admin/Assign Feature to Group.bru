@@ -1,0 +1,30 @@
+meta {
+  name: Assign Feature to Group
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{gateway}}/feature/api/admin/features/2/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <admin_token>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "feature_group": 1
+    }
+}
+
+settings {
+  encodeUrl: true
+}

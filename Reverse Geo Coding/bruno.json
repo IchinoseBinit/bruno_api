@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Reverse Geo Coding",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

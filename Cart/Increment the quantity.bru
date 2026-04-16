@@ -1,0 +1,58 @@
+meta {
+  name: Increment the quantity
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{gateway}}/cart-items/1975/increment-decrement
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/cart-items/14/increment-decrement
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 10:04:09 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, DELETE, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 29
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "status": "Quantity updated"
+        }
+      '''
+    }
+  }
+}

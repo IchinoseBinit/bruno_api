@@ -1,0 +1,379 @@
+meta {
+  name: fetch Order by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/orders/6153
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 10:55:48 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1404
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 4,
+                "status": "created",
+                "total": 10324.5,
+                "cart_items": [
+                    {
+                        "id": 7,
+                        "product_name": "Chicken Eggs",
+                        "product_image": null,
+                        "price": 29.4,
+                        "measurement": "kg",
+                        "quantity": 29,
+                        "added_at": "2024-05-20T09:06:11.301810Z",
+                        "updated_at": "2024-05-20T09:59:34.889518Z"
+                    },
+                    {
+                        "id": 8,
+                        "product_name": "Tomato",
+                        "product_image": "/src/images/product_images/tomato_1_BNizscG.jpg",
+                        "price": 117.6,
+                        "measurement": "kg",
+                        "quantity": 4,
+                        "added_at": "2024-05-20T09:28:50.074301Z",
+                        "updated_at": "2024-05-20T09:28:50.248324Z"
+                    },
+                    {
+                        "id": 9,
+                        "product_name": "Apple",
+                        "product_image": null,
+                        "price": 194,
+                        "measurement": "kg",
+                        "quantity": 22,
+                        "added_at": "2024-05-20T09:31:46.899665Z",
+                        "updated_at": "2024-05-21T10:45:29.559391Z"
+                    },
+                    {
+                        "id": 10,
+                        "product_name": "Grapes",
+                        "product_image": null,
+                        "price": 196,
+                        "measurement": "kg",
+                        "quantity": 10,
+                        "added_at": "2024-05-20T10:36:26.335600Z",
+                        "updated_at": "2024-05-21T10:45:43.130033Z"
+                    },
+                    {
+                        "id": 11,
+                        "product_name": "Cabbage",
+                        "product_image": null,
+                        "price": 115.2,
+                        "measurement": "kg",
+                        "quantity": 5,
+                        "added_at": "2024-05-20T10:36:45.901274Z",
+                        "updated_at": "2024-05-20T10:36:45.910513Z"
+                    },
+                    {
+                        "id": 12,
+                        "product_name": "Orange",
+                        "product_image": null,
+                        "price": 196,
+                        "measurement": "kg",
+                        "quantity": 10,
+                        "added_at": "2024-05-20T10:37:01.315333Z",
+                        "updated_at": "2024-05-21T10:34:39.093650Z"
+                    },
+                    {
+                        "id": 13,
+                        "product_name": "Onion",
+                        "product_image": null,
+                        "price": 47.5,
+                        "measurement": "kg",
+                        "quantity": 5,
+                        "added_at": "2024-05-20T10:37:10.495614Z",
+                        "updated_at": "2024-05-20T10:37:10.512114Z"
+                    }
+                ]
+            }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: for rider
+  
+  request: {
+    url: {{gateway}}/orders/612/rider-detail
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 4118
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "grand_total": 1488,
+            "orders": [
+                {
+                    "id": 614,
+                    "status": "acknowledged",
+                    "total": "225.00",
+                    "cart_items": [
+                        {
+                            "product_name": "Orange Jelly",
+                            "product_image": "/media/src/images/product_images/orange_jelly-removebg-preview.png",
+                            "price": "225.00",
+                            "quantity": 1,
+                            "size": "200.00",
+                            "measurement": "g",
+                            "marked_price": "259.00",
+                            "discount_percent": "13.13"
+                        }
+                    ],
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara",
+                        "latitude": null,
+                        "longitude": null,
+                        "home_image": "",
+                        "additional_info": null
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "rider_info": {
+                        "name": "test_rider",
+                        "phone_number": "9843196103"
+                    },
+                    "created_timestamp": "2024-11-21T13:46:04.631235+05:45",
+                    "acknowledged_timestamp": "2024-11-21T14:36:01+05:45",
+                    "picked_timestamp": null,
+                    "completed_timestamp": null,
+                    "cancelled_timestamp": null,
+                    "additional_info": null
+                },
+                {
+                    "id": 613,
+                    "status": "acknowledged",
+                    "total": "450.00",
+                    "cart_items": [
+                        {
+                            "product_name": "Jelly BBQ Stick (12 pcs)",
+                            "product_image": "/media/src/images/product_images/bbq_jelly.png",
+                            "price": "450.00",
+                            "quantity": 1,
+                            "size": "200.00",
+                            "measurement": "g",
+                            "marked_price": "510.00",
+                            "discount_percent": "11.76"
+                        }
+                    ],
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara",
+                        "latitude": null,
+                        "longitude": null,
+                        "home_image": "",
+                        "additional_info": null
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "rider_info": {
+                        "name": "test_rider",
+                        "phone_number": "9843196103"
+                    },
+                    "created_timestamp": "2024-11-21T12:51:28.058293+05:45",
+                    "acknowledged_timestamp": "2024-11-21T13:23:47+05:45",
+                    "picked_timestamp": null,
+                    "completed_timestamp": null,
+                    "cancelled_timestamp": null,
+                    "additional_info": null
+                },
+                {
+                    "id": 612,
+                    "status": "acknowledged",
+                    "total": "175.00",
+                    "cart_items": [
+                        {
+                            "product_name": "Snow Queen Jelly",
+                            "product_image": "/media/src/images/product_images/snow-jelly-removebg-preview.png",
+                            "price": "175.00",
+                            "quantity": 1,
+                            "size": "100.00",
+                            "measurement": "g",
+                            "marked_price": "199.00",
+                            "discount_percent": "12.06"
+                        }
+                    ],
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara",
+                        "latitude": null,
+                        "longitude": null,
+                        "home_image": "",
+                        "additional_info": null
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "rider_info": {
+                        "name": "test_rider",
+                        "phone_number": "9843196103"
+                    },
+                    "created_timestamp": "2024-11-21T12:50:56.397371+05:45",
+                    "acknowledged_timestamp": "2024-11-21T13:23:31+05:45",
+                    "picked_timestamp": null,
+                    "completed_timestamp": null,
+                    "cancelled_timestamp": null,
+                    "additional_info": null
+                },
+                {
+                    "id": 611,
+                    "status": "picked",
+                    "total": "319.00",
+                    "cart_items": [
+                        {
+                            "product_name": "My Chewy Candy",
+                            "product_image": "/media/src/images/product_images/my_chewy_candy-removebg-preview.png",
+                            "price": "319.00",
+                            "quantity": 1,
+                            "size": "300.00",
+                            "measurement": "g",
+                            "marked_price": "369.00",
+                            "discount_percent": "13.55"
+                        }
+                    ],
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara",
+                        "latitude": null,
+                        "longitude": null,
+                        "home_image": "",
+                        "additional_info": null
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "rider_info": {
+                        "name": "test_rider",
+                        "phone_number": "9843196103"
+                    },
+                    "created_timestamp": "2024-11-21T12:50:14.994710+05:45",
+                    "acknowledged_timestamp": "2024-11-21T12:54:39+05:45",
+                    "picked_timestamp": "2024-11-21T15:52:32.726150+05:45",
+                    "completed_timestamp": null,
+                    "cancelled_timestamp": null,
+                    "additional_info": null
+                },
+                {
+                    "id": 610,
+                    "status": "picked",
+                    "total": "319.00",
+                    "cart_items": [
+                        {
+                            "product_name": "My Chewy Candy",
+                            "product_image": "/media/src/images/product_images/my_chewy_candy-removebg-preview.png",
+                            "price": "319.00",
+                            "quantity": 1,
+                            "size": "300.00",
+                            "measurement": "g",
+                            "marked_price": "369.00",
+                            "discount_percent": "13.55"
+                        }
+                    ],
+                    "user_info": {
+                        "name": "binay",
+                        "address_name": "Binay rai",
+                        "phone": "9768400312",
+                        "address": "basundhara",
+                        "latitude": null,
+                        "longitude": null,
+                        "home_image": "",
+                        "additional_info": null
+                    },
+                    "customer_info": {
+                        "name": "binay",
+                        "phone_number": "9768400312"
+                    },
+                    "rider_info": {
+                        "name": "test_rider",
+                        "phone_number": "9843196103"
+                    },
+                    "created_timestamp": "2024-11-14T16:17:02.882295+05:45",
+                    "acknowledged_timestamp": "2024-11-14T16:19:33+05:45",
+                    "picked_timestamp": "2024-11-21T15:52:11.655139+05:45",
+                    "completed_timestamp": null,
+                    "cancelled_timestamp": null,
+                    "additional_info": null
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,194 @@
+meta {
+  name: Product Availability Details
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{gateway}}/products/100/1
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/products
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Mon, 29 Apr 2024 08:20:57 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1306
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": [
+                {
+                    "id": 1,
+                    "product_name": "Almond Milk",
+                    "image": "/images/product_images/almond_milk.jpg",
+                    "stock_quantity": 100,
+                    "price": 200,
+                    "discount_percent": 2,
+                    "marked_price": 250
+                },
+                {
+                    "id": 2,
+                    "product_name": "Potato",
+                    "image": "/images/product_images/potato.jpg",
+                    "stock_quantity": 200,
+                    "price": 150,
+                    "discount_percent": 5,
+                    "marked_price": 200
+                },
+                {
+                    "id": 3,
+                    "product_name": "Skim Milk",
+                    "image": "/images/product_images/skim_milk.jpg",
+                    "stock_quantity": 100,
+                    "price": 70,
+                    "discount_percent": 4,
+                    "marked_price": 90
+                },
+                {
+                    "id": 4,
+                    "product_name": "Apple",
+                    "image": "/images/product_images/apples.jpg",
+                    "stock_quantity": 200,
+                    "price": 300,
+                    "discount_percent": 7,
+                    "marked_price": 350
+                },
+                {
+                    "id": 5,
+                    "product_name": "Tomato",
+                    "image": "/src/images/product_images/tomato.jpg",
+                    "stock_quantity": 200,
+                    "price": 215.6,
+                    "discount_percent": 2,
+                    "marked_price": 220
+                },
+                {
+                    "id": 6,
+                    "product_name": "Tomato",
+                    "image": "/src/images/product_images/tomato.jpg",
+                    "stock_quantity": 200,
+                    "price": 500,
+                    "discount_percent": null,
+                    "marked_price": 500
+                },
+                {
+                    "id": 7,
+                    "product_name": "Potato",
+                    "image": "/images/product_images/potato.jpg",
+                    "stock_quantity": 300,
+                    "price": 400,
+                    "discount_percent": null,
+                    "marked_price": 400
+                },
+                {
+                    "id": 8,
+                    "product_name": "Almond Milk",
+                    "image": "/images/product_images/almond_milk.jpg",
+                    "stock_quantity": 200,
+                    "price": 380,
+                    "discount_percent": 5,
+                    "marked_price": 400
+                }
+            ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: new bogo success
+  
+  request: {
+    url: {{gateway}}/products/5135/4
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 637
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 10361,
+                "product_id": 5135,
+                "product_name": "2PM Fire Balls 60g MRP50",
+                "store": 4,
+                "stock_quantity": 10,
+                "price": 50,
+                "discount_percent": 0,
+                "marked_price": 50,
+                "size": "60.00",
+                "measurement": "g",
+                "is_chilled": false,
+                "is_outsourced": false,
+                "brand": {
+                    "id": 411,
+                    "name": "2 PM",
+                    "logo": null
+                },
+                "description": "Enjoy the spicy burst of flavor with 2PM Fire Balls, perfect for a quick snack anytime. Grab this 60g pack at an affordable price of MRP 50 and spice up your day!",
+                "keywords": "fire balls; snacks; spicy; 60g; nepal; tasty; quick snack; 2pm",
+                "bogo_info": null,
+                "images": [
+                    "/media/src/images/product_images/2PM_Fire_Ball.png"
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

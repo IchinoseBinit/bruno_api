@@ -1,0 +1,74 @@
+meta {
+  name: SuggestedProduct
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{gateway}}/feedback/suggested-products
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0ODI3ODg3LCJpYXQiOjE3MjQ2NTUwODcsImp0aSI6IjNhNGJmM2NmNWVmOTQ5MTZhZGFlZjExNzliZjA2YTg4IiwidXNlcl9pZCI6MTEsIm5hbWUiOiJjaGFuZHJhIiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4NDE4MTc2MTEiLCJyb2xlIjoiY3VzdG9tZXIifQ.0w9y2vvuRcT_ONZ2uI-WiOxDlc3bFcd7EDP29C9-fus
+}
+
+body:json {
+  {
+    "product": "Khapsey",
+    "description": "Crunchy snacks"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/feedback/suggested-products
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "product": "Khapsey",
+        "description": "Crunchy snacks"
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: GET, POST, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 69
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 1,
+            "user": 11,
+            "product": "Khapsey",
+            "description": "Crunchy snacks"
+        }
+      '''
+    }
+  }
+}

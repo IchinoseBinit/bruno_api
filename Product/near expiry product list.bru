@@ -1,0 +1,94 @@
+meta {
+  name: near expiry product list
+  type: http
+  seq: 28
+}
+
+get {
+  url: {{gateway}}/near-expiry-products?store_id=2
+  body: none
+  auth: bearer
+}
+
+params:query {
+  store_id: 2
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzODkxMzE5LCJpYXQiOjE3NjM0NTkzMTksImp0aSI6IjA4MDZlZjIzYjMwNjQ5MTA4ZjY2Yzg5NzAzMGRjYWY5IiwidXNlcl9pZCI6Mzg1MzksImlkIjozODUzOSwibmFtZSI6IiIsInVzZXJuYW1lIjoiYWRtaW4xMCIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbH0.fn3zOettE6V2lDu_2cl9OZMDGYly3_LTvIWr6RL17xw
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/near-expiry-products?store_id=2&page=3
+    method: GET
+    mode: none
+    params:query: {
+      store_id: 2
+      page: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 598
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "next": null,
+            "previous": "http://localhost:8000/near-expiry-products/?page=2&store_id=2",
+            "has_next_page": false,
+            "page": 3,
+            "results": [
+                {
+                    "product_id": 4662,
+                    "product_name": "Uncle Chipps Spicy Treat . 48g MRP60",
+                    "total_units": 5,
+                    "unit_tags": [
+                        "4662-140-3270-117-23",
+                        "4662-140-3270-117-49",
+                        "4662-140-3270-117-24",
+                        "4662-140-3270-117-95",
+                        "4662-140-3270-117-109"
+                    ]
+                },
+                {
+                    "product_id": 5059,
+                    "product_name": "Cheetos Crunchy Chilli Chatka Snacks 63.5 g MRP 50",
+                    "total_units": 6,
+                    "unit_tags": [
+                        "5059-140-3239-53-29",
+                        "5059-140-3239-53-42",
+                        "5059-140-3239-53-2",
+                        "5059-140-3239-53-8",
+                        "5059-140-3239-53-1",
+                        "5059-140-3239-53-13"
+                    ]
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

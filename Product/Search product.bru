@@ -1,0 +1,127 @@
+meta {
+  name: Search product
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/search?store_id=4
+  body: json
+  auth: none
+}
+
+params:query {
+  store_id: 4
+}
+
+body:json {
+  {
+      "name": "meat",
+      //"brand_ids": [297]
+      //"min_price": 75,
+      //"max_price": 200
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/search
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "name":"apple"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 15 May 2024 08:15:22 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 159
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 2,
+                "product_name": "Apple",
+                "stock_quantity": 200,
+                "price": 194,
+                "discount_percent": 3,
+                "marked_price": 200,
+                "size": "100.00",
+                "measurement": "kg",
+                "images": []
+            }
+        ]
+      '''
+    }
+  }
+}
+
+example {
+  name: Failed
+  
+  request: {
+    url: {{gateway}}/search
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "name":"b"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Wed, 15 May 2024 08:16:24 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 78
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "message": "Sorry, There is no product with the search term."
+        }
+      '''
+    }
+  }
+}

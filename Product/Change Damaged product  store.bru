@@ -1,0 +1,26 @@
+meta {
+  name: Change Damaged product  store
+  type: http
+  seq: 24
+}
+
+post {
+  url: {{gateway}}/change-damaged-products-store/
+  body: text
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MzQxMjQ1LCJpYXQiOjE3NTUxNjg0NDUsImp0aSI6IjAyNzNkZDM4NTNiYzQ5YmQ4YjkwMDQ5MDZmZDZiODk1IiwidXNlcl9pZCI6MjkyNSwibmFtZSI6ImJhbF9wYWNrZXIiLCJ1c2VybmFtZSI6ImJhbF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.mxo8O1qUXKERahxUz-nIxpEiz6eBee8rjJEfJD4Un3Y
+}
+
+body:text {
+  {
+      "tags": ["TAG123", "TAG456", "TAG789"]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

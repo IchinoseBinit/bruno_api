@@ -1,0 +1,29 @@
+meta {
+  name: Rider's real time location
+  type: http
+  seq: 10
+}
+
+post {
+  url: '''
+    http://localhost:8001/rider/location
+    
+'''
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2OTkzOTU2LCJpYXQiOjE3MTY5NzU5NTYsImp0aSI6ImY5MDZmOTcxN2MxNTQ0NTY5YmFhY2ZiNjc4MDkwNjAwIiwidXNlcl9pZCI6OX0.orW4gJKIO4aA6ZSEFeDCA_grWX2LS5IhwCfPyMTsubo
+}
+
+body:json {
+  {
+      "latitude":12.345,
+      "longitude":12.345
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,72 @@
+meta {
+  name: verify new phone number
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{gateway}}/auth/verify-and-change-phone-number/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxNDYxMzg5LCJpYXQiOjE3MjEyODg1ODksImp0aSI6ImYwZDRhMzk2ZjM3OTQxOWRhM2ZkOTMxNWJmN2I0NDFiIiwidXNlcl9pZCI6MywibmFtZSI6ImJpbmF5IiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MTgyMDcxNzkiLCJyb2xlIjoiY3VzdG9tZXIifQ.bWLQWUW9pMPuAZnGhuvLLMrPO-UNKwgNHSSYy4GUQbU
+}
+
+body:json {
+  {
+    "new_phone_number":9768400312,
+    "otp_code": 809468
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/auth/verify-and-change-phone-number/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "new_phone_number":9768400312,
+        "otp_code": 809468
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 63
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Phone number updated successfully."
+        }
+      '''
+    }
+  }
+}

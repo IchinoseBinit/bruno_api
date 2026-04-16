@@ -1,0 +1,224 @@
+meta {
+  name: Cart details
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{gateway}}/cart-items
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+     
+      "quantity":4100
+      }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Update the cart items
+  
+  request: {
+    url: {{gateway}}/cart-items/13
+    method: PUT
+    mode: json
+    body:json: {
+      {
+         
+          "quantity":4100
+          }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 09:20:35 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, PUT, DELETE, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 172
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 13,
+                "cart": 12,
+                "product_name": "Almond Milk",
+                "quantity": 4100,
+                "added_at": "2024-05-02T10:32:56.255075Z",
+                "updated_at": "2024-05-03T09:20:35.590855Z"
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: If same quantity is used  to update cart items
+  
+  request: {
+    url: {{gateway}}/cart-items/14
+    method: PUT
+    mode: json
+    body:json: {
+      {
+         
+          "quantity":4100
+          }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 09:27:04 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, PUT, DELETE, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 45
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "detail": "Quantity is same."
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Get items by id
+  
+  request: {
+    url: {{gateway}}/cart-items/14
+    method: GET
+    mode: json
+    body:json: {
+      {
+         
+          "quantity":4100
+          }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 09:29:48 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, PUT, DELETE, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 170
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 14,
+                "cart": 12,
+                "product_name": "Skim Milk",
+                "quantity": 4100,
+                "added_at": "2024-05-02T11:07:38.660311Z",
+                "updated_at": "2024-05-03T09:26:59.752209Z"
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Remove Cart Items
+  
+  request: {
+    url: {{gateway}}/cart-items/15
+    method: DELETE
+    mode: json
+    body:json: {
+      {
+         
+          "quantity":4100
+          }
+    }
+  }
+  
+  response: {
+    headers: {
+      Date: Fri, 03 May 2024 09:36:31 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, PUT, DELETE, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 50
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "detail": "Item deleted from cart"
+        }
+      '''
+    }
+  }
+}

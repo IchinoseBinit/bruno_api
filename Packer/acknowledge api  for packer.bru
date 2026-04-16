@@ -1,0 +1,104 @@
+meta {
+  name: acknowledge api  for packer
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{gateway}}/staff/orders/3880/acknowledge-packer/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: units_to_scan added
+  
+  request: {
+    url: {{gateway}}/staff/orders/7056/acknowledge-packer/
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1002
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "product_details": [
+                {
+                    "id": "4529",
+                    "product_name": "Gorkha Strong Beer 650 mL MRP 352",
+                    "product_image": "/media/src/images/product_images/grid-20240703010529_1691815803.jpg",
+                    "price": "352.00",
+                    "quantity": 7,
+                    "size": "650.00",
+                    "measurement": "mL",
+                    "marked_price": "352.00",
+                    "discount_percent": "0.00",
+                    "product_compartment": null,
+                    "rack": "Stand-Fridge-1-R"
+                }
+            ],
+            "data": {
+                "id": 13707,
+                "status": "packer_assigned",
+                "count": 7,
+                "small_cart_fee": "0.00",
+                "delivery_fee": "0.00",
+                "total": "2464.00",
+                "final_total": "2464.00",
+                "user_info": {
+                    "name": "Binay Rai",
+                    "address_name": "naya ds",
+                    "phone": "9768400312",
+                    "address": "Balaju, बालाजु-सौरखुट्टे सडक, Kathmandu-16",
+                    "latitude": 27.724936348533994,
+                    "longitude": 85.30596926808357
+                },
+                "customer_info": {
+                    "name": "Binay Rai",
+                    "phone_number": "9768400312"
+                },
+                "additional_info": "",
+                "distance": 0.76332,
+                "is_ordering_for_someone": false,
+                "store_role": "primary",
+                "created_timestamp": "2026-02-24T17:06:47.880397+05:45"
+            },
+            "units_to_scan": {
+                "4529": [
+                    {
+                        "tag": "4529-141-3289-12-12"
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,105 @@
+meta {
+  name: Get Rack for Order
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/orders/get-rack-for-order/3496/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "order_id": 2754,
+      "basket_data": [
+          {
+              "identifier": "basket-Baneshwor branch-8706f2",
+              "product_unit_tags": ["850-20250428073443-842bda"]
+          }
+          // {
+          //     "identifier": "basket-Baneshwor branch-d49fba",
+          //     "product_unit_tags": ["846-20250428074726-f57997"]
+          // }
+      ]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: new success
+  
+  request: {
+    url: {{gateway}}/orders/basket-order/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "order_id": 2749,
+          "basket_data": [
+              {
+                  "identifier": "basket-Baneshwor branch-8706f2",
+                  "product_unit_tags": ["846-20250428074726-5af78e", "846-20250428074726-17bda7"]
+              },
+              {
+                  "identifier": "basket-Baneshwor branch-d49fba",
+                  "product_unit_tags": ["846-20250428074726-bd09cc"]
+              }
+          ]
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 305
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Baskets and products assigned successfully.",
+            "data": [
+                {
+                    "identifier": "basket-Baneshwor branch-8706f2",
+                    "product_unit_tags": [
+                        "846-20250428074726-5af78e",
+                        "846-20250428074726-17bda7"
+                    ]
+                },
+                {
+                    "identifier": "basket-Baneshwor branch-d49fba",
+                    "product_unit_tags": [
+                        "846-20250428074726-bd09cc"
+                    ]
+                }
+            ]
+        }
+      '''
+    }
+  }
+}

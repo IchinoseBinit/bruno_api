@@ -1,0 +1,84 @@
+meta {
+  name: Shows all the product units
+  type: http
+  seq: 26
+}
+
+post {
+  url: {{gateway}}/product_units/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjk5OTk0LCJpYXQiOjE3NTE1MjcxOTQsImp0aSI6ImM5OTA3NjdhMTIzYjRmMTI5ZWEzOWEzYTkzZDZlMWY2IiwidXNlcl9pZCI6Mjg5OCwibmFtZSI6ImRodW0xIiwidXNlcm5hbWUiOiJkaHVtMSIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6InBhY2tlciJ9.YKpm2PhFdM159sLH2o8tMp95xok1NA5xGOaBSyiAeWI
+}
+
+body:json {
+  {
+      "tag" : "1923-1-65-25-1"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/product_units/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "tag" : "1923-1-65-25-1"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 251
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 2459,
+                "tag": "1923-1-65-25-10",
+                "status": "available",
+                "expiry_date": "2026-04-06"
+            },
+            {
+                "id": 2455,
+                "tag": "1923-1-65-25-6",
+                "status": "available",
+                "expiry_date": "2026-04-06"
+            },
+            {
+                "id": 2457,
+                "tag": "1923-1-65-25-8",
+                "status": "available",
+                "expiry_date": "2026-04-06"
+            }
+        ]
+      '''
+    }
+  }
+}

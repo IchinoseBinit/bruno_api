@@ -1,0 +1,134 @@
+meta {
+  name: fetch
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/orders
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 10:55:48 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 1404
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        [
+            {
+                "id": 4,
+                "status": "created",
+                "total": 10324.5,
+                "cart_items": [
+                    {
+                        "id": 7,
+                        "product_name": "Chicken Eggs",
+                        "product_image": null,
+                        "price": 29.4,
+                        "measurement": "kg",
+                        "quantity": 29,
+                        "added_at": "2024-05-20T09:06:11.301810Z",
+                        "updated_at": "2024-05-20T09:59:34.889518Z"
+                    },
+                    {
+                        "id": 8,
+                        "product_name": "Tomato",
+                        "product_image": "/src/images/product_images/tomato_1_BNizscG.jpg",
+                        "price": 117.6,
+                        "measurement": "kg",
+                        "quantity": 4,
+                        "added_at": "2024-05-20T09:28:50.074301Z",
+                        "updated_at": "2024-05-20T09:28:50.248324Z"
+                    },
+                    {
+                        "id": 9,
+                        "product_name": "Apple",
+                        "product_image": null,
+                        "price": 194,
+                        "measurement": "kg",
+                        "quantity": 22,
+                        "added_at": "2024-05-20T09:31:46.899665Z",
+                        "updated_at": "2024-05-21T10:45:29.559391Z"
+                    },
+                    {
+                        "id": 10,
+                        "product_name": "Grapes",
+                        "product_image": null,
+                        "price": 196,
+                        "measurement": "kg",
+                        "quantity": 10,
+                        "added_at": "2024-05-20T10:36:26.335600Z",
+                        "updated_at": "2024-05-21T10:45:43.130033Z"
+                    },
+                    {
+                        "id": 11,
+                        "product_name": "Cabbage",
+                        "product_image": null,
+                        "price": 115.2,
+                        "measurement": "kg",
+                        "quantity": 5,
+                        "added_at": "2024-05-20T10:36:45.901274Z",
+                        "updated_at": "2024-05-20T10:36:45.910513Z"
+                    },
+                    {
+                        "id": 12,
+                        "product_name": "Orange",
+                        "product_image": null,
+                        "price": 196,
+                        "measurement": "kg",
+                        "quantity": 10,
+                        "added_at": "2024-05-20T10:37:01.315333Z",
+                        "updated_at": "2024-05-21T10:34:39.093650Z"
+                    },
+                    {
+                        "id": 13,
+                        "product_name": "Onion",
+                        "product_image": null,
+                        "price": 47.5,
+                        "measurement": "kg",
+                        "quantity": 5,
+                        "added_at": "2024-05-20T10:37:10.495614Z",
+                        "updated_at": "2024-05-20T10:37:10.512114Z"
+                    }
+                ]
+            }
+        ]
+      '''
+    }
+  }
+}

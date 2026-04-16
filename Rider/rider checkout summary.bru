@@ -1,0 +1,74 @@
+meta {
+  name: rider checkout summary
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{gateway}}/rider/today-log/
+  body: text
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MjEzNTc3LCJpYXQiOjE3NTg3ODE1NzcsImp0aSI6ImNlODU3OTk5MzNkNzRhZmY5NDIzZDE2MTU0MGMyYWVlIiwidXNlcl9pZCI6MTIxNTgsImlkIjoxMjE1OCwibmFtZSI6ImRodW1fcmlkZXIiLCJ1c2VybmFtZSI6ImRodW1fcmlkZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJyaWRlciJ9.FmYv2ruc_T9f-pl4J7VaefDU-5P94d8QdDr2oExmW8k
+}
+
+body:text {
+  {
+    "tags": ["1928-1-64-25-19", "1928-1-64-25-20"],
+    "rack_identifier": "fasto_rack_mh_4598"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{gateway}}/rider/today-log/
+    method: GET
+    mode: text
+    body:text: {
+      {
+        "tags": ["1928-1-64-25-19", "1928-1-64-25-20"],
+        "rack_identifier": "fasto_rack_mh_4598"
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 144
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "store_name": "Dhumbarahi DS",
+            "start_time": "2025-09-25T06:20:07.450469Z",
+            "end_time": "2025-09-25T06:44:18.610945Z",
+            "total_online_time": "0:24:11"
+        }
+      '''
+    }
+  }
+}

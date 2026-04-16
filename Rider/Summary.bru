@@ -1,0 +1,64 @@
+meta {
+  name: Summary
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseURL}}/rider/summary
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: total bonus
+  
+  request: {
+    url: {{baseURL}}/rider/summary
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 191
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "total_online_time": "0:0",
+            "total_order_count": 2,
+            "total_distance": "0.54 kms",
+            "is_online": true,
+            "is_available": false,
+            "has_remaining_cod": false,
+            "store_id": 3,
+            "has_checkout": false,
+            "total_bonus": 0
+        }
+      '''
+    }
+  }
+}

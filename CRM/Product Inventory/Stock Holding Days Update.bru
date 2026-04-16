@@ -1,0 +1,36 @@
+meta {
+  name: Stock Holding Days Update
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/staff/api/update-holding-days/
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~from: 2025-08-15
+  ~to: 2025-10-31
+  ~sort_by: amount
+  ~sort_order: desc
+  ~vendor_id: 28
+  ~subcategory_id: 444
+  ~search: uncle
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+body:json {
+  {
+      "id": 4252,
+      "stock_holding_days": 10
+  }
+}
+
+settings {
+  encodeUrl: true
+}

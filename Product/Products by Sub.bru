@@ -1,0 +1,254 @@
+meta {
+  name: Products by Sub
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{gateway}}/products-by-subcategory
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/products-by-subcategory?page=2
+    method: GET
+    mode: none
+    params:query: {
+      page: 2
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: GET, HEAD, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 3683
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "count": 57,
+            "current_page": 2,
+            "total_pages": 29,
+            "next": "http://localhost:8000/products-by-subcategory/?page=3",
+            "previous": "http://localhost:8000/products-by-subcategory/",
+            "results": {
+                "success": true,
+                "data": [
+                    {
+                        "subcategory": "Soft Drinks",
+                        "products": [
+                            {
+                                "id": 225,
+                                "product_name": "Fanta",
+                                "stock_quantity": 1,
+                                "price": 245,
+                                "discount_percent": 2,
+                                "marked_price": 250,
+                                "size": "2.25",
+                                "measurement": "L",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/fanta_2.25_l-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 228,
+                                "product_name": "Fanta",
+                                "stock_quantity": 6,
+                                "price": 49,
+                                "discount_percent": 2,
+                                "marked_price": 50,
+                                "size": "250.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/fanta_250_ml-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 279,
+                                "product_name": "Processed Drinking Water (pack of 2)",
+                                "stock_quantity": 2,
+                                "price": 38,
+                                "discount_percent": 5,
+                                "marked_price": 40,
+                                "size": "1.00",
+                                "measurement": "L",
+                                "is_chilled": false,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/WhatsApp_Image_2024-09-16_at_20.51.25-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 227,
+                                "product_name": "Sprite",
+                                "stock_quantity": 3,
+                                "price": 49,
+                                "discount_percent": 2,
+                                "marked_price": 50,
+                                "size": "250.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/sprite_250_ml-removebg-preview_1.png"
+                                ]
+                            },
+                            {
+                                "id": 359,
+                                "product_name": "Sprite",
+                                "stock_quantity": 1,
+                                "price": 129,
+                                "discount_percent": 0.77,
+                                "marked_price": 130,
+                                "size": "1.00",
+                                "measurement": "L",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/sprite_1l-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 421,
+                                "product_name": "Nimbu Fresh",
+                                "stock_quantity": 9,
+                                "price": 48,
+                                "discount_percent": 4,
+                                "marked_price": 50,
+                                "size": "250.00",
+                                "measurement": "mL",
+                                "is_chilled": false,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/nimbu_fresh-removebg-preview.png"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "subcategory": "Beers",
+                        "products": [
+                            {
+                                "id": 230,
+                                "product_name": "Gorkha Strong Beer",
+                                "stock_quantity": 12,
+                                "price": 330,
+                                "discount_percent": 1.49,
+                                "marked_price": 335,
+                                "size": "650.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/gorkha_s650_-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 234,
+                                "product_name": "Tuborg Premium Gold Beer",
+                                "stock_quantity": 12,
+                                "price": 420,
+                                "discount_percent": 3.45,
+                                "marked_price": 435,
+                                "size": "650.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/tuborg_premium_gold_beer_650m-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 236,
+                                "product_name": "Tuborg Premium Gold Can Beer",
+                                "stock_quantity": 6,
+                                "price": 320,
+                                "discount_percent": 5.88,
+                                "marked_price": 340,
+                                "size": "500.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/tuborg_premium_gold_can_beer_500m-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 350,
+                                "product_name": "Barasinghe Pilsner",
+                                "stock_quantity": 20,
+                                "price": 210,
+                                "discount_percent": 4.55,
+                                "marked_price": 220,
+                                "size": "330.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/barahsinghe_pilsner_bier-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 369,
+                                "product_name": "Barasinghe Pilsner",
+                                "stock_quantity": 2,
+                                "price": 390,
+                                "discount_percent": 7.14,
+                                "marked_price": 420,
+                                "size": "650.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/bara-removebg-preview.png"
+                                ]
+                            },
+                            {
+                                "id": 231,
+                                "product_name": "Gorkha Strong Beer",
+                                "stock_quantity": 12,
+                                "price": 175,
+                                "discount_percent": 2.78,
+                                "marked_price": 180,
+                                "size": "330.00",
+                                "measurement": "mL",
+                                "is_chilled": true,
+                                "is_outsourced": false,
+                                "images": [
+                                    "/media/src/images/product_images/gorkha_strong_beer_330m-removebg-preview.png"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

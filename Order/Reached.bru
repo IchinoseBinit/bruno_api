@@ -1,0 +1,130 @@
+meta {
+  name: Reached
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{gateway}}/orders/6512/reach
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{riderAccessToken}}
+}
+
+body:json {
+  {
+      "latlngs": [
+          {
+              "latitude": 27.72631,
+              "longitude": 85.335823,
+              "timeStamp": "2025-11-21 08:30:45"
+          },
+          {
+              "latitude": 27.726161,
+              "longitude": 85.335868,
+              "timeStamp": "2025-11-21 08:30:35"
+          },
+          {
+              "latitude": 27.725822,
+              "longitude": 85.335851,
+              "timeStamp": "2025-11-21 08:30:39"
+          },
+          {
+              "latitude": 27.726001,
+              "longitude": 85.335871,
+              "timeStamp": "2025-11-21T08:30:35.904977+00:00"
+          }
+      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/orders/4/pick
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Date: Tue, 21 May 2024 11:19:28 GMT
+      Server: WSGIServer/0.2 CPython/3.10.14
+      Content-Type: application/json
+      Vary: Accept
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 155
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "data": {
+                "id": 4,
+                "created_at": "2024-05-21T10:55:11.927266Z",
+                "updated_at": "2024-05-21T11:19:28.678761Z",
+                "status": "picked",
+                "total": "10324.50"
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: prepaid order
+  
+  request: {
+    url: {{gateway}}/orders/2766/reach
+    method: POST
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, origin, Cookie
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 36
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "payment_done": true
+        }
+      '''
+    }
+  }
+}

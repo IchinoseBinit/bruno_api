@@ -1,0 +1,19 @@
+meta {
+  name: Order Device Details
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{gateway}}/api/orders/device/details/30794/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

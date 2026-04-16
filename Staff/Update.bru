@@ -1,0 +1,85 @@
+meta {
+  name: Update
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{gateway}}/api/staff/109/update/
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  username: new_api
+  password: admin123
+  name: new APi
+  store: 3
+  document_type: passport
+  document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+  phone_number: 716248129
+  role: manager
+  ~related_stores: 
+  ~related_stores: 
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: update success
+  
+  request: {
+    url: {{gateway}}/api/staff/109/update/
+    method: PATCH
+    mode: multipartForm
+    body:multipart-form: {
+      username: final_api
+      password: admin123
+      name: final_api
+      store: 1
+      related_stores: 4
+      document_type: passport
+      document_image: @file(postman-cloud:///1f07fe77-581d-4020-a002-52861fe27831)
+      phone_number: 9768400421
+      role: packer
+      related_stores: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: PATCH, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 198
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "id": 109,
+            "document_type": "passport",
+            "related_stores": [
+                4,
+                3
+            ],
+            "store": 1,
+            "document_image": "/media/src/images/staff_documents/2024_Acer_OLED_option_01_3840x2400_h6PBe3s.jpg",
+            "phone_number": "9768400421"
+        }
+      '''
+    }
+  }
+}

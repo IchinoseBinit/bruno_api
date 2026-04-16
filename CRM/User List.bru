@@ -1,0 +1,27 @@
+meta {
+  name: User List
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{gateway}}/api/users/?from=2025-09-03&page_size=50&to=2025-10-10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  from: 2025-09-03
+  page_size: 50
+  to: 2025-10-10
+  ~search: 9804350997
+  ~type: date_joined
+}
+
+auth:bearer {
+  token: {{packerAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

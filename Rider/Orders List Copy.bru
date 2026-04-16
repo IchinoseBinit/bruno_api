@@ -1,0 +1,23 @@
+meta {
+  name: Orders List Copy
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{gateway}}/orders/get-order?status=completed
+  body: none
+  auth: bearer
+}
+
+params:query {
+  status: completed
+}
+
+auth:bearer {
+  token: {{riderAccessToken}}
+}
+
+settings {
+  encodeUrl: true
+}

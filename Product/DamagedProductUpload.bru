@@ -1,0 +1,69 @@
+meta {
+  name: DamagedProductUpload
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{gateway}}/damaged-products/upload/
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MzQxMjQ1LCJpYXQiOjE3NTUxNjg0NDUsImp0aSI6IjAyNzNkZDM4NTNiYzQ5YmQ4YjkwMDQ5MDZmZDZiODk1IiwidXNlcl9pZCI6MjkyNSwibmFtZSI6ImJhbF9wYWNrZXIiLCJ1c2VybmFtZSI6ImJhbF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.mxo8O1qUXKERahxUz-nIxpEiz6eBee8rjJEfJD4Un3Y
+}
+
+body:multipart-form {
+  product_id: 3194
+  images: @file(postman-cloud:///1f03af14-a061-4f90-b481-9932f2e4a783|postman-cloud:///1ef555ea-5ef6-40b0-a75e-743b799aab66)
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/damaged-products/upload/
+    method: POST
+    mode: multipartForm
+    body:multipart-form: {
+      product_id: 3194
+      images: @file(postman-cloud:///1f03af14-a061-4f90-b481-9932f2e4a783|postman-cloud:///1ef555ea-5ef6-40b0-a75e-743b799aab66)
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      Vary: Accept, Cookie, origin
+      Allow: POST, OPTIONS
+      X-Frame-Options: DENY
+      Content-Length: 105
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "detail": "Damaged records created for new matching units",
+            "tags": [
+                "3194-8-244-16-11",
+                "3194-8-244-16-3"
+            ]
+        }
+      '''
+    }
+  }
+}
