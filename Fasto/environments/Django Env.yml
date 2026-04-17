@@ -1,7 +1,7 @@
 name: Django Env
 variables:
   - name: gateway
-    value: localhost:8000
+    value: 127.0.0.1:8000
   - name: wsg
     value: ws://localhost:8000
   - name: accessToken

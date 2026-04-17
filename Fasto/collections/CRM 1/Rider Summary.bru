@@ -1,0 +1,25 @@
+meta {
+  name: Rider Summary
+  type: http
+  seq: 35
+}
+
+get {
+  url: {{gateway}}/api/rider-summary/40715/?from=2026-01-01&to=2026-02-01
+  body: none
+  auth: bearer
+}
+
+params:query {
+  from: 2026-01-01
+  to: 2026-02-01
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODQyOTA3LCJpYXQiOjE3NzY0MTA5MDcsImp0aSI6ImQ1ODBhYWFlNTJhNDRkY2Q4M2JjMzRkYzI2YjBjNzc5IiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJyZWxhdGVkX3N0b3JlcyI6W119.O_mXlxmAYQv170KDk40OIwVIxD1rMPSyHm3v-YP4w3k
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
