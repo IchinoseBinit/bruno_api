@@ -5,7 +5,7 @@ variables:
   - name: wsg
     value: ws://localhost:8000
   - name: accessToken
-    value: ""
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDIxODkzLCJpYXQiOjE3NzY1ODk4OTMsImp0aSI6ImVlYTU4ZjAyMDAxMjRjODI5MTIzNDlkOWRkMmE3ZjYzIiwidXNlcl9pZCI6MywiaWQiOjMsIm5hbWUiOiJCaW5pdCBLb2lyYWxhIiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MDQzNTA5OTciLCJyb2xlIjoiY3VzdG9tZXIiLCJyZWxhdGVkX3N0b3JlcyI6W119.viyYWj_-dXowG9Xovz64Y3gndCZOH02texKxjNlCRWs
   - name: refreshToken
     value: ""
   - name: packerAccessToken

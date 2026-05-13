@@ -60,9 +60,11 @@ collections:
     path: "collections/User Info-address 1"
   - name: "Wishlist 1"
     path: "collections/Wishlist 1"
+  - name: "ERP"
+    path: "collections/ERP"
+  - name: "Lost Items"
+    path: "collections/Lost Items"
 
 specs:
 
 docs: ''
-
-activeEnvironmentUid: doz0bn000000000000000

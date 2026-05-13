@@ -1,17 +1,17 @@
 meta {
-  name: Support Configuration
+  name: Get Wishlist Items copy
   type: http
-  seq: 33
+  seq: 5
 }
 
 get {
-  url: {{gateway}}/system/support-config
+  url: {{gateway}}/wishlist/
   body: none
   auth: bearer
 }
 
 auth:bearer {
-  token: {{packerAccessToken}}
+  token: {{accessToken}}
 }
 
 settings {

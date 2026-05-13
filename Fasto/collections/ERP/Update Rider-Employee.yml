@@ -1,0 +1,34 @@
+info:
+  name: "Update Rider/Employee "
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{gateway}}/api/employee-rider/40831/update"
+  headers:
+    - name: X-SECRET-KEY
+      value: qpwnnFcdZI1063TACLALoPbK5kg/aXYqcfUjosLpFEE=
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: |-
+      {
+        "full_name": "Ram Sharma",
+        "username": "ram.sharmae rider",
+        "password": "Ram@1234",
+        "role": "staff",
+        "phone_no": "9800000000",
+        "branch": 5
+        // For rider
+        //"emergency_contact_no": "9822222222",
+        //"hired_from_agency": 45
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

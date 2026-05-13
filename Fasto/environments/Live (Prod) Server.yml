@@ -1,7 +1,7 @@
 name: Live (Prod) Server
 variables:
   - name: gateway
-    value: https://fasto.com.np
+    value: https://api.fasto.com.np
   - name: img-gateway
     value: https://cdn.fasto.com.np
   - name: wsg
@@ -9,7 +9,7 @@ variables:
   - name: refreshToken
     value: ""
   - name: packerAccessToken
-    value: ""
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3Mzc0MzI5LCJpYXQiOjE3NzY5NDIzMjksImp0aSI6IjgxMzNhODQxZjY1MTQ3NzZhNGZiMjk3Nzk2NTNkN2Q5IiwidXNlcl9pZCI6MzAwMiwiaWQiOjMwMDIsIm5hbWUiOiJCaW5pdCBNR1IiLCJ1c2VybmFtZSI6ImJpbml0X2RodW0iLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJtYW5hZ2VyIiwiaXNfc3VwZXJ1c2VyIjpmYWxzZSwicmVsYXRlZF9zdG9yZXMiOltdfQ.BGLtt8-vDI3PvgZce_zHib-UCrvvtgmNvt3CNxIPsIA
   - name: riderAccessToken
     value: ""
   - name: accessToken

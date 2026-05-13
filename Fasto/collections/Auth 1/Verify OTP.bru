@@ -13,28 +13,29 @@ post {
 body:json {
   {
       "otp_code": "123456",
-      "phone_number": "9801201234"
+      "phone_number": "9804350997"
   }
 }
 
 script:post-response {
-  // Parse the JSON response body
-  let resp = res.getBody();
+  const resp = res.getBody();
   
-  // Check if the response body contains the access and refresh tokens
-  if (resp.access && resp.refresh) {
-      // Set the access token in the environment variables
-      bru.setEnvVar("accessToken", resp.access);
-      // Set the refresh token in the environment variables
-      bru.setEnvVar("refreshToken", resp.refresh);
+  console.log("response body:", resp);
+  
+  if (resp && resp.access && resp.refresh) {
+    bru.setEnvVar("accessToken", resp.access, { persist: true });
+    bru.setEnvVar("refreshToken", resp.refresh, { persist: true });
+  
+    console.log("accessToken saved:", bru.getEnvVar("accessToken"));
+    console.log("refreshToken saved:", bru.getEnvVar("refreshToken"));
   } else {
-      console.log("Tokens not found in the response");
+    console.log("Tokens not found in response. Full response:", resp);
   }
-  
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
@@ -97,7 +98,7 @@ example {
       {
           "phone_number":9818207179,
           "otp_code":374403
-          
+            
       }
     }
   }

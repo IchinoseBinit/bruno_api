@@ -11,7 +11,6 @@ post {
 }
 
 headers {
-  Authorization: Bearer  {accessToken}}
   Content-Type: application/json
   X-Device-Info: { "device_type":"android","device_name":"Samsung Galaxy S23","brand":"Samsung","model":"SM-S911B","os_version":"13","app_version":"1.0.0","build_number":"45","device_id":"abcd1234efgh5678" }
 }
@@ -25,9 +24,9 @@ body:json {
       // "cart_id": 9112,
       "carts": [
       // {"cart_id": 22576, "store_role": "primary"},
-      {"cart_id": 22579, "store_role": "secondary"}
+      {"cart_id": 24637, "store_role": "primary"}
     ],
-      "user_info_id": 157967
+      "user_info_id": 1879
       // "is_ordering_for_someone":true,
       // "recipient_name":"Ram",
       // "recipient_phone":"9800000000"
@@ -38,6 +37,7 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
@@ -50,9 +50,9 @@ example {
     body:json: {
       {
           "cart_id":5
-        
-      
-      
+            
+          
+          
       }
     }
   }
@@ -106,7 +106,7 @@ example {
           "recipient_name": "someone",
           "recipient_phone": "9851056051"
           // "coupon_code": "Onepiece"
-      
+          
       }
     }
   }
@@ -174,8 +174,8 @@ example {
           // "coupon_code": "Onepiece"
           "payment_log_id":1,
           "transaction_code": "code"
-      
-      
+          
+          
       }
     }
   }
@@ -235,16 +235,16 @@ example {
     method: POST
     mode: json
     headers: {
-      device_type:  andriod
-      device_name:  Samsung Galaxy S23
-      brand:  Samsung
-      model:  SM-S911B
-      os_version:  13
-      app_version:  1.0.0
-      build_number:  45
-      device_id:  abcd1234efgh5678
-      Authorization:  Bearer <user_token_here>
-      Content-Type:  application/json
+      device_type: andriod
+      device_name: Samsung Galaxy S23
+      brand: Samsung
+      model: SM-S911B
+      os_version: 13
+      app_version: 1.0.0
+      build_number: 45
+      device_id: abcd1234efgh5678
+      Authorization: Bearer <user_token_here>
+      Content-Type: application/json
     }
   
     body:json: {
