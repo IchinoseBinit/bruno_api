@@ -1,0 +1,133 @@
+meta {
+  name: Product Stock Out Logs
+  type: http
+  seq: 29
+}
+
+get {
+  url: {{gateway}}/api/stock-out-logs?product_id=4537&store_id=3
+  body: none
+  auth: bearer
+}
+
+params:query {
+  product_id: 4537
+  store_id: 3
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NDM5MzU4LCJpYXQiOjE3NzkwMDczNTgsImp0aSI6Ijg5OGU1YTYyNzlkZjQ4NzhhYjM2YzJkOTcyMzAzZjM4IiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.Pawfu091z5a9Kq0UQxsblX7iTahLyzkQoZnhZOFO330
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/api/stock-out-logs?product_id=4537&store_id=3
+    method: GET
+    mode: none
+    params:query: {
+      product_id: 4537
+      store_id: 3
+    }
+  }
+  
+  response: {
+    headers: {
+      server: nginx/1.18.0 (Ubuntu)
+      date: Sun, 17 May 2026 08:44:10 GMT
+      content-type: application/json
+      content-length: 1193
+      connection: keep-alive
+      vary: Accept, Cookie, origin
+      allow: GET, HEAD, OPTIONS
+      x-frame-options: DENY
+      x-content-type-options: nosniff
+      referrer-policy: same-origin
+      cross-origin-opener-policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "count": 5,
+          "total_items": 5,
+          "next": null,
+          "previous": null,
+          "has_next_page": false,
+          "page": 1,
+          "results": [
+            {
+              "id": 6241,
+              "name": "Tuberg Beer 650 mL MRP 446",
+              "store_name": "Dhumbarahi DS",
+              "stock_out_at": "2026-05-16T20:14:55.150872+05:45",
+              "stock_in_at": null
+            },
+            {
+              "id": 5965,
+              "name": "Tuberg Beer 650 mL MRP 446",
+              "store_name": "Dhumbarahi DS",
+              "stock_out_at": "2026-05-15T23:34:15.028732+05:45",
+              "stock_in_at": "2026-05-16T00:19:59.163295+05:45"
+            },
+            {
+              "id": 4394,
+              "name": "Tuberg Beer 650 mL MRP 446",
+              "store_name": "Dhumbarahi DS",
+              "stock_out_at": "2026-05-09T23:24:07.096534+05:45",
+              "stock_in_at": "2026-05-10T23:58:07.888209+05:45"
+            },
+            {
+              "id": 3624,
+              "name": "Tuberg Beer 650 mL MRP 446",
+              "store_name": "Dhumbarahi DS",
+              "stock_out_at": "2026-05-07T04:54:39.039933+05:45",
+              "stock_in_at": "2026-05-07T23:33:14.420380+05:45"
+            },
+            {
+              "id": 1637,
+              "name": "Tuberg Beer 650 mL MRP 446",
+              "store_name": "Dhumbarahi DS",
+              "stock_out_at": "2026-04-28T22:07:21.406384+05:45",
+              "stock_in_at": "2026-05-02T02:32:28.889260+05:45"
+            }
+          ],
+          "filters": {
+            "sort": {
+              "sort_by": "stock_out_at",
+              "sort_direction": "desc",
+              "available_sorts": [
+                "stock_out_at",
+                "stock_in_at",
+                "id"
+              ],
+              "available_orders": [
+                "asc",
+                "desc"
+              ]
+            },
+            "search_query": null,
+            "store_id": "3",
+            "product_id": "4537"
+          },
+          "range": {
+            "from": null,
+            "to": null
+          }
+        }
+      '''
+    }
+  }
+}
