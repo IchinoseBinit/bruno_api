@@ -1,0 +1,58 @@
+opencollection: 1.0.0
+
+info:
+  name: Fonepay Intent
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: bearer
+    token: "{{accessToken}}"
+  variables:
+    - name: gateway
+      value: http://localhost:8000
+    - name: accessToken
+      value: ""
+    - name: paymentLogId
+      value: ""
+    - name: validationTraceId
+      value: ""
+    - name: referenceLabel
+      value: ""
+    - name: prn
+      value: ""
+    - name: wsStatusPath
+      value: ""
+
+docs:
+  content: |-
+    Customer-at-checkout Fonepay Intent flow for the Dropit / toofan-backend.
+
+    **Setup**
+    1. In the collection variables, set `gateway` to your API host (defaults to `http://localhost:8000`).
+    2. Set `accessToken` to a valid customer JWT (no `Bearer ` prefix — the collection adds it).
+
+    **Flow**
+    1. `Get Payment Modes` — sanity check that the seeded Fonepay row is active.
+    2. `Get Fonepay Banks` — list of bank apps + their `intentScheme` / `packageName`.
+    3. `Generate Fonepay Intent QR` — body must carry `cart_ids` + `amount`. Test script auto-captures `paymentLogId`, `validationTraceId`, `referenceLabel`, `prn`.
+    4. App listens on `/ws/fonepay/{{validationTraceId}}/` while the user pays in the bank app.
+    5. `Confirm Fonepay Intent` — idempotent backstop; re-verifies via Fonepay's status API.
+    6. Hand the captured `paymentLogId` + `prn` to `/orders/create/` (existing endpoint) as `payment_log_id` + `transaction_code`.
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

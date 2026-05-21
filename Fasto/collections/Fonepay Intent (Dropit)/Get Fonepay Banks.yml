@@ -1,0 +1,19 @@
+info:
+  name: Get Fonepay Banks
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{gateway}}/payment/fonepay/banks/"
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5Nzk2Njg2LCJpYXQiOjE3NzkzNjQ2ODYsImp0aSI6IjJiYmFlZDkzMTdmMzQ4MTliYmNiODMwYjQ4OGIyODg5IiwidXNlcl9pZCI6MywiaWQiOjMsIm5hbWUiOiJCaW5pdCBLb2lyYWxhIiwidXNlcm5hbWUiOm51bGwsInBob25lX251bWJlciI6Ijk4MDQzNTA5OTciLCJyb2xlIjoiY3VzdG9tZXIiLCJpc19zdXBlcnVzZXIiOmZhbHNlLCJyZWxhdGVkX3N0b3JlcyI6W119.WIbCIfQ-CMFFhHQmeeJvlHeS8lZ1vGourkYFzoxSE3I
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Proxies Fonepay's `/banks/list`. Result is cached server-side for `FONEPAY_BANK_LIST_TTL_SECONDS` (default 3600). Each entry carries `intentScheme` + `packageName` for building the Android deep link.

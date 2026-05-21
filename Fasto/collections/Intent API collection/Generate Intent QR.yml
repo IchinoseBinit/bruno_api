@@ -1,0 +1,127 @@
+info:
+  name: Generate Intent QR
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}{{basePath}}/generate-intent-qr"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: signature
+      value: "{{signature}}"
+    - name: Authorization
+      value: "{{accessToken}}"
+  body:
+    type: json
+    data: |-
+      {
+          "amount": 100.00,
+          "billId": "BILL-001",
+          "terminalId": "4271423331147924",
+          "paymentMode": "QR",
+          "referenceLabel": "REF01dd1",
+          "qrType": "INTENT_QR"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        // =====================================================
+        // RSA SHA256 Signature Generator (Refactored + Aligned)
+        // =====================================================
+
+        /*******************************
+         * 1. Fake browser globals
+         *******************************/
+        var navigator = {};
+        var window = {};
+
+        /*******************************
+         * 2. Load jsrsasign library
+         *******************************/
+        var lib = bru.getGlobalEnvVar("jsrsasign-js");
+        if (!lib) {
+            throw new Error('jsrsasign library not loaded. Run "0. Load jsrsasign Library" first.');
+        }
+        eval(lib);
+
+        /*******************************
+         * 3. Get credentials (collection scope)
+
+
+        /*******************************
+         * 5. Prepare payload (MUST match request body exactly)
+         *******************************/
+        // 4. Prepare payload with variable replacement
+        let payload = bru.interpolate(request.data);
+
+        console.log("Payload:", payload);
+
+        /*******************************
+         * 6. Get private key (collection scope)
+         *******************************/
+        const privateKeyRaw = bru.getCollectionVar("privateKey");
+        if (!privateKeyRaw) {
+            throw new Error('privateKey variable is missing. Run "Generate Key Pair" first.');
+        }
+
+        /*******************************
+         * 7. Helpers
+         *******************************/
+        function isHex(str) {
+            return /^[0-9a-fA-F]+$/.test(str);
+        }
+
+        function isBase64(str) {
+            const normalized = str.replace(/[\r\n\s]/g, "");
+            try {
+                return btoa(atob(normalized)) === normalized;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        /*******************************
+         * 8. Normalize private key to HEX
+         *******************************/
+        let privateKeyHex;
+
+        if (isHex(privateKeyRaw)) {
+            privateKeyHex = privateKeyRaw;
+        } else if (isBase64(privateKeyRaw)) {
+            privateKeyHex = stohex(atob(privateKeyRaw.replace(/[\r\n\s]/g, "")));
+        } else {
+            throw new Error("privateKey must be Base64 or hex PKCS8.");
+        }
+
+        /*******************************
+         * 9. Create key object
+         *******************************/
+        const privateKeyObj = KEYUTIL.getKeyFromPlainPrivatePKCS8Hex(privateKeyHex);
+
+        /*******************************
+         * 10. Sign payload (RSA SHA256)
+         *******************************/
+        const sig = new KJUR.crypto.Signature({ alg: "SHA256withRSA" });
+        sig.init(privateKeyObj);
+        sig.updateString(payload);
+
+        const signature = hextob64(sig.sign());
+
+        /*******************************
+         * 11. Store signature (expected name)
+         *******************************/
+        bru.setVar("signature", signature);
+
+        console.log("Signature:", signature);
+        console.log("Signature generated successfully!");
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

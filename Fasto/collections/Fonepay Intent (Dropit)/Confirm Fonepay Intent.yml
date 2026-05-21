@@ -1,0 +1,40 @@
+info:
+  name: Confirm Fonepay Intent
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{gateway}}/payment/fonepay/intent/confirm/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "validation_trace_id": "{{validationTraceId}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() !== 200) { return; }
+        const body = res.getBody();
+        const data = (body && body.data) || {};
+        console.log('status=' + data.status + ' transactionCode=' + data.transactionCode + ' fonepayTraceId=' + data.fonepayTraceId);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Idempotent backstop. The Celery worker already verifies via Fonepay's `/thirdPartyDynamicQrGetStatus`; this endpoint runs the same verification on demand so the mobile app can finalize even if it missed the WS frame.
+
+  **Returns**
+  - `data.status` — INITIATED | PAID | FAILED.
+  - `data.paymentLogId` + `data.transactionCode` — hand both to `/orders/create/` (as `payment_log_id` + `transaction_code`) to materialize the order from the held cart.

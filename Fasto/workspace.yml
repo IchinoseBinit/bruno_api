@@ -64,6 +64,10 @@ collections:
     path: "collections/ERP"
   - name: "Lost Items"
     path: "collections/Lost Items"
+  - name: "Intent API collection"
+    path: "collections/Intent API collection"
+  - name: "Fonepay Intent (Dropit)"
+    path: "collections/Fonepay Intent (Dropit)"
 
 specs:
 

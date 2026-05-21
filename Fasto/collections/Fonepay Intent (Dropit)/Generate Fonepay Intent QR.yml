@@ -1,0 +1,56 @@
+info:
+  name: Generate Fonepay Intent QR
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{gateway}}/payment/fonepay/intent/generate/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "cart_ids": [1],
+          "amount": 100.00
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Capture identifiers for downstream requests.
+        if (res.getStatus() !== 200) { return; }
+        const body = res.getBody();
+        const data = (body && body.data) || {};
+        if (data.paymentLogId)        pm.collectionVariables.set('paymentLogId',        data.paymentLogId);
+        if (data.validationTraceId)   pm.collectionVariables.set('validationTraceId',   data.validationTraceId);
+        if (data.referenceLabel)      pm.collectionVariables.set('referenceLabel',      data.referenceLabel);
+        if (data.prn)                 pm.collectionVariables.set('prn',                 data.prn);
+        if (data.wsStatusPath)        pm.collectionVariables.set('wsStatusPath',        data.wsStatusPath);
+        console.log('captured: paymentLogId=' + data.paymentLogId + ' trace=' + data.validationTraceId + ' ref=' + data.referenceLabel);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Reserves stock on the listed carts (hold lasts `FONEPAY_CART_HOLD_MINUTES`, default 15 min), asks Fonepay to mint an intent QR, persists a `PaymentInitiationLog` + `FonepayQrLog`, and arms the Celery WS subscriber.
+
+  **Body**
+  - `cart_ids` — list of customer's unordered carts to pay for.
+  - `amount` — must match the server-side sum within ±0.01 (rounding).
+
+  **Response** (200)
+  - `data.paymentLogId` — pass to `/orders/create/` as `payment_log_id` after payment succeeds.
+  - `data.validationTraceId` — used in the Django Channels WS path and in /confirm/.
+  - `data.qrMessage` — the payload the mobile app deep-links into the bank app as `intentScheme://payment?qrPayload={qrMessage}`.
+  - `data.wsStatusPath` — Django Channels path the app should connect to for live status.
+  - `data.banks` — bundled bank list so the app doesn't need a second call.
+
+  **Idempotent**: a repeat call while an INITIATED log exists returns the same log.

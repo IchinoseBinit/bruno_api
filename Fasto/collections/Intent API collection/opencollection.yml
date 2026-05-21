@@ -1,0 +1,36 @@
+opencollection: 1.0.0
+
+info:
+  name: Intent API collection
+
+request:
+  variables:
+    - name: baseUrl
+      value: https://dev-external-gateway-new.fonepay.com/merchantThirdparty
+    - name: basePath
+      value: /api/merchant/third-party/v2
+    - name: accessToken
+      value: Bearer eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4R0NNIn0..O-0l_gPx7Xj5G8MG._t9UQBeTOiSyK1XU_1MnIVE5FiLNBQJBbCpBl0eAwd2bSm9sbIRiGu7dqcvzoCerVNXIN-PDw2KMv7baOG_QI0u8SU35isuPxJLECDAIvG2KgQkSNmjfcdmYP6m0mDDmHIPUIPWHp_CKSWkT2qinKAu-frvJl6lWqnpzKfUBoFZMUXQromojLDV_Rcn7GJSVoAwcyrN8D07AlgvGo3taVYZsHqtizhoLNPPgdttQSBtLv6oz5qYp1HRSKQUPKZkLDYoUMxivoRXzZ7uYinJgwKOm7idfEgUy5sA5rUngENrVj55l_90v1gIQOJN7OK2-J34qr1IHeLSNGJxUB-gzXT5fYyR8cGHfV4cNs0E2lct_XSI5E-0oJASqyuZEPwi4.cx-WU_YD_Avf_nog07RJxw
+    - name: username
+      value: labasam
+    - name: password
+      value: F0nepay@123#
+    - name: privateKey
+      value: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCZ8er5XOzlVkQC0BykjWkmv6k8XLL64DLK9ahoUc0hvDFWV1S14RMvE8op9nZuvf0CQANaOcXmFZzV/1QAGbWWy02ArsmoZZoYytycXjhFkwKh5TNLRUcXGSa2zoP+aMMOiwHO6uOBDSUoDrn9NOyoDPp7z29xY8KOoMdvab+kd5m0Z3+V32qpo6t96T9VhcHc4IuE6BQo0BvrehEVU3d39BljWFA1dqq/618wMZLbOK1WIKwq2e6Caa3qqq/7CtnFF7XCUB/D9U/N/NIxmfsq4XCVPdpYZ3MouTcsijRYYGtsbgS31di/hIDG1tXJkR8+eXia9HZw+spgruRCH4i/AgMBAAECggEAWGbFakDkgKXTFFJxwES8N1YkVtdcqBgK0uXSuWUQCOlK46vupysCmywgEYzIYbuUCLC9vBgk/oU2tOSUViJtVpSUgurcPmlp3gbQPLMWWU2cW1+E3xp/QlJdGujofzWlnTpR5YKY9kiYJ7KdNzwnEjGxvVtXQaPp24GURPRS6pwlTadRceOMFWRSCWpuHg2k5fKTHuxu/2dRnXvdaOlICXZUjYPlQNQVvee3LQfyLleDF5E3HZDZ8v56KEBGPv8dHErEK2jVqwtTzoYe8yMwjkf9w5MqsJiaZloon8LfhZGgs6T277pzz1DkH+xGdkx/uMN5Ma2ZKoZxKpTsnjuVEQKBgQDkqg0ORzhy7rTmp4b5Z24OIMzIjTI/zCXxFoiUfLHSL1M6br7mfhGPSNZ3TIAvJ+5wUJd8iTf9GtH5+8f9aRf8LeclxLXIn822Kq2rFfO0f5FSfVypA9U2pfN6Wl4EG1geHbfJe/aEiQzCRir4x0jUkhDXP4FoT7tt/Be8+urmJQKBgQCsWTA7uUCGO7ZTqVzZGkTLliacR3pPNrSU44R6yBD+arEu0POsz1gAhyOQeVnOwQFxgFR6CzuOoqzLw39FV8CHA6I9h/8yzckAMPnCcCk8ttGe3WnyDnGXhRhTP7iig9nMmSHF0gglcPoUxzkCeO+roC78xeohrdPmOp6IWoJkEwKBgEaNhXu7U9p6doyYchfv5tArJKRYlIGEvsw1VKzkEIW2nmpwEyzRBx/7rFig3QgvvO0goK0HNaQ9qz4DhsBUtdbUXvaTTDd7vyAO6QjZvBkcJz2ZeoaXrSiwaYB983Y27ahVKQjc28Im+y3SMp4R9xHHg7S2XnpN55nW54gir2mVAoGAH76Bss5pQxAmgfxU3KwI9dKfI/PKZGK4GiBZ21+UObgfEHduGmtKUzaQ52BimUFVablwVdZRzvDJkPJeM8B49qVFsb2l1I6wsfdTWWvdPJCTxYYUqH/ejkD2fQbklBJjAFtILC6GT5ciiMc1Ce6KfnsPjIFLoY5p1CMB5i19jL8CgYA2zJDGiehQz7q8M5GvoIydxAF/maaytcDVklaA7VlAJl5kMqm2zR7ckSAdFwQwT1Q/opxrPNGlwKYkjTg7oEHqoa4fghEwIDPCyX8JjmwKo2uEjPM8LwTwrwF++CmAJhtDlXlxgx5X5GM+PYqcBGOq0eqFrol/36v6d72Xx/5ITg==
+
+docs:
+  content: |-
+    ## Setup (One-time)
+    1. Run **'0. Load jsrsasign Library'** first to cache the crypto library
+    2. Set `privateKey` in environment (Base64 encoded private key without PEM headers)
+    3. Set `username` and `password`
+
+    ## Usage
+    - Run Login - signature is auto-generated
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

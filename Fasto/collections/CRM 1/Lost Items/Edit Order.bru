@@ -1,0 +1,480 @@
+meta {
+  name: Edit Order
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{gateway}}/orders/lost-items/72/approve/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5MDg1NjQ2LCJpYXQiOjE3Nzg2NTM2NDYsImp0aSI6ImI0ZGNiNWMyZmM5OTQ5NTdhYzFlODRmYWZkODhiZTVmIiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.jIe0qx9gFwwPVnxfl_qbKifbqtRnX627kuMcqfA6OdE
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{gateway}}/orders/lost-items/
+    method: GET
+    mode: none
+    params:query: {
+      ~has_remarks: false
+      ~customer_id: 3
+      ~sort_by: total
+      ~sort_order: desc
+      ~time_start: 13:00:00
+      ~time_end: 17:00:00
+      ~device_type: web
+      ~download: csv
+      ~status: created,packer_assigned,packed,billing,picked
+      ~rider_id: 3
+      ~store_id: 2
+    }
+  }
+  
+  response: {
+    headers: {
+      content-type: application/json
+      vary: Accept, Cookie, origin
+      allow: GET, POST, HEAD, OPTIONS
+      x-frame-options: DENY
+      content-length: 6773
+      x-content-type-options: nosniff
+      referrer-policy: same-origin
+      cross-origin-opener-policy: same-origin
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "next": "http://103.187.8.105:8000/orders/lost-items/?page=2",
+          "previous": null,
+          "has_next_page": true,
+          "page": 1,
+          "results": [
+            {
+              "id": 14,
+              "order": 69459,
+              "order_item": 178371,
+              "product": 10290,
+              "product_name": "Slice Mango Cold Drink 500ml MRP 90",
+              "store": 3,
+              "quantity": 2,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-12T13:40:40.363615+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-12T14:00:28.523841+05:45",
+              "tags": [
+                {
+                  "id": 49,
+                  "product_unit": 264742,
+                  "tag": "5181-708-12903-12-9"
+                },
+                {
+                  "id": 50,
+                  "product_unit": 264741,
+                  "tag": "5181-708-12903-12-8"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "order": null,
+              "order_item": null,
+              "product": 1177,
+              "product_name": "Cavin's Belgian Chocolate Milkshake 170ml MRP 90",
+              "store": 3,
+              "quantity": 2,
+              "reason": "not_available",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-12T13:36:05.527150+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-12T13:36:05.526856+05:45",
+              "tags": [
+                {
+                  "id": 47,
+                  "product_unit": 144850,
+                  "tag": "1816-403-6998-60-27"
+                },
+                {
+                  "id": 48,
+                  "product_unit": 144845,
+                  "tag": "1816-403-6998-60-22"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "order": null,
+              "order_item": null,
+              "product": 1179,
+              "product_name": "Cavin's Kaju Butterscotch Milkshake 170ml MRP 90",
+              "store": 3,
+              "quantity": 2,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-12T13:32:53.062945+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-12T13:32:53.062678+05:45",
+              "tags": [
+                {
+                  "id": 45,
+                  "product_unit": 177165,
+                  "tag": "1818-459-8503-60-39"
+                },
+                {
+                  "id": 46,
+                  "product_unit": 177139,
+                  "tag": "1818-459-8503-60-13"
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "order": 69457,
+              "order_item": 178369,
+              "product": 10561,
+              "product_name": "7 Up Cold Drink 400ml MRP 50",
+              "store": 3,
+              "quantity": 5,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-12T12:40:11.620626+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-12T13:16:15.632365+05:45",
+              "tags": [
+                {
+                  "id": 40,
+                  "product_unit": 263809,
+                  "tag": "5237-708-12842-24-7"
+                },
+                {
+                  "id": 41,
+                  "product_unit": 263813,
+                  "tag": "5237-708-12842-24-11"
+                },
+                {
+                  "id": 42,
+                  "product_unit": 263808,
+                  "tag": "5237-708-12842-24-6"
+                },
+                {
+                  "id": 43,
+                  "product_unit": 263810,
+                  "tag": "5237-708-12842-24-8"
+                },
+                {
+                  "id": 44,
+                  "product_unit": 210163,
+                  "tag": "5237-554-10014-24-18"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "order": 69455,
+              "order_item": 178367,
+              "product": 20753,
+              "product_name": "Joiner Fruit Drink Grape Flavour 320ml MRP 150",
+              "store": 3,
+              "quantity": 5,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-12T12:30:13.943095+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-12T12:33:48.933734+05:45",
+              "tags": [
+                {
+                  "id": 35,
+                  "product_unit": 265636,
+                  "tag": "6021-711-13002-22-5"
+                },
+                {
+                  "id": 36,
+                  "product_unit": 233195,
+                  "tag": "6021-623-11243-24-19"
+                },
+                {
+                  "id": 37,
+                  "product_unit": 265637,
+                  "tag": "6021-711-13002-22-6"
+                },
+                {
+                  "id": 38,
+                  "product_unit": 265638,
+                  "tag": "6021-711-13002-22-7"
+                },
+                {
+                  "id": 39,
+                  "product_unit": 265653,
+                  "tag": "6021-711-13002-22-22"
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "order": 69454,
+              "order_item": 178366,
+              "product": 1202,
+              "product_name": "Dettol Original Bathing Soap 100g MRP 71",
+              "store": 3,
+              "quantity": 4,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-11T17:48:38.098163+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-11T18:28:13.846976+05:45",
+              "tags": [
+                {
+                  "id": 31,
+                  "product_unit": 8640,
+                  "tag": "2964-9-203-180-48"
+                },
+                {
+                  "id": 32,
+                  "product_unit": 8668,
+                  "tag": "2964-9-203-180-76"
+                },
+                {
+                  "id": 33,
+                  "product_unit": 8634,
+                  "tag": "2964-9-203-180-42"
+                },
+                {
+                  "id": 34,
+                  "product_unit": 8624,
+                  "tag": "2964-9-203-180-32"
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "order": 69453,
+              "order_item": 178365,
+              "product": 1206,
+              "product_name": "Dettol Antiseptic Liquid 125ml MRP 129",
+              "store": 3,
+              "quantity": 5,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-11T17:40:54.056671+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-11T17:46:34.296843+05:45",
+              "tags": [
+                {
+                  "id": 26,
+                  "product_unit": 7354,
+                  "tag": "2977-9-184-96-12"
+                },
+                {
+                  "id": 27,
+                  "product_unit": 7381,
+                  "tag": "2977-9-184-96-39"
+                },
+                {
+                  "id": 28,
+                  "product_unit": 7351,
+                  "tag": "2977-9-184-96-9"
+                },
+                {
+                  "id": 29,
+                  "product_unit": 7379,
+                  "tag": "2977-9-184-96-37"
+                },
+                {
+                  "id": 30,
+                  "product_unit": 7355,
+                  "tag": "2977-9-184-96-13"
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "order": 69452,
+              "order_item": 178364,
+              "product": 1289,
+              "product_name": "Better Raisins Dry Fruits 100g MRP 95",
+              "store": 3,
+              "quantity": 3,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-11T17:34:23.429061+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-11T17:35:47.799989+05:45",
+              "tags": [
+                {
+                  "id": 23,
+                  "product_unit": 277673,
+                  "tag": "1902-732-13686-28-9"
+                },
+                {
+                  "id": 24,
+                  "product_unit": 277692,
+                  "tag": "1902-732-13686-28-28"
+                },
+                {
+                  "id": 25,
+                  "product_unit": 277679,
+                  "tag": "1902-732-13686-28-15"
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "order": 69451,
+              "order_item": 178363,
+              "product": 1284,
+              "product_name": "Pahadi Millet Cookies 150g MRP 175",
+              "store": 3,
+              "quantity": 6,
+              "reason": "partial_missing",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-11T16:52:48.497245+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-11T17:30:45.631377+05:45",
+              "tags": [
+                {
+                  "id": 17,
+                  "product_unit": 184172,
+                  "tag": "1894-486-8923-12-6"
+                },
+                {
+                  "id": 18,
+                  "product_unit": 184177,
+                  "tag": "1894-486-8923-12-11"
+                },
+                {
+                  "id": 19,
+                  "product_unit": 184168,
+                  "tag": "1894-486-8923-12-2"
+                },
+                {
+                  "id": 20,
+                  "product_unit": 184158,
+                  "tag": "1894-486-8922-12-4"
+                },
+                {
+                  "id": 21,
+                  "product_unit": 184178,
+                  "tag": "1894-486-8923-12-12"
+                },
+                {
+                  "id": 22,
+                  "product_unit": 184166,
+                  "tag": "1894-486-8922-12-12"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "order": null,
+              "order_item": null,
+              "product": 1487,
+              "product_name": "Pahadi  Mustard Honey 100g MRP 135",
+              "store": 3,
+              "quantity": 3,
+              "reason": "not_available",
+              "notes": "",
+              "reported_by": 72384,
+              "reported_by_name": "DH_packer1",
+              "reported_at": "2026-05-11T16:47:08.551885+05:45",
+              "approval_status": "pending",
+              "approved_by": null,
+              "approved_by_name": null,
+              "approved_at": null,
+              "applied_to_stock": true,
+              "applied_at": "2026-05-11T16:47:08.551608+05:45",
+              "tags": [
+                {
+                  "id": 14,
+                  "product_unit": 131222,
+                  "tag": "1917-371-6394-48-28"
+                },
+                {
+                  "id": 15,
+                  "product_unit": 131216,
+                  "tag": "1917-371-6394-48-22"
+                },
+                {
+                  "id": 16,
+                  "product_unit": 131198,
+                  "tag": "1917-371-6394-48-4"
+                }
+              ]
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

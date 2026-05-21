@@ -1,0 +1,30 @@
+info:
+  name: Rider Bonus Sync
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{gateway}}/api/rider-order-bonus/sync?from=2026-01-31&to=2026-05-20"
+  headers:
+    - name: X-SECRET-KEY
+      value: qpwnnFcdZI1063TACLALoPbK5kg/aXYqcfUjosLpFEE=
+    - name: ""
+      value: ""
+  params:
+    - name: from
+      value: 2026-01-31
+      type: query
+    - name: to
+      value: 2026-05-20
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
