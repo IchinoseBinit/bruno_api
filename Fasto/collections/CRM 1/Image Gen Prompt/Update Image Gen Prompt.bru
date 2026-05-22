@@ -1,0 +1,26 @@
+meta {
+  name: Update Image Gen Prompt
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{gateway}}/system/image-generation-prompt
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "image_generation_prompt": "Enhance this product photo for a grocery delivery app. Studio lighting, white background, true-to-life colors, crisp text on packaging."
+  }
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

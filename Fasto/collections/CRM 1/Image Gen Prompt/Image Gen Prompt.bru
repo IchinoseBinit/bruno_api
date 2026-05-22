@@ -1,0 +1,16 @@
+meta {
+  name: Image Gen Prompt
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/system/image-generation-prompt
+  body: none
+  auth: bearer
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

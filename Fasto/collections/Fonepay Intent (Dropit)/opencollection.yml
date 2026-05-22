@@ -20,7 +20,7 @@ request:
     token: "{{accessToken}}"
   variables:
     - name: gateway
-      value: http://localhost:8000
+      value: http://103.187.8.105:8000
     - name: accessToken
       value: ""
     - name: paymentLogId
