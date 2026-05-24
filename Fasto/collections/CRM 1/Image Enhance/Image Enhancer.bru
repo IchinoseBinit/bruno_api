@@ -4,18 +4,30 @@ meta {
   seq: 2
 }
 
-get {
+post {
   url: {{gateway}}/api/product/image-enhancer/4548/
-  body: none
+  body: json
   auth: bearer
+}
+
+headers {
+  Authorization: Bearer <TOKEN>
+  Content-Type: application/json
 }
 
 auth:bearer {
   token: {{packerAccessToken}}
 }
 
+body:json {
+  {
+    "prompt": "Place the product on a clean light-grey studio background with soft shadow."
+  }
+}
+
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
