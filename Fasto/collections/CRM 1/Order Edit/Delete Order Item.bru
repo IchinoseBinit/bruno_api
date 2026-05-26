@@ -1,0 +1,26 @@
+meta {
+  name: Delete Order Item
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{gateway}}/orders/order-item-modification/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "order_item_id": 789
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

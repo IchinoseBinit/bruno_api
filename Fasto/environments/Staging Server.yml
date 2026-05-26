@@ -1,7 +1,7 @@
 name: Staging Server
 variables:
   - name: gateway
-    value: http://103.187.8.105:8000
+    value: https://staging.fasto.com.np
   - name: wsg
     value: ws://103.187.8.105:8000
   - name: accessToken
