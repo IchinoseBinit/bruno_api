@@ -5,7 +5,7 @@ meta {
 }
 
 delete {
-  url: {{gateway}}/orders/order-item-modification/
+  url: {{gateway}}/orders/order-item-modification/38368/
   body: json
   auth: bearer
 }
@@ -14,9 +14,13 @@ headers {
   Content-Type: application/json
 }
 
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgwMzA3MzQ0LCJpYXQiOjE3Nzk4NzUzNDQsImp0aSI6Ijk1ZTliYmI0YmM3YjQ4MjBiODQ3NTc5OTYzNmFiYTk3IiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.NNrgu5CpdD8ZyhsSxlFFj1z21a4YulZiANG_1GNIywM
+}
+
 body:json {
   {
-    "order_item_id": 789
+    "order_item_id": 38368
   }
 }
 
