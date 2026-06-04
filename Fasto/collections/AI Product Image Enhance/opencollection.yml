@@ -1,0 +1,30 @@
+opencollection: 1.0.0
+
+info:
+  name: AI Product Image Enhance
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: bearer
+    token: "{{auth_token}}"
+
+docs:
+  content: "Async OpenAI image enhancement flow: schedule a job, poll status, accept (overwrites source ProductImage) or reject."
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

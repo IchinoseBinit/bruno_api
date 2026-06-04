@@ -1,0 +1,17 @@
+info:
+  name: 4. Accept (keep) result
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{gateway}}/api/product/image-enhancer/job/2/accept/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Overwrites the source ProductImage.image with the enhanced result. Job decision -> 'accepted'. Only valid when status='done' and decision is empty.

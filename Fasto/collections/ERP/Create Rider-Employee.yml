@@ -16,7 +16,7 @@ http:
     data: |-
       {
         "full_name": "Ram Sharma",
-        "username": "ram.sharmae",
+        "username": "ram.sharmaesse",
         "password": "Ram@1234",
         "role": "staff",
         "phone_no": "9800000000",

@@ -1,0 +1,38 @@
+info:
+  name: 1. Schedule enhance job
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{gateway}}/api/product/image-enhancer/{{source_image_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "prompt": ""
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 202) {
+          const body = res.getBody();
+          if (body.job_id) {
+            pm.collectionVariables.set('job_id', body.job_id);
+            console.log('Saved job_id =', body.job_id);
+          }
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Schedules a Celery job to enhance the given ProductImage with OpenAI gpt-image-1. Returns 202 with {job_id, status}. If a pending/processing job already exists for the same source_image, the existing job is returned with deduped=true.

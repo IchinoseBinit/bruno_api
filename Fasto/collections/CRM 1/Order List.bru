@@ -1,17 +1,17 @@
 meta {
   name: Order List
   type: http
-  seq: 10
+  seq: 9
 }
 
 get {
-  url: {{gateway}}/staff/api/orders/?tags=picking_late
+  url: {{gateway}}/staff/api/orders/
   body: none
   auth: bearer
 }
 
 params:query {
-  tags: picking_late
+  ~tags: picking_late
   ~has_remarks: false
   ~customer_id: 3
   ~sort_by: total
@@ -26,7 +26,7 @@ params:query {
 }
 
 auth:bearer {
-  token: {{packerAccessToken}}
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgwMjE4MjA4LCJpYXQiOjE3Nzk3ODYyMDgsImp0aSI6IjQxNTQyZjVkZWEzZjRlYmNhNDVjOTA0MWIxY2U5NThlIiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.2k2ftWs0fE8JVSJGCfrgA5y34B53RR1s0SaDVPqLWtI
 }
 
 settings {

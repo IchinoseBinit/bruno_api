@@ -5,17 +5,18 @@ meta {
 }
 
 get {
-  url: {{gateway}}/product-suggestions?suggest
+  url: {{gateway}}/product-suggestions?suggest=meat
   body: none
   auth: inherit
 }
 
 params:query {
-  suggest: 
+  suggest: meat
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {

@@ -1,0 +1,17 @@
+info:
+  name: 5. Reject result
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{gateway}}/api/product/image-enhancer/job/2/reject/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Discards the result file and marks decision='rejected'. Cannot reject an already-accepted job.
