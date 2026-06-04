@@ -1,11 +1,11 @@
 info:
   name: 1. Schedule enhance job
   type: http
-  seq: 1
+  seq: 2
 
 http:
   method: POST
-  url: "{{gateway}}/api/product/image-enhancer/{{source_image_id}}/"
+  url: "{{gateway}}/api/product/image-enhancer/1/"
   headers:
     - name: Content-Type
       value: application/json

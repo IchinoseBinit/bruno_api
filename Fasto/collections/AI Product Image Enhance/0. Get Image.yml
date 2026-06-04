@@ -1,7 +1,7 @@
 info:
-  name: 2. Get job status
+  name: 0. Get Image
   type: http
-  seq: 3
+  seq: 1
 
 http:
   method: GET
