@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "AI Image Enhance",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

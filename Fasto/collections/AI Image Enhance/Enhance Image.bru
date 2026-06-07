@@ -1,0 +1,75 @@
+meta {
+  name: Enhance Image
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{gateway}}/api/product/image-enhancer/2/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer <TOKEN>
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "prompt": ""
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{gateway}}/coupon/check
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "coupon_code": "Onepiece",
+        "cart_item_ids":[10163,10164,10168]
+      }
+            
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+      X-Frame-Options: DENY
+      Content-Length: 57
+      Vary: origin, Cookie
+      X-Content-Type-Options: nosniff
+      Referrer-Policy: same-origin
+      Cross-Origin-Opener-Policy: same-origin
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "error": "name 'user' is not defined"
+        }
+      '''
+    }
+  }
+}
