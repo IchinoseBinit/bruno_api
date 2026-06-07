@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{gateway}}/api/product/image-enhancer/1/"
+  url: "{{gateway}}/api/product/image-enhancer/7176/"
   headers:
     - name: Content-Type
       value: application/json
@@ -15,19 +15,9 @@ http:
       {
         "prompt": ""
       }
-  auth: inherit
-
-runtime:
-  scripts:
-    - type: after-response
-      code: |-
-        if (res.getStatus() === 202) {
-          const body = res.getBody();
-          if (body.job_id) {
-            pm.collectionVariables.set('job_id', body.job_id);
-            console.log('Saved job_id =', body.job_id);
-          }
-        }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMjQ3MjkwLCJpYXQiOjE3ODA4MTUyOTAsImp0aSI6Ijg1MTgyOTMxYzg5MTQ4YzFiZWQzOThiOGNiYWM2ZTdiIiwidXNlcl9pZCI6NDgyMDYsImlkIjo0ODIwNiwibmFtZSI6IkJpbml0IFRoZWFkbWluIiwidXNlcm5hbWUiOiJiaW5pdF9hZG1pbiIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbCwiaXNfc3VwZXJ1c2VyIjp0cnVlLCJyZWxhdGVkX3N0b3JlcyI6W119.8cGLAdWAeOHXAwCUUqKaL54CFM-iyUEnLtY5r-M8RCw
 
 settings:
   encodeUrl: true
