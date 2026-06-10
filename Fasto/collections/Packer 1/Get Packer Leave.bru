@@ -1,0 +1,28 @@
+meta {
+  name: Get Packer Leave
+  type: http
+  seq: 33
+}
+
+get {
+  url: {{gateway}}/staff/api/packer-leaves/
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Token <YOUR_TOKEN>
+}
+
+body:json {
+  {
+    "start_date": "2026-06-15",
+    "end_date": "2026-06-17",
+    "reason": "family"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
