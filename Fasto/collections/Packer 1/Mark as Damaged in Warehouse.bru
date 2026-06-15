@@ -1,7 +1,7 @@
 meta {
   name: Mark as Damaged in Warehouse
   type: http
-  seq: 29
+  seq: 30
 }
 
 post {
@@ -20,6 +20,7 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
@@ -34,7 +35,7 @@ example {
         "tags": ["1928-1-64-25-19", "1928-1-64-25-20"],
         "rack_identifier": "fasto_rack_mh_4598"
       }
-      
+          
     }
   }
   

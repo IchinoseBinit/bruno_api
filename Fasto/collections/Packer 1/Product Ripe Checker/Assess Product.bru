@@ -1,17 +1,32 @@
 meta {
-  name: list
+  name: Assess Product
   type: http
-  seq: 6
+  seq: 1
 }
 
-get {
-  url: {{gateway}}/staff/store-packers/1
-  body: none
+post {
+  url: {{gateway}}/packer/produce/units/assess/
+  body: json
   auth: bearer
+}
+
+headers {
+  Authorization: Bearer
+  Content-Type: application/json
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MTA5NzQ5LCJpYXQiOjE3NDM5MzY5NDksImp0aSI6IjM0NGFmOTI0MjE2MjRkYWRiNmQ0N2Y0Njc1NWM4MDM1IiwidXNlcl9pZCI6MjIyNywibmFtZSI6InN1amVldF9wYWNrZXIiLCJ1c2VybmFtZSI6InN1amVldF9wYWNrZXIiLCJwaG9uZV9udW1iZXIiOm51bGwsInJvbGUiOiJwYWNrZXIifQ.WZFMtzqjWm2oMcI3jueKxRMU5oFc7MyA3tCQ9Y_YDY4
+}
+
+body:json {
+  {
+    "tag": "42-5-100-50-1",
+    "ripeness_category": "raw",
+    "ripeness_score": 2,
+    "can_be_eaten": ["yes", "yes", "cant_say", "no", "no"]
+    // According to day 1,2,3,4,5
+  }
 }
 
 settings {

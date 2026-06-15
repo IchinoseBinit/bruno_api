@@ -1,13 +1,17 @@
 meta {
-  name: list
+  name: Get Products (Assess)
   type: http
-  seq: 6
+  seq: 3
 }
 
 get {
-  url: {{gateway}}/staff/store-packers/1
+  url: {{gateway}}/packer/produce/units/today/
   body: none
   auth: bearer
+}
+
+headers {
+  Authorization: Bearer
 }
 
 auth:bearer {
