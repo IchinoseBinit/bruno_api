@@ -1,0 +1,20 @@
+meta {
+  name: Product Assessments
+  type: http
+  seq: 30
+}
+
+get {
+  url: {{gateway}}/api/produce/assessments/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNjM0NDU3LCJpYXQiOjE3ODIyMDI0NTcsImp0aSI6IjhmYmZiMmMyYmZjYTQ1MWQ5YmE5ZGMxNGMwNjE0OGFjIiwidXNlcl9pZCI6NDgyMDYsImlkIjo0ODIwNiwibmFtZSI6IkJpbml0IFRoZWFkbWluIiwidXNlcm5hbWUiOiJiaW5pdF9hZG1pbiIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbCwiaXNfc3VwZXJ1c2VyIjp0cnVlLCJyZWxhdGVkX3N0b3JlcyI6W119.sPUG5wmRdBsKFQnJLM0EWZ302F_30_Y9UzE8-JCw0Xw
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

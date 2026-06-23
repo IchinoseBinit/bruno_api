@@ -5,18 +5,18 @@ meta {
 }
 
 get {
-  url: {{gateway}}/api/stock-out-logs?product_id=4537&store_id=3
+  url: {{gateway}}/api/stock-out-logs?from=2026-06-14&to=2026-06-14
   body: none
   auth: bearer
 }
 
 params:query {
-  product_id: 4537
-  store_id: 3
+  from: 2026-06-14
+  to: 2026-06-14
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NDM5MzU4LCJpYXQiOjE3NzkwMDczNTgsImp0aSI6Ijg5OGU1YTYyNzlkZjQ4NzhhYjM2YzJkOTcyMzAzZjM4IiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.Pawfu091z5a9Kq0UQxsblX7iTahLyzkQoZnhZOFO330
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxODQ3MTgwLCJpYXQiOjE3ODE0MTUxODAsImp0aSI6ImNkYzBlNTc5Y2RkYzQyYWZiY2UyYWJhYWQzMjdhODJmIiwidXNlcl9pZCI6NDgyMDYsImlkIjo0ODIwNiwibmFtZSI6IkJpbml0IFRoZWFkbWluIiwidXNlcm5hbWUiOiJiaW5pdF9hZG1pbiIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbCwiaXNfc3VwZXJ1c2VyIjp0cnVlLCJyZWxhdGVkX3N0b3JlcyI6W119.Fpnsonv0THEKgqUbEML0pjuZ-nbs7v2V8Vp5QScGSUA
 }
 
 settings {

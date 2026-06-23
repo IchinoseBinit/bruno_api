@@ -1,0 +1,20 @@
+meta {
+  name: Discounts By ID
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{gateway}}/staff/products/4251/produce-discount/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNTQ1MDM2LCJpYXQiOjE3ODIxMTMwMzYsImp0aSI6IjkxZDliMWQwMTNhODRhN2FhOTUxNDAzMWQxNWM1Y2I2IiwidXNlcl9pZCI6NDgyMDYsImlkIjo0ODIwNiwibmFtZSI6IkJpbml0IFRoZWFkbWluIiwidXNlcm5hbWUiOiJiaW5pdF9hZG1pbiIsInBob25lX251bWJlciI6bnVsbCwicm9sZSI6bnVsbCwiaXNfc3VwZXJ1c2VyIjp0cnVlLCJyZWxhdGVkX3N0b3JlcyI6W119.uSCORU0MzNeqavBReaskganDg5RgOshzc40LrH1f-a4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

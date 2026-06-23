@@ -1,32 +1,28 @@
 meta {
-  name: Order List
+  name: Discount Delete
   type: http
-  seq: 10
+  seq: 3
 }
 
-get {
-  url: {{gateway}}/staff/api/orders/
-  body: none
+delete {
+  url: {{gateway}}/api/v1/staff/products/42/produce-discount/
+  body: json
   auth: bearer
 }
 
-params:query {
-  ~tags: picking_late
-  ~has_remarks: false
-  ~customer_id: 3
-  ~sort_by: total
-  ~sort_order: desc
-  ~time_start: 13:00:00
-  ~time_end: 17:00:00
-  ~device_type: web
-  ~download: csv
-  ~status: created,packer_assigned,packed,billing,picked
-  ~rider_id: 3
-  ~store_id: 2
+headers {
+  Authorization: Bearer
+  Content-Type: application/json
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgwMjE4MjA4LCJpYXQiOjE3Nzk3ODYyMDgsImp0aSI6IjQxNTQyZjVkZWEzZjRlYmNhNDVjOTA0MWIxY2U5NThlIiwidXNlcl9pZCI6MSwiaWQiOjEsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyIjpudWxsLCJyb2xlIjpudWxsLCJpc19zdXBlcnVzZXIiOnRydWUsInJlbGF0ZWRfc3RvcmVzIjpbXX0.2k2ftWs0fE8JVSJGCfrgA5y34B53RR1s0SaDVPqLWtI
+}
+
+body:json {
+  {
+    "discount_percent": 70
+  }
 }
 
 settings {
