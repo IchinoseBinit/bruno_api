@@ -1,7 +1,7 @@
 meta {
   name: transfer damaged products
   type: http
-  seq: 23
+  seq: 25
 }
 
 post {
@@ -27,6 +27,7 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
@@ -41,10 +42,10 @@ example {
           "identifier": "basket-Balkumari DS-5ccc7a",
           "product_tags": [
               "3593-22-756-12-3"
-            
+              
           ]
       }
-      
+        
     }
   }
   

@@ -1,7 +1,7 @@
 meta {
   name: Assign Rack to damaged products
   type: http
-  seq: 26
+  seq: 28
 }
 
 post {
@@ -26,6 +26,7 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
 
 example {
@@ -40,7 +41,7 @@ example {
         "rack_identifier": "fasto_rack_test123_4009",
         "product_unit_tags": ["3593-22-756-12-3"]
       }
-      
+        
     }
   }
   
